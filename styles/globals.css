@@ -1,0 +1,66 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Mirza:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #beb4b4;
+} 
+
+.bgGlobal {
+  background-image: url("../public/assets/bgGlobal.png");
+}
+
+.copyright {
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.03rem;
+}
+
+.card-welcome {
+  border-radius: 1.25rem;
+  border: 2px solid #fff;
+  background: #222;
+  box-shadow: 0px 2px 41px -7px rgba(251, 251, 251, 0.25);
+}
+
+.title-welcome {
+  color: #fff;
+  text-align: center;
+  font-family: Mirza;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.title-card {
+  color: #fff;
+  /* font-family: Tajawal; */
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.card-selected-border {
+  border: 2px solid #a3de83;
+}
+
+.card-noselected-border {
+  border: 2px solid #222;
+}
+
+.input-form {
+  border-radius: 20px;
+  background: #0e0c0c;
+  box-shadow: 0px 4px 28px -10px rgba(252, 247, 247, 0.25);
+}
