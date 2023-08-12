@@ -1,8 +1,31 @@
 import { User } from "@/types";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { API_URL } from "@/constants/endpoints";
+import axios from "axios";
+
+const URL = `${API_URL}/api`;
+
+const instance = axios.create({
+  baseURL: URL,
+});
+
+// Add a new user
+export const addUser = createAsyncThunk(
+  "users/add",
+  async (user: User, { rejectWithValue }) => {
+    try {
+      const response = await instance.post(`/signup`, user);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 // Define the initial user state
-const initialUser: { user: User } = {
+const initialUser = {
+  data: [],
+  statusAddUser: "",
   user: {
     firstName: "",
     lastName: "",
@@ -17,6 +40,7 @@ const initialUser: { user: User } = {
     hourlyRate: 0,
     bio: undefined,
   },
+  error: "",
 };
 
 const userSlice = createSlice({
@@ -33,8 +57,24 @@ const userSlice = createSlice({
     clearUser: () => {
       return initialUser;
     },
+    setType: (state, { payload }) => {
+      state.user.type = payload.currentTypeSelected;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(addUser.pending, (state) => {
+        state.statusAddUser = "loading";
+      })
+      .addCase(addUser.fulfilled, (state, { payload }) => {
+        state.statusAddUser = "succeeded";
+      })
+      .addCase(addUser.rejected, (state, { payload }: any) => {
+        state.statusAddUser = "failed";
+        state.error = payload.response.data.message;
+      });
   },
 });
 
-export const { handleUserForm, clearUser } = userSlice.actions;
+export const { handleUserForm, clearUser, setType } = userSlice.actions;
 export default userSlice.reducer;

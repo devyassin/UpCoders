@@ -1,5 +1,6 @@
 "use client";
 import { configureStore } from "@reduxjs/toolkit";
+import thunkMiddleware from "redux-thunk";
 import welcomeSlice from "./WelcomeSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import UserSlice from "./UserSlice";
@@ -8,6 +9,7 @@ const store = configureStore({
     welcome: welcomeSlice,
     user: UserSlice,
   },
+   middleware: [thunkMiddleware],
 });
 
 export const useAppDispatch: () => typeof store.dispatch = useDispatch;

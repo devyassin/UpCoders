@@ -1,13 +1,14 @@
 import connect from "@/database/database";
 import User from "@/models/User";
 import { NextResponse, NextRequest } from "next/server";
+import bcryptjs from "bcryptjs";
+
 connect();
 
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json();
-
-    //u can do validation here and see if the user has entered all the required fields
+    const { firstName, lastName, type, email, password, country } =
+      await request.json();
 
     //check if the user exists
 
@@ -19,6 +20,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    //now we gonna hash the password
+    const salt = await bcryptjs.genSalt(10);
+    const hashedPassword = await bcryptjs.hash(password, salt);
+    //create new User
+    const newUser = new User({
+      firstName,
+      lastName,
+      type,
+      email,
+      password: hashedPassword,
+      country,
+    });
+    const savedUser = await newUser.save();
     return NextResponse.json({
       message: "User created successfully",
       success: true,

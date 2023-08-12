@@ -10,7 +10,7 @@ export type UserType = "client" | "freelancer";
 export interface User {
   firstName: string;
   lastName: string;
-  type: UserType;
+  type: UserType | string;
   email: string;
   password: string;
   country: string;

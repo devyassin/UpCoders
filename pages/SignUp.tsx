@@ -2,41 +2,61 @@
 import FirstBtn from "@/components/btn/FirstBtn";
 import Input from "@/components/form/Input";
 import InputPassword from "@/components/form/InputPassword";
+import { useRouter } from "next/navigation";
 import InputSelectCountry from "@/components/form/InputSelectCountry";
 import AskedSignIn from "@/components/ui/AskedSignIn";
 import Copyright from "@/components/ui/Copyright";
-import { Toastfailed, Toastsuccess } from "@/helpers/Toast";
+import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
 import { UserValidation } from "@/lib/validation/UserValidation";
 import { useAppSelector } from "@/store/store";
-// import { fromZodError } from "zod-validation-error";
+import { useDispatch } from "react-redux";
+
 import Image from "next/image";
 
-import React, { FormEvent } from "react";
+import React, { FormEvent, useEffect } from "react";
+import { addUser, clearUser, setType } from "@/store/UserSlice";
+import { User } from "@/types";
+import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
 
 type Props = {};
 
 const SignUp = (props: Props) => {
-  const user = useAppSelector((state) => state.user.user);
+  const router = useRouter();
+  const dispatch = useDispatch<any>();
+  const currentTypeSelected = useAppSelector((state) => state.welcome.type);
+  const user: User = useAppSelector((state) => state.user.user);
+  const error = useAppSelector((state) => state.user.error);
+  const statusAddUser = useAppSelector((state) => state.user.statusAddUser);
   const onSubmitHandler = (e: FormEvent) => {
     e.preventDefault();
-    const results = UserValidation.safeParse(user);
-    if (!results.success) {
-      const errors = results.error.format();
-      const errorValues: any = Object.values(errors);
-      const errorKeys: any = Object.keys(errors);
-      if (errorValues.length > 0) {
-        const errorMessage = errorKeys[1] + " " + errorValues[1]._errors[0];
 
-        Toastfailed(errorMessage);
-        return;
-      }
+    dispatch(setType({ currentTypeSelected }));
+
+    if (zodHandllingErrors(UserValidation, user)) {
+      dispatch(addUser(user));
     }
-    Toastsuccess("Added User");
   };
-  const currentTypeSelected = useAppSelector((state) => state.welcome.type);
+
+  useEffect(() => {
+    if (statusAddUser === "succeeded") {
+      Toastsuccess("User Added !");
+      dispatch(clearUser());
+    }
+
+    if (statusAddUser === "failed") {
+      Toastfailed(error);
+    }
+
+    if (statusAddUser === "loading") {
+      ToastLoading("processing .....");
+    }
+  }, [statusAddUser]);
   return (
     <div className="flex flex-col px-6 pt-6 ">
-      <div className="w-[7.5rem] h-[2.87625rem]">
+      <div
+        onClick={() => router.push("/welcome")}
+        className="w-[7.5rem] h-[2.87625rem] cursor-pointer"
+      >
         <Image
           src="/assets/logo.png"
           height={200}
