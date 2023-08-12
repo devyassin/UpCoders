@@ -30,6 +30,7 @@ const userSchema = new Schema<User>({
   experienceLvl: { type: String, enum: experienceLevels },
   hourlyRate: Number,
   bio: String,
+  isCompleted: { type: Boolean, default: false },
 });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);

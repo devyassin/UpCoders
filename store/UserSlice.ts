@@ -39,6 +39,7 @@ const initialUser = {
     experienceLvl: undefined,
     hourlyRate: 0,
     bio: undefined,
+    iscomplited: false,
   },
   error: "",
 };

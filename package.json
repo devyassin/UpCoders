@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "20.4.7",
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
@@ -17,6 +18,8 @@
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
+    "cookie": "^0.5.0",
+    "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.2",
     "next": "13.4.12",
     "postcss": "8.4.27",

@@ -70,7 +70,7 @@ const SignIn = (props: Props) => {
           />
 
           <FirstBtn customClasses="mt-8 py-2" text="Login" />
-          <AskedSignIn />
+          <AskedSignIn type="sign up" />
         </form>
       </div>
       <Copyright />

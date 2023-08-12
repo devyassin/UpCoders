@@ -20,4 +20,5 @@ export interface User {
   experienceLvl?: ExperienceLevel;
   hourlyRate?: number;
   bio?: string;
+  isCompleted?: boolean;
 }
