@@ -22,10 +22,35 @@ export const addUser = createAsyncThunk(
   }
 );
 
+// sign in
+export const signIn = createAsyncThunk(
+  "users/signin",
+  async ({ email, password }: any, { rejectWithValue }) => {
+    try {
+      const response = await instance.post(`/signin`, { email, password });
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+// logout
+export const logOut = createAsyncThunk("users/logout", async () => {
+  try {
+    const response = await instance.get("/logout");
+    return response.data;
+  } catch (error: any) {
+    return new Error(error.message);
+  }
+});
+
 // Define the initial user state
 const initialUser = {
   data: [],
   statusAddUser: "",
+  statusSignIn: "",
+  statusLogout: "",
   user: {
     firstName: "",
     lastName: "",
@@ -42,6 +67,8 @@ const initialUser = {
     iscomplited: false,
   },
   error: "",
+  errorSignIn: "",
+  errorLogOut: "",
 };
 
 const userSlice = createSlice({
@@ -73,6 +100,26 @@ const userSlice = createSlice({
       .addCase(addUser.rejected, (state, { payload }: any) => {
         state.statusAddUser = "failed";
         state.error = payload.response.data.message;
+      })
+      .addCase(signIn.pending, (state) => {
+        state.statusSignIn = "loading";
+      })
+      .addCase(signIn.fulfilled, (state, { payload }) => {
+        state.statusSignIn = "succeeded";
+      })
+      .addCase(signIn.rejected, (state, { payload }: any) => {
+        state.statusSignIn = "failed";
+        state.errorSignIn = payload.response.data.message;
+      })
+      .addCase(logOut.pending, (state) => {
+        state.statusLogout = "loading";
+      })
+      .addCase(logOut.fulfilled, (state, { payload }) => {
+        state.statusLogout = "succeeded";
+      })
+      .addCase(logOut.rejected, (state, { payload }: any) => {
+        state.statusLogout = "failed";
+        state.errorLogOut = payload.response.data.message;
       });
   },
 });

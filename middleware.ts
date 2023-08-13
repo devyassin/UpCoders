@@ -1,12 +1,29 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
-// This function can be marked `async` if using `await` inside
 export function middleware(request: NextRequest) {
-  return NextResponse.redirect(new URL("/home", request.url));
+  const path = request.nextUrl.pathname;
+  const isPublicPath = path === "/signin" || path === "/signup" || path === "/welcome";
+
+  const token = request.cookies.get("token")?.value || "";
+
+  if (isPublicPath && token) {
+    return NextResponse.redirect(new URL("/", request.nextUrl));
+  }
+
+  if (!isPublicPath && !token) {
+    return NextResponse.redirect(new URL("/welcome", request.nextUrl));
+  }
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
-  matcher: "/about/:path*",
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
 };

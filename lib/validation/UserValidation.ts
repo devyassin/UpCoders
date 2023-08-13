@@ -21,3 +21,8 @@ export const UserValidation = z.object({
   hourlyRate: z.number().min(0).optional(), // Assuming minimum hourly rate is 0
   bio: z.string().min(3).max(1000).optional(),
 });
+
+export const UserValidationSignIn = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+});

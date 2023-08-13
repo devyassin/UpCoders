@@ -34,6 +34,7 @@ const SignUp = (props: Props) => {
 
     if (zodHandllingErrors(UserValidation, user)) {
       dispatch(addUser(user));
+      router.push("/signin");
     }
   };
 

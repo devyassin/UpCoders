@@ -3,12 +3,16 @@ import InputPassword from "@/components/form/InputPassword";
 import AskedSignIn from "@/components/ui/AskedSignIn";
 import Copyright from "@/components/ui/Copyright";
 import Image from "next/image";
-import React, { FormEvent } from "react";
+import React, { FormEvent, useEffect } from "react";
 import { useAppSelector } from "@/store/store";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { User } from "@/types";
 import FirstBtn from "@/components/btn/FirstBtn";
+import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
+import { UserValidationSignIn } from "@/lib/validation/UserValidation";
+import { clearUser, signIn } from "@/store/UserSlice";
+import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
 
 type Props = {};
 
@@ -17,11 +21,33 @@ const SignIn = (props: Props) => {
   const dispatch = useDispatch<any>();
   const currentTypeSelected = useAppSelector((state) => state.welcome.type);
   const user: User = useAppSelector((state) => state.user.user);
-  const error = useAppSelector((state) => state.user.error);
-  const statusAddUser = useAppSelector((state) => state.user.statusAddUser);
+  const errorSignIn = useAppSelector((state) => state.user.errorSignIn);
+  const statusSignIn = useAppSelector((state) => state.user.statusSignIn);
   const onSubmitHandler = (e: FormEvent) => {
     e.preventDefault();
+    if (zodHandllingErrors(UserValidationSignIn, user)) {
+      dispatch(signIn({ email: user.email, password: user.password }));
+    }
   };
+
+  useEffect(() => {
+    if (statusSignIn === "succeeded") {
+      Toastsuccess("Welcome !");
+
+      setTimeout(() => {
+        router.push("/");
+        dispatch(clearUser());
+      }, 1500);
+    }
+
+    if (statusSignIn === "failed") {
+      Toastfailed(errorSignIn);
+    }
+
+    if (statusSignIn === "loading") {
+      ToastLoading("processing .....");
+    }
+  }, [statusSignIn]);
   return (
     <div className="flex flex-col px-6 pt-6 ">
       <div
@@ -37,18 +63,31 @@ const SignIn = (props: Props) => {
         />
       </div>
       <div className="flex flex-col card-welcome mx-auto  px-14 py-6 my-8 w-1/2 max-lg:w-2/3  max-sm:w-full ">
-        <h1 className="title-welcome max-lg:text-[24px]  mb-[14px]">Sign In</h1>
+        <h1 className="title-welcome max-lg:text-[24px]  mb-[14px]">
+          Sign In{" "}
+          {currentTypeSelected == "client" ? "as a client" : "As a Freelancer"}
+        </h1>
         <div className="flex items-center  justify-between ">
           <hr className="h-[1px] mr-4 w-full  bg-gray-50 opacity-30" />
-
-          <Image
-            src="/assets/clientLogo.png"
-            alt="client logo"
-            className="pt-2 max-md:pb-0 pb-8"
-            priority
-            width={50}
-            height={50}
-          />
+          {currentTypeSelected == "client" ? (
+            <Image
+              src="/assets/clientLogo.png"
+              alt="client logo"
+              className="pt-2 max-md:pb-0 pb-8"
+              priority
+              width={50}
+              height={50}
+            />
+          ) : (
+            <Image
+              src="/assets/freelancerLogo.png"
+              alt="client logo"
+              className="pt-2 max-md:pb-0 pb-8"
+              priority
+              width={50}
+              height={50}
+            />
+          )}
 
           <hr className="h-[1px] ml-4 w-full bg-gray-50 opacity-30" />
         </div>
