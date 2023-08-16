@@ -34,7 +34,6 @@ const SignUp = (props: Props) => {
 
     if (zodHandllingErrors(UserValidation, user)) {
       dispatch(addUser(user));
-      router.push("/signin");
     }
   };
 
@@ -42,6 +41,7 @@ const SignUp = (props: Props) => {
     if (statusAddUser === "succeeded") {
       Toastsuccess("User Added !");
       dispatch(clearUser());
+      router.push("/signin");
     }
 
     if (statusAddUser === "failed") {

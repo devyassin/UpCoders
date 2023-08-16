@@ -7,6 +7,9 @@ const URL = `${API_URL}/api`;
 
 const instance = axios.create({
   baseURL: URL,
+  headers: {
+    "content-type": "application/json",
+  },
 });
 
 // Add a new user
@@ -45,12 +48,24 @@ export const logOut = createAsyncThunk("users/logout", async () => {
   }
 });
 
+// Get current user
+
+export const currentUser = createAsyncThunk("users/me", async () => {
+  try {
+    const response = await instance.get("/me");
+    return response.data;
+  } catch (error: any) {
+    return new Error(error.message);
+  }
+});
+
 // Define the initial user state
 const initialUser = {
   data: [],
   statusAddUser: "",
   statusSignIn: "",
   statusLogout: "",
+  statusCurrentUser: "",
   user: {
     firstName: "",
     lastName: "",
@@ -69,6 +84,7 @@ const initialUser = {
   error: "",
   errorSignIn: "",
   errorLogOut: "",
+  errorCurrentUser: "",
 };
 
 const userSlice = createSlice({
@@ -106,6 +122,7 @@ const userSlice = createSlice({
       })
       .addCase(signIn.fulfilled, (state, { payload }) => {
         state.statusSignIn = "succeeded";
+        state.user = payload.user;
       })
       .addCase(signIn.rejected, (state, { payload }: any) => {
         state.statusSignIn = "failed";
@@ -116,10 +133,22 @@ const userSlice = createSlice({
       })
       .addCase(logOut.fulfilled, (state, { payload }) => {
         state.statusLogout = "succeeded";
+        state.user = initialUser.user;
       })
       .addCase(logOut.rejected, (state, { payload }: any) => {
         state.statusLogout = "failed";
         state.errorLogOut = payload.response.data.message;
+      })
+      .addCase(currentUser.pending, (state) => {
+        state.statusCurrentUser = "loading";
+      })
+      .addCase(currentUser.fulfilled, (state, { payload }) => {
+        state.statusCurrentUser = "succeeded";
+        state.user = payload.data;
+      })
+      .addCase(currentUser.rejected, (state, { payload }: any) => {
+        state.statusCurrentUser = "failed";
+        state.errorCurrentUser = payload.response.data.message;
       });
   },
 });

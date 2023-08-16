@@ -3,12 +3,16 @@ import FirstBtn from "@/components/btn/FirstBtn";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/store/store";
-import { logOut } from "@/store/UserSlice";
+import { currentUser, logOut } from "@/store/UserSlice";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
   const { push } = useRouter();
   const dispatch = useDispatch<any>();
+  useEffect(() => {
+    dispatch(currentUser());
+  }, []);
   return (
     <div
       onClick={() => {

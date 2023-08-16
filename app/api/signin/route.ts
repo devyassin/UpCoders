@@ -36,17 +36,26 @@ export async function POST(request: NextRequest) {
     const options = { expiresIn: "1h" }; // Set the token expiration time as needed
 
     const token = jwt.sign(payload, secretKey, options);
-
+    const userObj = await User.findOne({ email }).select("-password");
     const response = NextResponse.json({
       message: "Login successful",
       success: true,
       payload,
       token,
+      user: userObj,
     });
 
     response.cookies.set("token", token, {
       httpOnly: true,
     });
+
+    response.cookies.set("type", userObj.type, {
+      httpOnly: true,
+    });
+    response.cookies.set("isComplited", userObj.isCompleted, {
+      httpOnly: true,
+    });
+
     return response;
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
