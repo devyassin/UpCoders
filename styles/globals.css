@@ -1,6 +1,7 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Mirza:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,7 +13,7 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background-color: #beb4b4;
-} 
+}
 
 .bgGlobal {
   background-image: url("../public/assets/bgGlobal.png");
@@ -63,4 +64,39 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background: #0e0c0c;
   box-shadow: 0px 4px 28px -10px rgba(252, 247, 247, 0.25);
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.label {
+  color: #fff;
+  font-family: Mirza;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* styles for selected values in react select */
+.css-1p3m7a8-multiValue {
+  border-radius: 20px !important;
+
+  padding: 6px 20px;
+  background: #3f3f46 !important;
+  box-shadow: 0px 4px 28px -10px rgba(252, 247, 247, 0.25) !important;
+}
+
+.css-1p3m7a8-multiValue__multi-value {
+  background: #3f3f46;
+}
+
+.css-wsp0cs-MultiValueGeneric {
+  color: #fff !important;
+  opacity: 80%;
+}
+
+.css-12a83d4-MultiValueRemove {
+  margin-left: 12px !important;
 }

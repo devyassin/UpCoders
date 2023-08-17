@@ -55,6 +55,7 @@ const SignIn = (props: Props) => {
   }, [statusSignIn]);
   return (
     <div className="flex flex-col px-6 pt-6 ">
+      {/* Logo header */}
       <div
         onClick={() => router.push("/welcome")}
         className="w-[7.5rem] h-[2.87625rem] cursor-pointer"

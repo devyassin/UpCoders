@@ -24,6 +24,7 @@ module.exports = {
         sans: ["Mirza", "cursive"],
         lato: ["Lato", "sans-serif"],
         tajwal: ["Tajawal", "sans-serif"],
+        italiano: ["Italianno", "cursive"],
       },
     },
   },
