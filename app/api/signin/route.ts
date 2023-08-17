@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     // Create a JWT token
     const secretKey = process.env.JWT_SECRET_KEY!; // Replace this with a secure secret key
     const payload = { userId: user._id, email: user.email }; // Customize the payload as per your needs
-    const options = { expiresIn: "1h" }; // Set the token expiration time as needed
+    const options = { expiresIn: "10h" }; // Set the token expiration time as needed
 
     const token = jwt.sign(payload, secretKey, options);
     const userObj = await User.findOne({ email }).select("-password");

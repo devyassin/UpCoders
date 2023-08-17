@@ -85,7 +85,7 @@ body::-webkit-scrollbar-thumb {
 
   padding: 6px 20px;
   background: #3f3f46 !important;
-  box-shadow: 0px 4px 28px -10px rgba(252, 247, 247, 0.25) !important;
+  box-shadow: 0px 4px 28px -10px rgba(252, 247, 247, 0.1) !important;
 }
 
 .css-1p3m7a8-multiValue__multi-value {

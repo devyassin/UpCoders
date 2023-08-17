@@ -1,15 +1,11 @@
 "use client";
-import { countrySelectStylingTwo } from "@/constants/styling";
-import { useEffect, useState } from "react";
+import { countrySelectStyling } from "@/constants/styling";
 import Select from "react-select";
-import { skills } from "@/constants/skills";
-import { useDispatch } from "react-redux";
 import { handleUserForm } from "@/store/UserSlice";
+import { domainesExpertisme } from "@/constants/domaineExpertisme";
 type Props = {};
 
-const InputSelectSkills = (props: Props) => {
-  const dispatch = useDispatch();
-  const [countryNames, setCountryNames] = useState([]);
+const InputSelectDomaineExpertisme = (props: Props) => {
   //   const handleCountryChange = (selected: any) => {
   //     dispatch(handleUserForm({ name: "country", value: selected.label }));
   //   };
@@ -17,18 +13,20 @@ const InputSelectSkills = (props: Props) => {
   return (
     <div className="font-tajwal mt-2 w-full  ">
       <Select
-        isMulti
         components={{
           IndicatorSeparator: () => null,
         }}
-        styles={countrySelectStylingTwo}
-        options={skills}
+        styles={countrySelectStyling}
+        options={domainesExpertisme}
         menuPosition="fixed"
-        placeholder="Select skills ..."
+        defaultValue={{
+          value: "Full Stack Developer",
+          label: "Full Stack Developer",
+        }}
         // onChange={handleCountryChange}
       />
     </div>
   );
 };
 
-export default InputSelectSkills;
+export default InputSelectDomaineExpertisme;
