@@ -30,3 +30,9 @@ export const domainesExpertisme = [
   { value: "E-commerce Developer", label: "E-commerce Developer" },
   { value: "Robotics Engineer", label: "Robotics Engineer" },
 ];
+
+export const expertismeLvl = [
+  { value: "Beginner", label: "Beginner" },
+  { value: "Intermediate", label: "Intermediate" },
+  { value: "Advanced", label: "Advanced" },
+];

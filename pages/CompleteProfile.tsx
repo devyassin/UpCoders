@@ -47,7 +47,7 @@ const CompleteProfile = (props: Props) => {
           onSubmit={() => {
             console.log("hello");
           }}
-          className="flex flex-col max-md:pt-8 "
+          className="flex flex-col max-md:pt-8 h-fit "
         >
           <PartOne active={activePart} type="one" />
           <PartTwo active={activePart} type="two" />

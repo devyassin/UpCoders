@@ -1,4 +1,6 @@
 import React from "react";
+import Input from "../form/Input";
+import InputSelectExperienceLvl from "../form/InputSelectExperienceLvl";
 
 type Props = {
   active: string;
@@ -7,7 +9,32 @@ type Props = {
 
 const PartTwo = ({ active, type }: Props) => {
   return (
-    <div className={`${active == type ? "" : "hidden"} text-3xl`}>PartTwo</div>
+    <div className={`${active == type ? "" : "hidden"} `}>
+      <div className="flex flex-col py-4 items-start">
+        <label className="label">Experience Level</label>
+        <InputSelectExperienceLvl />
+      </div>
+      <div className="flex flex-col py-4 items-start w-full">
+        <label className="label">Education</label>
+        <Input
+          name="education"
+          customClasses="mt-2 w-full"
+          container="w-full"
+          type="text"
+          placeholder="Bachelor's degree in Computer Engineering"
+        />
+      </div>
+      <div className="flex flex-col py-4 items-start w-full">
+        <label className="label">Hourly Rate</label>
+        <Input
+          name="rate"
+          customClasses="mt-2 w-full"
+          container="w-full"
+          type="number"
+          placeholder="00.00 $"
+        />
+      </div>
+    </div>
   );
 };
 

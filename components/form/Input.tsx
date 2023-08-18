@@ -8,9 +8,17 @@ type Props = {
   name: string;
   placeholder?: string;
   value?: string;
+  container?: string;
 };
 
-const Input = ({ type, customClasses, placeholder, name, value }: Props) => {
+const Input = ({
+  type,
+  customClasses,
+  placeholder,
+  name,
+  value,
+  container,
+}: Props) => {
   const dispatch = useDispatch();
   const handleChange = (
     event: ChangeEvent<
@@ -22,11 +30,12 @@ const Input = ({ type, customClasses, placeholder, name, value }: Props) => {
     dispatch(handleUserForm({ name, value }));
   };
   return (
-    <div>
+    <div className={`${container}`}>
       <input
         onChange={handleChange}
         value={value}
         type={type}
+        min={1}
         name={name}
         className={`input-form focus:bg-dark-6 outline-none  font-tajwal h-[61px] w-[273px] px-[28px] pt-[25px] pb-[19px] text-white ${customClasses}`}
         placeholder={placeholder}
