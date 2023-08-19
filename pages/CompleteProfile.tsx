@@ -5,19 +5,65 @@ import { useAppSelector } from "@/store/store";
 import { useDispatch } from "react-redux";
 import Copyright from "@/components/ui/Copyright";
 import Image from "next/image";
-import React from "react";
+import React, { FormEvent, useEffect } from "react";
 import { moveToback, moveToNext } from "@/store/CompleteProfileSlice";
 import PartTwo from "@/components/completeFormParts/PartTwo";
 import PartThree from "@/components/completeFormParts/PartThree";
+import { User } from "@/types";
 import FirstBtn from "@/components/btn/FirstBtn";
+import { useRouter } from "next/navigation";
+import {
+  clearUser,
+  currentUser,
+  setIscomplited,
+  updateUser,
+} from "@/store/UserSlice";
+import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
+import { UserValidationCompleteProfile } from "@/lib/validation/UserValidation";
+import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
 
 type Props = {};
 
 const CompleteProfile = (props: Props) => {
-  const dispatch = useDispatch();
-  const activePart = useAppSelector(
-    (state) => state.completeProfile.activePart
+  const dispatch = useDispatch<any>();
+  const router = useRouter();
+  useEffect(() => {
+    dispatch(currentUser());
+  }, []);
+
+  const [activePart, user, statusUpdateUser, errorUpdateUser] = useAppSelector(
+    (state) => [
+      state.completeProfile.activePart,
+      state.user.user,
+      state.user.statusUpdateUser,
+      state.user.errorUpdateUser,
+    ]
   );
+  useEffect(() => {
+    if (statusUpdateUser === "succeeded") {
+      Toastsuccess("Profile Complited !");
+      dispatch(clearUser());
+      // router.push("/");
+      // setTimeout(() => {
+      //   dispatch(clearUser());
+      // }, 1500);
+    }
+
+    if (statusUpdateUser === "failed") {
+      Toastfailed(errorUpdateUser);
+    }
+
+    if (statusUpdateUser === "loading") {
+      ToastLoading("processing .....");
+    }
+  }, [statusUpdateUser]);
+  const handlSubmitCompleteProfile = (e: FormEvent) => {
+    e.preventDefault();
+    if (zodHandllingErrors(UserValidationCompleteProfile, user)) {
+      dispatch(setIscomplited());
+      dispatch(updateUser(user));
+    }
+  };
   return (
     <div className="flex flex-col px-6 pt-6">
       <div className="w-[7.5rem] h-[2.87625rem] cursor-pointer">
@@ -44,9 +90,7 @@ const CompleteProfile = (props: Props) => {
 
         {/* Form */}
         <form
-          onSubmit={() => {
-            console.log("hello");
-          }}
+          onSubmit={handlSubmitCompleteProfile}
           className="flex flex-col max-md:pt-8 h-fit "
         >
           <PartOne active={activePart} type="one" />

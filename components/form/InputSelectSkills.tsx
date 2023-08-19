@@ -1,6 +1,6 @@
 "use client";
 import { countrySelectStylingTwo } from "@/constants/styling";
-import { useEffect, useState } from "react";
+
 import Select from "react-select";
 import { skills } from "@/constants/skills";
 import { useDispatch } from "react-redux";
@@ -9,10 +9,15 @@ type Props = {};
 
 const InputSelectSkills = (props: Props) => {
   const dispatch = useDispatch();
-  const [countryNames, setCountryNames] = useState([]);
-  //   const handleCountryChange = (selected: any) => {
-  //     dispatch(handleUserForm({ name: "country", value: selected.label }));
-  //   };
+
+  const handleSkillsChange = (skills: any) => {
+    if (skills.length == "0") {
+      dispatch(handleUserForm({ name: "skills", value: [] }));
+    } else {
+      const arrayOfskills = skills.map((skill: any) => skill.value);
+      dispatch(handleUserForm({ name: "skills", value: arrayOfskills }));
+    }
+  };
 
   return (
     <div className="font-tajwal mt-2 w-full  ">
@@ -25,7 +30,7 @@ const InputSelectSkills = (props: Props) => {
         options={skills}
         menuPosition="fixed"
         placeholder="Select skills ..."
-        // onChange={handleCountryChange}
+        onChange={handleSkillsChange}
       />
     </div>
   );

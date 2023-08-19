@@ -59,6 +59,17 @@ export const currentUser = createAsyncThunk("users/me", async () => {
   }
 });
 
+// Update the user
+
+export const updateUser = createAsyncThunk("updateUser", async (user: any) => {
+  try {
+    const response = await instance.patch("/me", user);
+    return response.data;
+  } catch (error: any) {
+    return new Error(error.message);
+  }
+});
+
 // Define the initial user state
 const initialUser = {
   data: [],
@@ -66,6 +77,7 @@ const initialUser = {
   statusSignIn: "",
   statusLogout: "",
   statusCurrentUser: "",
+  statusUpdateUser: "",
   user: {
     firstName: "",
     lastName: "",
@@ -78,6 +90,7 @@ const initialUser = {
     domaineExpertise: undefined,
     experienceLvl: undefined,
     hourlyRate: 0,
+    education: "",
     bio: undefined,
     iscomplited: false,
   },
@@ -85,6 +98,7 @@ const initialUser = {
   errorSignIn: "",
   errorLogOut: "",
   errorCurrentUser: "",
+  errorUpdateUser: "",
 };
 
 const userSlice = createSlice({
@@ -98,11 +112,15 @@ const userSlice = createSlice({
       const { name, value } = payload;
       state.user[name] = value;
     },
-    clearUser: () => {
-      return initialUser;
+    clearUser: (state) => {
+      state = initialUser;
     },
     setType: (state, { payload }) => {
       state.user.type = payload.currentTypeSelected;
+    },
+    setIscomplited: (state) => {
+      state.user = initialUser.user;
+      console.log("heeeeeeeeeeeeeeelo");
     },
   },
   extraReducers: (builder) => {
@@ -149,9 +167,21 @@ const userSlice = createSlice({
       .addCase(currentUser.rejected, (state, { payload }: any) => {
         state.statusCurrentUser = "failed";
         state.errorCurrentUser = payload.response.data.message;
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.statusUpdateUser = "loading";
+      })
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        state.statusUpdateUser = "succeeded";
+        state.user = payload.data;
+      })
+      .addCase(updateUser.rejected, (state, { payload }: any) => {
+        state.statusUpdateUser = "failed";
+        state.errorUpdateUser = payload.response.data.message;
       });
   },
 });
 
-export const { handleUserForm, clearUser, setType } = userSlice.actions;
+export const { handleUserForm, clearUser, setType, setIscomplited } =
+  userSlice.actions;
 export default userSlice.reducer;

@@ -25,8 +25,12 @@ const Input = ({
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
-    const { name, value } = event.target;
-
+    let { name, value }: any = event.target;
+    if (name == "hourlyRate") {
+      value = Number(value);
+      dispatch(handleUserForm({ name, value }));
+      return;
+    }
     dispatch(handleUserForm({ name, value }));
   };
   return (

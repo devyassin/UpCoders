@@ -2,13 +2,15 @@
 import { countrySelectStyling } from "@/constants/styling";
 import Select from "react-select";
 import { handleUserForm } from "@/store/UserSlice";
+import { useDispatch } from "react-redux";
 import { domainesExpertisme } from "@/constants/domaineExpertisme";
 type Props = {};
 
 const InputSelectDomaineExpertisme = (props: Props) => {
-  //   const handleCountryChange = (selected: any) => {
-  //     dispatch(handleUserForm({ name: "country", value: selected.label }));
-  //   };
+  const dispatch = useDispatch();
+  const handleDomaineExperChange = (selected: any) => {
+    dispatch(handleUserForm({ name: "domaineExpertise", value: selected.label }));
+  };
 
   return (
     <div className="font-tajwal mt-2 w-full  ">
@@ -23,7 +25,7 @@ const InputSelectDomaineExpertisme = (props: Props) => {
           value: "Full Stack Developer",
           label: "Full Stack Developer",
         }}
-        // onChange={handleCountryChange}
+        onChange={handleDomaineExperChange}
       />
     </div>
   );

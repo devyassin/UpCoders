@@ -19,6 +19,7 @@ export interface User {
   domaineExpertise?: string;
   experienceLvl?: ExperienceLevel;
   hourlyRate?: number;
+  education?: string;
   bio?: string;
   isCompleted?: boolean;
 }

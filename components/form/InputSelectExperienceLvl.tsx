@@ -3,12 +3,14 @@ import { experienceLvlSelectStyling } from "@/constants/styling";
 import Select from "react-select";
 import { handleUserForm } from "@/store/UserSlice";
 import { expertismeLvl } from "@/constants/domaineExpertisme";
+import { useDispatch } from "react-redux";
 type Props = {};
 
 const InputSelectExperienceLvl = (props: Props) => {
-  //   const handleCountryChange = (selected: any) => {
-  //     dispatch(handleUserForm({ name: "country", value: selected.label }));
-  //   };
+  const dispatch = useDispatch();
+    const handleLvlExperChange = (selected: any) => {
+      dispatch(handleUserForm({ name: "experienceLvl", value: selected.label }));
+    };
 
   return (
     <div className="font-tajwal mt-2 w-full  ">
@@ -23,7 +25,7 @@ const InputSelectExperienceLvl = (props: Props) => {
           value: "Intermediate",
           label: "Intermediate",
         }}
-        // onChange={handleCountryChange}
+        onChange={handleLvlExperChange}
       />
     </div>
   );

@@ -27,7 +27,7 @@ const PartTwo = ({ active, type }: Props) => {
       <div className="flex flex-col py-4 items-start w-full">
         <label className="label">Hourly Rate</label>
         <Input
-          name="rate"
+          name="hourlyRate"
           customClasses="mt-2 w-full"
           container="w-full"
           type="number"
