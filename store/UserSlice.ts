@@ -1,3 +1,4 @@
+"use client";
 import { User } from "@/types";
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { API_URL } from "@/constants/endpoints";
@@ -92,7 +93,7 @@ const initialUser = {
     hourlyRate: 0,
     education: "",
     bio: undefined,
-    iscomplited: false,
+    isCompleted: false,
   },
   error: "",
   errorSignIn: "",
@@ -113,14 +114,14 @@ const userSlice = createSlice({
       state.user[name] = value;
     },
     clearUser: (state) => {
-      state = initialUser;
+      state.user = initialUser.user;
+    },
+
+    setIsCompleted: (state) => {
+      state.user.isCompleted = true;
     },
     setType: (state, { payload }) => {
       state.user.type = payload.currentTypeSelected;
-    },
-    setIscomplited: (state) => {
-      state.user = initialUser.user;
-      console.log("heeeeeeeeeeeeeeelo");
     },
   },
   extraReducers: (builder) => {
@@ -151,7 +152,7 @@ const userSlice = createSlice({
       })
       .addCase(logOut.fulfilled, (state, { payload }) => {
         state.statusLogout = "succeeded";
-        state.user = initialUser.user;
+        state = initialUser;
       })
       .addCase(logOut.rejected, (state, { payload }: any) => {
         state.statusLogout = "failed";
@@ -173,7 +174,7 @@ const userSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
         state.statusUpdateUser = "succeeded";
-        state.user = payload.data;
+        state.data = payload.data;
       })
       .addCase(updateUser.rejected, (state, { payload }: any) => {
         state.statusUpdateUser = "failed";
@@ -182,6 +183,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { handleUserForm, clearUser, setType, setIscomplited } =
+export const { handleUserForm, clearUser, setType, setIsCompleted } =
   userSlice.actions;
 export default userSlice.reducer;

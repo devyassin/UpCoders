@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import connect from "@/database/database";
 import User from "@/models/User";
+import { cookies } from "next/headers";
 import { getDataFromToken } from "@/helpers/GetDataFromToken";
 
 connect();
@@ -19,12 +20,15 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function PATCH(request: NextRequest) {
+export async function PATCH(request: NextRequest, response: NextResponse) {
   try {
     const userId = await getDataFromToken(request);
     const userObj = await request.json();
 
-    const user = await User.findByIdAndUpdate({ _id: userId }, userObj);
+    const user = await User.findByIdAndUpdate({ _id: userId }, userObj).select(
+      "-password"
+    );
+    cookies().set("isComplited", "true");
     return NextResponse.json({
       message: "User Profile Complited",
       data: user,

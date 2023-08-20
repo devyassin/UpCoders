@@ -41,6 +41,7 @@ export const UserValidationCompleteProfile = z.object({
     ExperienceLevel.Intermediate,
     ExperienceLevel.Advanced,
   ]),
+  isCompleted: z.boolean().optional(),
   education: z.string().min(10).max(100),
   hourlyRate: z
     .number()

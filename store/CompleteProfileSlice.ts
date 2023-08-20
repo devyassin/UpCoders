@@ -1,3 +1,4 @@
+"use client";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -25,5 +26,5 @@ const completeProfileSlice = createSlice({
   },
 });
 
-export const { moveToNext,moveToback } = completeProfileSlice.actions;
+export const { moveToNext, moveToback } = completeProfileSlice.actions;
 export default completeProfileSlice.reducer;

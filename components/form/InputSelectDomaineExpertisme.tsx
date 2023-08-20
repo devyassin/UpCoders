@@ -9,7 +9,10 @@ type Props = {};
 const InputSelectDomaineExpertisme = (props: Props) => {
   const dispatch = useDispatch();
   const handleDomaineExperChange = (selected: any) => {
-    dispatch(handleUserForm({ name: "domaineExpertise", value: selected.label }));
+    dispatch(
+      handleUserForm({ name: "domaineExpertise", value: selected.label })
+    );
+    dispatch(handleUserForm({ name: "isCompleted", value: true }));
   };
 
   return (

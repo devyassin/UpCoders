@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 import {
   clearUser,
   currentUser,
-  setIscomplited,
+  setIsCompleted,
   updateUser,
 } from "@/store/UserSlice";
 import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
@@ -28,25 +28,25 @@ const CompleteProfile = (props: Props) => {
   const dispatch = useDispatch<any>();
   const router = useRouter();
   useEffect(() => {
+    if (statusUpdateUser === "succeeded" || statusUpdateUser === "loading")
+      return;
     dispatch(currentUser());
+    dispatch(setIsCompleted());
   }, []);
 
-  const [activePart, user, statusUpdateUser, errorUpdateUser] = useAppSelector(
-    (state) => [
-      state.completeProfile.activePart,
-      state.user.user,
-      state.user.statusUpdateUser,
-      state.user.errorUpdateUser,
-    ]
+  const user = useAppSelector((state) => state.user.user);
+  const activePart = useAppSelector(
+    (state) => state.completeProfile.activePart
   );
+  const statusUpdateUser = useAppSelector(
+    (state) => state.user.statusUpdateUser
+  );
+  const errorUpdateUser = useAppSelector((state) => state.user.errorUpdateUser);
+
   useEffect(() => {
     if (statusUpdateUser === "succeeded") {
       Toastsuccess("Profile Complited !");
-      dispatch(clearUser());
-      // router.push("/");
-      // setTimeout(() => {
-      //   dispatch(clearUser());
-      // }, 1500);
+      router.push("/");
     }
 
     if (statusUpdateUser === "failed") {
@@ -60,7 +60,6 @@ const CompleteProfile = (props: Props) => {
   const handlSubmitCompleteProfile = (e: FormEvent) => {
     e.preventDefault();
     if (zodHandllingErrors(UserValidationCompleteProfile, user)) {
-      dispatch(setIscomplited());
       dispatch(updateUser(user));
     }
   };
