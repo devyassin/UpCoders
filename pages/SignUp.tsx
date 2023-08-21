@@ -30,14 +30,13 @@ const SignUp = (props: Props) => {
   const onSubmitHandler = (e: FormEvent) => {
     e.preventDefault();
 
-    dispatch(setType({ currentTypeSelected }));
-
     if (zodHandllingErrors(UserValidation, user)) {
       dispatch(addUser(user));
     }
   };
 
   useEffect(() => {
+    dispatch(setType({ currentTypeSelected }));
     if (statusAddUser === "succeeded") {
       Toastsuccess("User Added !");
       dispatch(clearUser());
@@ -52,6 +51,7 @@ const SignUp = (props: Props) => {
       ToastLoading("processing .....");
     }
   }, [statusAddUser]);
+
   return (
     <div className="flex flex-col px-6 pt-6 ">
       <div

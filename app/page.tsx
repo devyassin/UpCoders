@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     if (statusLogout === "succeeded") {
       dispatch(clearUser());
-      push("/signin");
+      push("/welcome");
     }
   }, [statusLogout]);
   return (

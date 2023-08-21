@@ -1,5 +1,5 @@
 "use client";
-import { handleUserForm } from "@/store/UserSlice";
+import { handleUserForm, setType } from "@/store/UserSlice";
 import React, { ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 type Props = {
@@ -31,6 +31,7 @@ const Input = ({
       dispatch(handleUserForm({ name, value }));
       return;
     }
+
     dispatch(handleUserForm({ name, value }));
   };
   return (

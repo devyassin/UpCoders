@@ -31,12 +31,7 @@ const SignIn = (props: Props) => {
   };
 
   useEffect(() => {
-    // in here i gonna check if the user is a freelancer and he complited his registration of profile else if he is a client he will not need it
-    if (
-      // && user.isCompleted === true) ||
-      // (statusSignIn === "succeeded" && user.type === "client")
-      statusSignIn === "succeeded"
-    ) {
+    if (statusSignIn === "succeeded") {
       Toastsuccess("Welcome !");
 
       setTimeout(() => {

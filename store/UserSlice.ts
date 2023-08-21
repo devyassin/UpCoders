@@ -72,7 +72,7 @@ export const updateUser = createAsyncThunk("updateUser", async (user: any) => {
 });
 
 // Define the initial user state
-const initialUser = {
+const initialState = {
   data: [],
   statusAddUser: "",
   statusSignIn: "",
@@ -104,7 +104,7 @@ const initialUser = {
 
 const userSlice = createSlice({
   name: "user",
-  initialState: initialUser,
+  initialState,
   reducers: {
     handleUserForm: (
       state: any,
@@ -114,10 +114,13 @@ const userSlice = createSlice({
       state.user[name] = value;
     },
     clearUser: (state) => {
-      state.user = initialUser.user;
+      state.user = initialState.user;
     },
 
     setIsCompleted: (state) => {
+      state.user.isCompleted = true;
+    },
+    clearStatus: (state) => {
       state.user.isCompleted = true;
     },
     setType: (state, { payload }) => {
@@ -152,7 +155,8 @@ const userSlice = createSlice({
       })
       .addCase(logOut.fulfilled, (state, { payload }) => {
         state.statusLogout = "succeeded";
-        state = initialUser;
+        state.statusSignIn = initialState.statusSignIn;
+        state.statusAddUser = initialState.statusAddUser;
       })
       .addCase(logOut.rejected, (state, { payload }: any) => {
         state.statusLogout = "failed";
