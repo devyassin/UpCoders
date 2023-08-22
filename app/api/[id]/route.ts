@@ -10,9 +10,13 @@ export async function GET(
 ) {
   const id = params.id;
 
-  const user = await User.findById(id);
-  if (!user) {
-    return NextResponse.json({ error: "User Not Found" });
+  try {
+    const user = await User.findById({ _id: id });
+    if (!user) {
+      return NextResponse.json({ error: "User Not Found" });
+    }
+    return NextResponse.json({ user });
+  } catch (error) {
+    return NextResponse.json({ error: "Internal Server Error" });
   }
-  return NextResponse.json({ user });
 }

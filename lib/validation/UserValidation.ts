@@ -33,12 +33,10 @@ export const UserValidationCompleteProfile = z.object({
   type: z.enum(["client", "freelancer"]),
   email: z.string().email(),
   country: z.string().nonempty({ message: "u should enter ur country" }),
-  picture: z
-    .object({
-      fileUrl: z.string().url(),
-      fileKey: z.string(),
-    })
-    .optional(),
+  picture: z.object({
+    fileUrl: z.string().url(),
+    fileKey: z.string(),
+  }),
   skills: z.array(z.string()), // Assuming skills can be an array of strings
   domaineExpertise: z.string(),
   experienceLvl: z.enum([
