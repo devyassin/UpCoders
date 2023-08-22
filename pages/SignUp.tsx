@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import Image from "next/image";
 
 import React, { FormEvent, useEffect } from "react";
-import { addUser, clearUser, setType } from "@/store/UserSlice";
+import { addUser, clearStatus, clearUser, setType } from "@/store/UserSlice";
 import { User } from "@/types";
 import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
 
@@ -40,6 +40,7 @@ const SignUp = (props: Props) => {
     if (statusAddUser === "succeeded") {
       Toastsuccess("User Added !");
       dispatch(clearUser());
+      dispatch(clearStatus());
       router.push("/signin");
     }
 

@@ -121,7 +121,11 @@ const userSlice = createSlice({
       state.user.isCompleted = true;
     },
     clearStatus: (state) => {
-      state.user.isCompleted = true;
+      state.statusAddUser = "";
+      state.statusCurrentUser = "";
+      state.statusLogout = "";
+      state.statusSignIn = "";
+      state.statusUpdateUser = "";
     },
     setType: (state, { payload }) => {
       state.user.type = payload.currentTypeSelected;
@@ -187,6 +191,11 @@ const userSlice = createSlice({
   },
 });
 
-export const { handleUserForm, clearUser, setType, setIsCompleted } =
-  userSlice.actions;
+export const {
+  handleUserForm,
+  clearUser,
+  setType,
+  setIsCompleted,
+  clearStatus,
+} = userSlice.actions;
 export default userSlice.reducer;

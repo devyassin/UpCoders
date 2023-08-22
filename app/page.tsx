@@ -3,7 +3,7 @@ import FirstBtn from "@/components/btn/FirstBtn";
 import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/store/store";
-import { clearUser, currentUser, logOut } from "@/store/UserSlice";
+import { clearStatus, clearUser, currentUser, logOut } from "@/store/UserSlice";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -17,6 +17,7 @@ export default function Home() {
   useEffect(() => {
     if (statusLogout === "succeeded") {
       dispatch(clearUser());
+      dispatch(clearStatus());
       push("/welcome");
     }
   }, [statusLogout]);

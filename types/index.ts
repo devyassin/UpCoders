@@ -14,7 +14,7 @@ export interface User {
   email: string;
   password: string;
   country: string;
-  picture?: string;
+  picture?: { fileUrl: string; fileKey: string };
   skills?: string[];
   domaineExpertise?: string;
   experienceLvl?: ExperienceLevel;

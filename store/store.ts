@@ -5,11 +5,13 @@ import welcomeSlice from "./WelcomeSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import UserSlice from "./UserSlice";
 import CompleteProfileSlice from "./CompleteProfileSlice";
+import UploadProfilePictureSlice from "./UploadProfilePictureSlice";
 const store = configureStore({
   reducer: {
     welcome: welcomeSlice,
     user: UserSlice,
     completeProfile: CompleteProfileSlice,
+    uploadProfilePicture: UploadProfilePictureSlice,
   },
   middleware: [thunkMiddleware],
 });

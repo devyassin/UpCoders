@@ -24,7 +24,10 @@ const userSchema = new Schema<User>({
   },
   password: { type: String, required: true },
   country: { type: String, required: true },
-  picture: String,
+  picture: {
+    fileUrl: String,
+    fileKey: String,
+  },
   skills: [String],
   domaineExpertise: String,
   experienceLvl: { type: String, enum: experienceLevels },

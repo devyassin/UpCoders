@@ -11,7 +11,7 @@ import { User } from "@/types";
 import FirstBtn from "@/components/btn/FirstBtn";
 import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
 import { UserValidationSignIn } from "@/lib/validation/UserValidation";
-import { clearUser, signIn } from "@/store/UserSlice";
+import { clearStatus, clearUser, signIn } from "@/store/UserSlice";
 import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
 
 type Props = {};
@@ -37,6 +37,7 @@ const SignIn = (props: Props) => {
       setTimeout(() => {
         router.push("/");
         dispatch(clearUser());
+        dispatch(clearStatus());
       }, 1500);
     }
 
