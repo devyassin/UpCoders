@@ -1,13 +1,13 @@
 "use client";
 import { useAppSelector } from "@/store/store";
 import { activeCard } from "@/store/WelcomeSlice";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Active, nonActive } from "@/public/assets";
 
 type Props = {
-  logo: string;
+  logo: StaticImageData;
   text: string;
 
   type: string;
@@ -43,7 +43,7 @@ const CardWelcome = ({ logo, text, type }: Props) => {
         </div>
         <Image
           src={logo}
-          alt={logo.substring(12, 16)}
+          alt="type logo"
           className="pt-2"
           priority
           width={50}

@@ -8,7 +8,7 @@ import FirstBtn from "@/components/btn/FirstBtn";
 import AskedSignIn from "@/components/ui/AskedSignIn";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/store/store";
-import { logo } from "@/public/assets";
+import { logo, freelancerLogo, clientLogo } from "@/public/assets";
 
 type Props = {};
 
@@ -27,12 +27,12 @@ const Welcome = (props: Props) => {
         <div className="flex max-lg:flex-col max-lg:space-x-0 max-lg:space-y-4 space-x-10 mb-[46px]">
           <CardWelcome
             type="client"
-            logo="/assets/clientLogo.png"
+            logo={clientLogo}
             text="I’m a client, hiring for a project"
           />
           <CardWelcome
             type="freelancer"
-            logo="/assets/freelancerLogo.png"
+            logo={freelancerLogo}
             text="I’m a freelancer, looking for work"
           />
         </div>
