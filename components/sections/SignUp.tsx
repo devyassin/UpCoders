@@ -10,6 +10,7 @@ import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
 import { UserValidation } from "@/lib/validation/UserValidation";
 import { useAppSelector } from "@/store/store";
 import { useDispatch } from "react-redux";
+import { logo, freelancerLogo, clientLogo } from "@/public/assets";
 
 import Image from "next/image";
 
@@ -59,13 +60,7 @@ const SignUp = (props: Props) => {
         onClick={() => router.push("/welcome")}
         className="w-[7.5rem] h-[2.87625rem] cursor-pointer"
       >
-        <Image
-          src="/assets/logo.png"
-          height={200}
-          width={200}
-          alt="logo"
-          priority
-        />
+        <Image src={logo} height={200} width={200} alt="logo" priority />
       </div>
       <div className="flex flex-col card-welcome mx-auto  px-14 py-6 my-8  ">
         <h1 className="title-welcome max-lg:text-[24px] max-lg:mb-[24px] mb-[55px]">
@@ -77,7 +72,7 @@ const SignUp = (props: Props) => {
           <hr className="h-[1px] mr-4 w-full  bg-gray-50 opacity-30" />
           {currentTypeSelected == "client" ? (
             <Image
-              src="/assets/clientLogo.png"
+              src={clientLogo}
               alt="client logo"
               className="pt-2 max-md:pb-0 pb-8"
               priority
@@ -86,7 +81,7 @@ const SignUp = (props: Props) => {
             />
           ) : (
             <Image
-              src="/assets/freelancerLogo.png"
+              src={freelancerLogo}
               alt="freelancer Logo"
               className="pt-2 max-md:pb-0 pb-8"
               priority

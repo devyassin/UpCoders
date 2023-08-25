@@ -11,7 +11,7 @@ import PartTwo from "@/components/completeFormParts/PartTwo";
 import PartThree from "@/components/completeFormParts/PartThree";
 import FirstBtn from "@/components/btn/FirstBtn";
 import { useRouter } from "next/navigation";
-import {  
+import {
   clearUser,
   currentUser,
   setIsCompleted,
@@ -20,6 +20,7 @@ import {
 import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
 import { UserValidationCompleteProfile } from "@/lib/validation/UserValidation";
 import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
+import { logo, leftArrow, rightArrow } from "@/public/assets";
 
 type Props = {};
 
@@ -65,13 +66,7 @@ const CompleteProfile = (props: Props) => {
   return (
     <div className="flex flex-col px-6 pt-6">
       <div className="w-[7.5rem] h-[2.87625rem] cursor-pointer">
-        <Image
-          src="/assets/logo.png"
-          height={200}
-          width={200}
-          alt="logo"
-          priority
-        />
+        <Image src={logo} height={200} width={200} alt="logo" priority />
       </div>
       <div
         className={`flex flex-col relative card-welcome mx-auto  px-14 py-6 my-8 w-1/2 max-lg:w-2/3  max-sm:w-full ${
@@ -101,7 +96,7 @@ const CompleteProfile = (props: Props) => {
                 className={`cursor-pointer -translate-x-8 hover:opacity-80 duration-150 ${
                   activePart == "one" ? "hidden" : ""
                 }`}
-                src="/assets/leftArrow.png"
+                src={leftArrow}
                 height={25}
                 width={25}
                 alt="left arrow"
@@ -113,7 +108,7 @@ const CompleteProfile = (props: Props) => {
                 className={`cursor-pointer translate-x-8 hover:opacity-80 duration-150 ${
                   activePart == "three" ? "hidden" : ""
                 }`}
-                src="/assets/rightArrow.png"
+                src={rightArrow}
                 height={25}
                 width={25}
                 alt="righ arrow"

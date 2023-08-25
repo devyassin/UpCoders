@@ -8,7 +8,7 @@ import FirstBtn from "@/components/btn/FirstBtn";
 import AskedSignIn from "@/components/ui/AskedSignIn";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/store/store";
-import logo from "@/public/assets/logo.png";
+import { logo } from "@/public/assets";
 
 type Props = {};
 

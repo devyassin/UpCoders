@@ -13,6 +13,7 @@ import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
 import { UserValidationSignIn } from "@/lib/validation/UserValidation";
 import { clearStatus, clearUser, signIn } from "@/store/UserSlice";
 import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
+import { logo, freelancerLogo, clientLogo } from "@/public/assets";
 
 type Props = {};
 
@@ -56,13 +57,7 @@ const SignIn = (props: Props) => {
         onClick={() => router.push("/welcome")}
         className="w-[7.5rem] h-[2.87625rem] cursor-pointer"
       >
-        <Image
-          src="/assets/logo.png"
-          height={200}
-          width={200}
-          alt="logo"
-          priority
-        />
+        <Image src={logo} height={200} width={200} alt="logo" priority />
       </div>
       <div className="flex flex-col card-welcome mx-auto  px-14 py-6 my-8 w-1/2 max-lg:w-2/3  max-sm:w-full ">
         <h1 className="title-welcome max-lg:text-[24px]  mb-[14px]">
@@ -73,7 +68,7 @@ const SignIn = (props: Props) => {
           <hr className="h-[1px] mr-4 w-full  bg-gray-50 opacity-30" />
           {currentTypeSelected == "client" ? (
             <Image
-              src="/assets/clientLogo.png"
+              src={clientLogo}
               alt="client logo"
               className="pt-2 max-md:pb-0 pb-8"
               priority
@@ -82,7 +77,7 @@ const SignIn = (props: Props) => {
             />
           ) : (
             <Image
-              src="/assets/freelancerLogo.png"
+              src={freelancerLogo}
               alt="client logo"
               className="pt-2 max-md:pb-0 pb-8"
               priority

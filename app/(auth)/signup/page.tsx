@@ -8,7 +8,7 @@ type Props = {};
 const page = (props: Props) => {
   const currentTypeSelected = useAppSelector((state) => state.welcome.type);
   return (
-    <div className="bg-dark-1 h-fit bgGlobal">
+    <div className="bg-dark-1 h-fit bg-[url(../public/assets/bgGlobal.png)]">
       <SignUp />
     </div>
   );

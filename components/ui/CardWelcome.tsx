@@ -4,6 +4,7 @@ import { activeCard } from "@/store/WelcomeSlice";
 import Image from "next/image";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Active, nonActive } from "@/public/assets";
 
 type Props = {
   logo: string;
@@ -29,16 +30,10 @@ const CardWelcome = ({ logo, text, type }: Props) => {
       <div className="flex flex-row-reverse justify-between ">
         <div className="">
           {currentTypeSelected == type ? (
-            <Image
-              src="/assets/Active.png"
-              priority
-              alt="active"
-              width={21}
-              height={21}
-            />
+            <Image src={Active} priority alt="active" width={21} height={21} />
           ) : (
             <Image
-              src="/assets/nonActive.png"
+              src={nonActive}
               priority
               alt="non active"
               width={21}

@@ -4,6 +4,7 @@ import InputSelectDomaineExpertisme from "../form/InputSelectDomaineExpertisme";
 import InputSelectSkills from "../form/InputSelectSkills";
 import UploadImageProfile from "../form/UploadImageProfile";
 import { useAppSelector } from "@/store/store";
+import { choosePic } from "@/public/assets";
 
 type Props = {
   active: string;
@@ -54,7 +55,7 @@ const PartOne = ({ active, type }: Props) => {
                 uploadStatusImage === "loading" ? "animate-spin" : ""
               }`}
               quality={100}
-              src="/assets/choosePic.png"
+              src={choosePic}
               height={150}
               width={150}
               alt="choose pic"

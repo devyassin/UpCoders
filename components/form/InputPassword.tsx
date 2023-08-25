@@ -4,6 +4,7 @@ import Image from "next/image";
 import { handleUserForm } from "@/store/UserSlice";
 import React, { ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
+import { hiddenEye, showenEye } from "@/public/assets";
 type Props = {
   customClasses?: string;
   name: string;
@@ -37,7 +38,7 @@ const InputPassword = ({ customClasses, placeholder, name, value }: Props) => {
         <Image
           onClick={() => setShow(false)}
           className="absolute max-md:left-[88%] top-[62%] left-[92%] cursor-pointer"
-          src="/assets/hiddenEye.png"
+          src={hiddenEye}
           height={14}
           width={20}
           alt="hidden eye"
@@ -46,7 +47,7 @@ const InputPassword = ({ customClasses, placeholder, name, value }: Props) => {
         <Image
           onClick={() => setShow(true)}
           className="absolute max-md:left-[88%] top-[62%] left-[92%] cursor-pointer"
-          src="/assets/showenEye.png"
+          src={showenEye}
           height={14}
           width={20}
           alt="hidden eye"
