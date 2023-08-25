@@ -27,8 +27,8 @@ const PartThree = ({ active, type }: Props) => {
           className="input-form focus:bg-dark-6 outline-none text-sm font-tajwal px-[28px] pt-[25px] pb-[19px] text-white/60 mt-2 w-full"
           id="bio"
           name="bio"
-          rows="9"
-          cols="50"
+          rows={9}
+          cols={50}
         ></textarea>
       </div>
     </div>

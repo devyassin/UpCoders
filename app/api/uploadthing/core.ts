@@ -1,5 +1,5 @@
 import { createUploadthing, type FileRouter } from "uploadthing/next";
-import { utapi } from "uploadthing/server";
+
 
 const f = createUploadthing();
 

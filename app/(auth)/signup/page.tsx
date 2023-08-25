@@ -1,5 +1,5 @@
 "use client";
-import SignUp from "@/pages/SignUp";
+import SignUp from "@/components/sections/SignUp";
 import { useAppSelector } from "@/store/store";
 import React from "react";
 

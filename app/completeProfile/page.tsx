@@ -1,4 +1,4 @@
-import CompleteProfile from "@/pages/CompleteProfile";
+import CompleteProfile from "@/components/sections/CompleteProfile";
 import React from "react";
 
 type Props = {};

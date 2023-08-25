@@ -9,10 +9,9 @@ import React, { FormEvent, useEffect } from "react";
 import { moveToback, moveToNext } from "@/store/CompleteProfileSlice";
 import PartTwo from "@/components/completeFormParts/PartTwo";
 import PartThree from "@/components/completeFormParts/PartThree";
-import { User } from "@/types";
 import FirstBtn from "@/components/btn/FirstBtn";
 import { useRouter } from "next/navigation";
-import {
+import {  
   clearUser,
   currentUser,
   setIsCompleted,

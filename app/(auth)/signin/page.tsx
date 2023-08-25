@@ -1,6 +1,6 @@
 "use client";
 
-import SignIn from "@/pages/SignIn";
+import SignIn from "@/components/sections/SignIn";
 import React from "react";
 
 type Props = {};

@@ -1,6 +1,6 @@
 "use client";
 
-import Copyright from "../components/ui/Copyright";
+import Copyright from "../ui/Copyright";
 import Image from "next/image";
 import React from "react";
 import CardWelcome from "@/components/ui/CardWelcome";
@@ -48,7 +48,7 @@ const Welcome = (props: Props) => {
                 ? "Join as a client"
                 : "Join as a freelancer"
             }
-            customClasses=" w-[344px]   h-[51px]"
+            customClasses=" w-[344px] h-[51px]"
           />
         </div>
         <AskedSignIn />
