@@ -67,7 +67,7 @@ export const countrySelectStylingTwo = {
 
   singleValue: (provided: any) => ({
     ...provided,
-    color: "#b9abab",
+    color: "#fff",
     opacity: "0.9",
   }),
   control: (baseStyles: any, state: any) => ({
