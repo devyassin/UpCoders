@@ -64,12 +64,14 @@ const CompleteProfile = (props: Props) => {
     }
   };
   return (
-    <div className="flex flex-col px-6 pt-6">
+    <div className="flex flex-col px-6 pt-6 justify-between min-h-[100vh]">
+      {/* Logo Header */}
       <div className="w-[7.5rem] h-[2.87625rem] cursor-pointer">
         <Image src={logo} height={200} width={200} alt="logo" priority />
       </div>
+      {/* Form */}
       <div
-        className={`flex flex-col relative card-welcome mx-auto  px-14 py-6 my-8 w-1/2 max-lg:w-2/3  max-sm:w-full ${
+        className={`flex flex-col relative card-welcome mx-auto  px-14 max-sm:px-6 py-6 my-8 w-1/2 max-lg:w-2/3  max-sm:w-full ${
           activePart == "one"
             ? "before:content-['1/3']"
             : activePart == "two"
@@ -89,7 +91,7 @@ const CompleteProfile = (props: Props) => {
           <PartOne active={activePart} type="one" />
           <PartTwo active={activePart} type="two" />
           <PartThree active={activePart} type="three" />
-          <div className="flex justify-between">
+          <div className="flex justify-between max-sm:px-6">
             <div className="flex justify-start ">
               <Image
                 onClick={() => dispatch(moveToback())}
@@ -127,7 +129,11 @@ const CompleteProfile = (props: Props) => {
           </div>
         </form>
       </div>
-      <Copyright />
+
+      {/* Copyright */}
+      <div>
+        <Copyright />
+      </div>
     </div>
   );
 };

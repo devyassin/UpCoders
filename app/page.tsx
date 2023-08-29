@@ -1,6 +1,5 @@
 "use client";
 import FirstBtn from "@/components/btn/FirstBtn";
-import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/store/store";
 import { clearStatus, clearUser, currentUser, logOut } from "@/store/UserSlice";
@@ -9,7 +8,7 @@ import { useEffect } from "react";
 
 export default function Home() {
   const statusLogout = useAppSelector((state) => state.user.statusLogout);
-  const { push } = useRouter();
+  const router = useRouter();
   const dispatch = useDispatch<any>();
   useEffect(() => {
     dispatch(currentUser());
@@ -18,7 +17,7 @@ export default function Home() {
     if (statusLogout === "succeeded") {
       dispatch(clearUser());
       dispatch(clearStatus());
-      push("/welcome");
+      router.push("/welcome");
     }
   }, [statusLogout]);
   return (
