@@ -51,7 +51,7 @@ const SignIn = (props: Props) => {
     }
   }, [statusSignIn]);
   return (
-    <div className="flex flex-col px-6 pt-6 ">
+    <div className="flex flex-col  min-h-[100vh] justify-between px-6 pt-6 ">
       {/* Logo header */}
       <div
         onClick={() => router.push("/welcome")}
@@ -59,7 +59,9 @@ const SignIn = (props: Props) => {
       >
         <Image src={logo} height={200} width={200} alt="logo" priority />
       </div>
-      <div className="flex flex-col card-welcome mx-auto  px-14 py-6 my-8 w-1/2 max-lg:w-2/3  max-sm:w-full ">
+
+      {/* Form */}
+      <div className="flex flex-col card-welcome mx-auto  px-14 max-sm:px-4 py-6 my-8 w-1/2 max-lg:w-2/3  max-sm:w-full ">
         <h1 className="title-welcome max-lg:text-[24px]  mb-[14px]">
           Sign In{" "}
           {currentTypeSelected == "client" ? "as a client" : "As a Freelancer"}
@@ -109,7 +111,11 @@ const SignIn = (props: Props) => {
           <AskedSignIn type="sign up" />
         </form>
       </div>
-      <Copyright />
+
+      {/* Copyright */}
+      <div >
+        <Copyright />
+      </div>
     </div>
   );
 };

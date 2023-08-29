@@ -13,6 +13,11 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.nextUrl));
   }
 
+  // that will run if the user is already complited his profile and trying to access the complete Profile page again
+  if (path == "/completeProfile" && isComplited == "true") {
+    return NextResponse.redirect(new URL("/", request.nextUrl));
+  }
+
   // that condition will run if the user as type freelancer not complited his registration
   if (path == "/") {
     if (type == "freelancer" && isComplited == "false") {

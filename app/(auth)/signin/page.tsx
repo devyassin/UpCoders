@@ -7,7 +7,7 @@ type Props = {};
 
 const page = (props: Props) => {
   return (
-    <div className="bg-dark-1 min-h-screen bg-[url(../public/assets/bgGlobal.png)]">
+    <div className="bg-dark-1 min-h-screen bg-[url(../public/assets/bgGlobal.png)] bg-no-repeat">
       <SignIn />
     </div>
   );

@@ -16,11 +16,13 @@ const Welcome = (props: Props) => {
   const router = useRouter();
   const currentTypeSelected = useAppSelector((state) => state.welcome.type);
   return (
-    <div className="flex flex-col px-6 py-6">
-      <div className="w-[7.5rem] h-[2.87625rem]">
+    <div className="flex flex-col min-h-[100vh] justify-between px-6 pt-6">
+      {/* Logo Header */}
+      <div className="w-[7.5rem] h-[2.87625rem] ">
         <Image src={logo} height={200} width={200} alt="logo" priority />
       </div>
-      <div className="card-welcome absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col max-lg:px-10 px-14 py-6">
+      {/* Form */}
+      <div className="card-welcome  flex flex-col mx-auto  px-14 max-sm:px-4 py-6 my-8 w-1/2 max-lg:w-2/3  max-md:w-full">
         <h1 className="title-welcome max-lg:text-[24px] max-lg:mb-[24px] mb-[55px]">
           Join as a client or freelancer
         </h1>
@@ -36,19 +38,20 @@ const Welcome = (props: Props) => {
             text="I’m a freelancer, looking for work"
           />
         </div>
-        <div onClick={() => router.push("/signup")} className="mx-auto">
+        <div onClick={() => router.push("/signup")} className="w-full flex justify-center">
           <FirstBtn
             text={
               currentTypeSelected == "client"
                 ? "Join as a client"
                 : "Join as a freelancer"
             }
-            customClasses=" w-[344px] h-[51px]"
+            customClasses=" w-[344px] max-md:w-full h-[51px] "
           />
         </div>
         <AskedSignIn />
       </div>
-      <div className="absolute bottom-0">
+      {/* Copyright */}
+      <div>
         <Copyright />
       </div>
     </div>

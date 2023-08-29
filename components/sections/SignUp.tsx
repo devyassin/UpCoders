@@ -55,14 +55,16 @@ const SignUp = (props: Props) => {
   }, [statusAddUser]);
 
   return (
-    <div className="flex flex-col px-6 pt-6 ">
+    <div className="flex flex-col min-h-[100vh] justify-between px-6 pt-6 ">
+      {/* Logo header */}
       <div
         onClick={() => router.push("/welcome")}
         className="w-[7.5rem] h-[2.87625rem] cursor-pointer"
       >
         <Image src={logo} height={200} width={200} alt="logo" priority />
       </div>
-      <div className="flex flex-col card-welcome mx-auto  px-14 py-6 my-8  ">
+      {/* Form */}
+      <div className="flex flex-col card-welcome mx-auto max-sm:w-full max-md:w-full max-sm:px-4 px-14 py-6 my-8   ">
         <h1 className="title-welcome max-lg:text-[24px] max-lg:mb-[24px] mb-[55px]">
           {currentTypeSelected == "client"
             ? "Sign up to find freelancers"
@@ -96,12 +98,14 @@ const SignUp = (props: Props) => {
         <form onSubmit={onSubmitHandler} className="flex flex-col max-md:pt-8 ">
           <div className="flex justify-between max-md:flex-col max-md:space-x-0 max-md:space-y-8 space-x-24">
             <Input
+              customClasses="w-full"
               value={user.firstName}
               name="firstName"
               type="text"
               placeholder="First Name"
             />
             <Input
+              customClasses="w-full"
               value={user.lastName}
               name="lastName"
               type="text"
@@ -133,7 +137,11 @@ const SignUp = (props: Props) => {
           <AskedSignIn />
         </form>
       </div>
-      <Copyright />
+
+      {/* Copyright */}
+      <div>
+        <Copyright />
+      </div>
     </div>
   );
 };
