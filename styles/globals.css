@@ -82,6 +82,7 @@ body::-webkit-scrollbar-thumb {
 /* styles for selected values in react select */
 .css-1p3m7a8-multiValue {
   border-radius: 20px !important;
+  color: #fff !important;
 
   padding: 6px 20px;
   background: #3f3f46 !important;
@@ -89,6 +90,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .css-1p3m7a8-multiValue__multi-value {
+  color: #fff !important;
   background: #3f3f46;
 }
 
@@ -100,7 +102,9 @@ body::-webkit-scrollbar-thumb {
 .css-12a83d4-MultiValueRemove {
   margin-left: 12px !important;
 }
-
+.css-9jq23d{
+  color: #fff !important;
+}
 .circle-image {
   border-radius: 50px;
   background: #0e0c0c;
