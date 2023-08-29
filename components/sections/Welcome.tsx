@@ -20,7 +20,7 @@ const Welcome = (props: Props) => {
       <div className="w-[7.5rem] h-[2.87625rem]">
         <Image src={logo} height={200} width={200} alt="logo" priority />
       </div>
-      <div className="card-welcome mx-auto max-w-5xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col max-lg:px-10 px-14 py-6">
+      <div className="card-welcome absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col max-lg:px-10 px-14 py-6">
         <h1 className="title-welcome max-lg:text-[24px] max-lg:mb-[24px] mb-[55px]">
           Join as a client or freelancer
         </h1>

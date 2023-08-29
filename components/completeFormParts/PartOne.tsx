@@ -22,7 +22,7 @@ const PartOne = ({ active, type }: Props) => {
   return (
     <div className={`${active == type ? "" : "hidden"}`}>
       <div className="flex max-md:flex-col  items-center">
-        <div className="w-[120px]   h-[120px] max-md:w-[110px] max-md:h-[110px] flex items-center justify-center ">
+        <div className="w-[120px] font-tajwal   h-[120px] max-md:w-[110px] max-md:h-[110px] flex items-center justify-center ">
           {imageStored && !image ? (
             <div className="circle-image w-[90px] h-[90px] ">
               <Image

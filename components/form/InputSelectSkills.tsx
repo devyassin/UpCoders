@@ -20,7 +20,7 @@ const InputSelectSkills = (props: Props) => {
   };
 
   return (
-    <div className="mt-2 w-full  ">
+    <div className="font-tajwal mt-2 w-full  ">
       <Select
         isMulti
         components={{

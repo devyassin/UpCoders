@@ -16,6 +16,7 @@ import {
   setImageStatusToSuccess,
   updateUserProfilePicture,
 } from "@/store/UploadProfilePictureSlice";
+import { handleUserForm } from "@/store/UserSlice";
 
 export default function UploadImageProfile() {
   const dispatch = useDispatch<any>();
@@ -39,9 +40,17 @@ export default function UploadImageProfile() {
 
             const json = JSON.stringify(res);
             const imageInfo = res[0];
+            const { fileUrl, fileKey } = imageInfo;
+
             dispatch(setImageInfo(imageInfo));
             dispatch(updateUserProfilePicture(res[0]));
-            console.log(res[0]);
+            dispatch(
+              handleUserForm({
+                name: "picture",
+                value: { fileUrl: fileUrl, fileKey: fileKey },
+              })
+            );
+         
           }
         }}
         onUploadError={(error: Error) => {
