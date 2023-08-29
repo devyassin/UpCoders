@@ -10,11 +10,13 @@ export async function GET() {
       success: true,
     });
     response.cookies.set("token", "", { expires: new Date(0) });
+    response.cookies.delete("token");
     response.cookies.set("isComplited", "", {
-      httpOnly: true,
       expires: new Date(0),
     });
+    response.cookies.delete("isComplited");
     response.cookies.set("type", "", { expires: new Date(0) });
+    response.cookies.delete("type");
     return response;
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });

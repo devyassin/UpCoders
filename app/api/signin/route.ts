@@ -45,16 +45,10 @@ export async function POST(request: NextRequest) {
       user: userObj,
     });
 
-    response.cookies.set("token", token, {
-      httpOnly: true,
-    });
+    response.cookies.set("token", token);
 
-    response.cookies.set("type", userObj.type, {
-      httpOnly: true,
-    });
-    response.cookies.set("isComplited", userObj.isCompleted, {
-      httpOnly: true,
-    });
+    response.cookies.set("type", userObj.type);
+    response.cookies.set("isComplited", userObj.isCompleted);
 
     return response;
   } catch (error: any) {
