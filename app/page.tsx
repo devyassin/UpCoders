@@ -27,6 +27,7 @@ export default function Home() {
           dispatch(logOut());
         }}
       >
+        {/* <div></div> */}
         <FirstBtn
           customClasses="mt-8 py-2 px-8"
           text={statusLogout === "loading" ? "loading..." : "Logout"}
