@@ -3,7 +3,7 @@ import connect from "@/database/database";
 
 connect();
 
-export async function GET() {
+export async function POST() {
   try {
     const response = NextResponse.json({
       message: "Logout successfully",

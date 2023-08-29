@@ -42,7 +42,7 @@ export const signIn = createAsyncThunk(
 // logout
 export const logOut = createAsyncThunk("users/logout", async () => {
   try {
-    const response = await instance.get("/logout");
+    const response = await instance.post("/logout");
     return response.data;
   } catch (error: any) {
     return new Error(error.message);
