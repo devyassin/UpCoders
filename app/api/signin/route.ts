@@ -12,6 +12,7 @@ export async function POST(request: NextRequest) {
 
     // Check if the user exists
     const user = await User.findOne({ email });
+
     if (!user) {
       return NextResponse.json(
         { message: "User not found. Please check your credentials." },

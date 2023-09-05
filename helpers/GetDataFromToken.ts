@@ -9,6 +9,6 @@ export const getDataFromToken = (request: NextRequest) => {
 
     return decodedToken.userId;
   } catch (error: any) {
-    throw new Error(error.message);
+    throw new Error("You are not authorized Please login!");
   }
 };

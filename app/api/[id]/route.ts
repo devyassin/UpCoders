@@ -1,4 +1,6 @@
 import connect from "@/database/database";
+import { getDataFromToken } from "@/helpers/GetDataFromToken";
+import { AuthCheck } from "@/helpers/AuthCheck";
 import User from "@/models/User";
 import { NextResponse, NextRequest } from "next/server";
 
@@ -17,6 +19,29 @@ export async function GET(
     }
     return NextResponse.json({ user });
   } catch (error) {
-    return NextResponse.json({ error: "Internal Server Error" });
+    return NextResponse.json({
+      success: false,
+      message: "Something went wrong. Please try again!",
+    });
   }
 }
+
+// try {
+//   const isAuthenticated = AuthCheck(request);
+//   if (isAuthenticated) {
+//     const user = await User.findById({ _id: id });
+//     if (!user) {
+//       return NextResponse.json({ error: "User Not Found" });
+//     }
+//     return NextResponse.json({ user });
+//   } else {
+//     return NextResponse.json({
+//       error: "You are not authorized . Please login!",
+//     });
+//   }
+// } catch (error) {
+//   return NextResponse.json({
+//     success: false,
+//     message: "Something went wrong. Please try again!",
+//   });
+// }
