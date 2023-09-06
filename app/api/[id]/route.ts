@@ -25,23 +25,3 @@ export async function GET(
     });
   }
 }
-
-// try {
-//   const isAuthenticated = AuthCheck(request);
-//   if (isAuthenticated) {
-//     const user = await User.findById({ _id: id });
-//     if (!user) {
-//       return NextResponse.json({ error: "User Not Found" });
-//     }
-//     return NextResponse.json({ user });
-//   } else {
-//     return NextResponse.json({
-//       error: "You are not authorized . Please login!",
-//     });
-//   }
-// } catch (error) {
-//   return NextResponse.json({
-//     success: false,
-//     message: "Something went wrong. Please try again!",
-//   });
-// }

@@ -170,8 +170,13 @@ const userSlice = createSlice({
         state.statusCurrentUser = "loading";
       })
       .addCase(currentUser.fulfilled, (state, { payload }) => {
-        state.statusCurrentUser = "succeeded";
-        state.user = payload.data;
+        if (!payload.data) {
+          state.statusCurrentUser = "failed";
+          state.user = initialState.user;
+        } else {
+          state.statusCurrentUser = "succeeded";
+          state.user = payload.data;
+        }
       })
       .addCase(currentUser.rejected, (state, { payload }: any) => {
         state.statusCurrentUser = "failed";

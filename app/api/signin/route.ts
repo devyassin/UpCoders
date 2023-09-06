@@ -2,7 +2,7 @@ import connect from "@/database/database";
 import User from "@/models/User";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
-import jwt from "jsonwebtoken";
+import { sign } from "@/helpers/jwt_sign_verify";
 
 connect();
 
@@ -33,10 +33,15 @@ export async function POST(request: NextRequest) {
 
     // Create a JWT token
     const secretKey = process.env.JWT_SECRET_KEY!; // Replace this with a secure secret key
-    const payload = { userId: user._id, email: user.email }; // Customize the payload as per your needs
-    const options = { expiresIn: "7d" }; // Set the token expiration time as needed
+    const payload = {
+      userId: user._id,
+      email: user.email,
+      isCompleted: user.isCompleted,
+      type: user.type,
+    }; // Customize the payload as per your needs
+    // const options = { expiresIn: "7d" }; // Set the token expiration time as needed
 
-    const token = jwt.sign(payload, secretKey, options);
+    const token = await sign(payload, secretKey);
     const userObj = await User.findOne({ email }).select("-password");
     const response = NextResponse.json({
       message: "Login successful",
@@ -47,9 +52,6 @@ export async function POST(request: NextRequest) {
     });
 
     response.cookies.set("token", token);
-
-    response.cookies.set("type", userObj.type);
-    response.cookies.set("isComplited", userObj.isCompleted);
 
     return response;
   } catch (error: any) {
