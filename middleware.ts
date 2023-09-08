@@ -64,7 +64,7 @@ export async function middleware(request: NextRequest) {
     } catch (error) {
       return NextResponse.json(
         {
-          error: "You are not authorized . Please login!",
+          message: "You are not authorized . Please login!",
         },
         { status: 401 }
       );

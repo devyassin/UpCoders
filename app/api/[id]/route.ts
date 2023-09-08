@@ -1,6 +1,5 @@
 import connect from "@/database/database";
-import { getDataFromToken } from "@/helpers/GetDataFromToken";
-import { AuthCheck } from "@/helpers/AuthCheck";
+
 import User from "@/models/User";
 import { NextResponse, NextRequest } from "next/server";
 
