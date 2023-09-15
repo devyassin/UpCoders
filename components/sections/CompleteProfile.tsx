@@ -11,16 +11,12 @@ import PartTwo from "@/components/completeFormParts/PartTwo";
 import PartThree from "@/components/completeFormParts/PartThree";
 import FirstBtn from "@/components/btn/FirstBtn";
 import { useRouter } from "next/navigation";
-import {
-  clearUser,
-  currentUser,
-  setIsCompleted,
-  updateUser,
-} from "@/store/UserSlice";
+import { currentUser, setIsCompleted, updateUser } from "@/store/UserSlice";
 import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
 import { UserValidationCompleteProfile } from "@/lib/validation/UserValidation";
 import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
-import { logo, leftArrow, rightArrow } from "@/public/assets";
+import { leftArrow, rightArrow } from "@/public/assets";
+import HeaderLogo from "../ui/HeaderLogo";
 
 type Props = {};
 
@@ -64,11 +60,9 @@ const CompleteProfile = (props: Props) => {
     }
   };
   return (
-    <div className="flex flex-col px-6 pt-6 justify-between min-h-[100vh]">
+    <div className="flex-wrapper-col">
       {/* Logo Header */}
-      <div className="w-[7.5rem] h-[2.87625rem] cursor-pointer">
-        <Image src={logo} height={200} width={200} alt="logo" priority />
-      </div>
+      <HeaderLogo />
       {/* Form */}
       <div
         className={`flex flex-col relative card-welcome mx-auto  px-14 max-sm:px-6 py-6 my-8 w-1/2 max-lg:w-2/3  max-sm:w-full ${

@@ -1,7 +1,5 @@
 "use client";
-
 import "@uploadthing/react/styles.css";
-import { utapi } from "uploadthing/server";
 
 import { UploadButton } from "@uploadthing/react";
 import { useDispatch } from "react-redux";

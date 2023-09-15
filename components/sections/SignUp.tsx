@@ -10,7 +10,7 @@ import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
 import { UserValidation } from "@/lib/validation/UserValidation";
 import { useAppSelector } from "@/store/store";
 import { useDispatch } from "react-redux";
-import { logo, freelancerLogo, clientLogo } from "@/public/assets";
+import { freelancerLogo, clientLogo } from "@/public/assets";
 
 import Image from "next/image";
 
@@ -18,10 +18,9 @@ import React, { FormEvent, useEffect } from "react";
 import { addUser, clearStatus, clearUser, setType } from "@/store/UserSlice";
 import { User } from "@/types";
 import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
+import HeaderLogo from "../ui/HeaderLogo";
 
-type Props = {};
-
-const SignUp = (props: Props) => {
+const SignUp = () => {
   const router = useRouter();
   const dispatch = useDispatch<any>();
   const currentTypeSelected = useAppSelector((state) => state.welcome.type);
@@ -55,14 +54,9 @@ const SignUp = (props: Props) => {
   }, [statusAddUser]);
 
   return (
-    <div className="flex flex-col min-h-[100vh] justify-between px-6 pt-6 ">
+    <div className="flex-wrapper-col">
       {/* Logo header */}
-      <div
-        onClick={() => router.push("/welcome")}
-        className="w-[7.5rem] h-[2.87625rem] cursor-pointer"
-      >
-        <Image src={logo} height={200} width={200} alt="logo" priority />
-      </div>
+      <HeaderLogo />
       {/* Form */}
       <div className="flex flex-col card-welcome mx-auto max-sm:w-full max-md:w-full max-sm:px-4 px-14 py-6 my-8   ">
         <h1 className="title-welcome max-lg:text-[24px] max-lg:mb-[24px] mb-[55px]">

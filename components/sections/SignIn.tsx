@@ -1,3 +1,4 @@
+"use client";
 import Input from "@/components/form/Input";
 import InputPassword from "@/components/form/InputPassword";
 import AskedSignIn from "@/components/ui/AskedSignIn";
@@ -14,10 +15,9 @@ import { UserValidationSignIn } from "@/lib/validation/UserValidation";
 import { clearStatus, clearUser, signIn } from "@/store/UserSlice";
 import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
 import { logo, freelancerLogo, clientLogo } from "@/public/assets";
+import HeaderLogo from "../ui/HeaderLogo";
 
-type Props = {};
-
-const SignIn = (props: Props) => {
+const SignIn = () => {
   const router = useRouter();
   const dispatch = useDispatch<any>();
   const currentTypeSelected = useAppSelector((state) => state.welcome.type);
@@ -51,14 +51,9 @@ const SignIn = (props: Props) => {
     }
   }, [statusSignIn]);
   return (
-    <div className="flex flex-col  min-h-[100vh] justify-between px-6 pt-6 ">
+    <div className="flex-wrapper-col">
       {/* Logo header */}
-      <div
-        onClick={() => router.push("/welcome")}
-        className="w-[7.5rem] h-[2.87625rem] cursor-pointer"
-      >
-        <Image src={logo} height={200} width={200} alt="logo" priority />
-      </div>
+      <HeaderLogo />
 
       {/* Form */}
       <div className="flex flex-col card-welcome mx-auto  px-14 max-sm:px-4 py-6 my-8 w-1/2 max-lg:w-2/3  max-sm:w-full ">
@@ -113,7 +108,7 @@ const SignIn = (props: Props) => {
       </div>
 
       {/* Copyright */}
-      <div >
+      <div>
         <Copyright />
       </div>
     </div>

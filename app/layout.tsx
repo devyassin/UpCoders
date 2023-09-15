@@ -19,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <StoreProvider>
-          {children}
+          <div className="bg-dark-1 min-h-screen bg-[url(../public/assets/bgGlobal.png)] bg-no-repeat">
+            {children}
+          </div>
           <ToastContainer />
         </StoreProvider>
       </body>

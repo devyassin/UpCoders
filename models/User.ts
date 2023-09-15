@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import { User, ExperienceLevel } from "@/types";
+import { User } from "@/types";
+import { ExperienceLevel } from "@/types/enumTypes";
 
 const experienceLevels: ExperienceLevel[] = [
   ExperienceLevel.Beginner,

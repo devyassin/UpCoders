@@ -4,6 +4,7 @@ import { verify } from "@/helpers/jwt_sign_verify";
 
 export async function middleware(request: NextRequest) {
   let path = request.nextUrl.pathname;
+
   const isPublicPath =
     path === "/signin" || path === "/signup" || path === "/welcome";
   const excludedEndpoints = ["/api/logout", "/api/signin", "/api/signup"];

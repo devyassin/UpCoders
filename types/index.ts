@@ -1,10 +1,6 @@
 // i can also use type UserType=z.infer<typeof UserSchema>
 
-export enum ExperienceLevel {
-  Beginner = "Beginner",
-  Intermediate = "Intermediate",
-  Advanced = "Advanced",
-}
+import { Category, ExperienceLevel } from "./enumTypes";
 
 export type UserType = "client" | "freelancer";
 export interface User {
@@ -22,4 +18,17 @@ export interface User {
   education?: string;
   bio?: string;
   isCompleted?: boolean;
+}
+
+export interface GigType {
+  picture: { fileUrl: string; fileKey: string };
+  title: string;
+  category: Category;
+  deliveryTime: number;
+  description: string;
+  note: string;
+  price: number;
+  features: string[];
+  rating: number;
+  user_id: string;
 }

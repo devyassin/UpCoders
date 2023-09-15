@@ -8,7 +8,8 @@ import FirstBtn from "@/components/btn/FirstBtn";
 import AskedSignIn from "@/components/ui/AskedSignIn";
 import { useRouter } from "next/navigation";
 import { useAppSelector } from "@/store/store";
-import { logo, freelancerLogo, clientLogo } from "@/public/assets";
+import { freelancerLogo, clientLogo } from "@/public/assets";
+import HeaderLogo from "../ui/HeaderLogo";
 
 type Props = {};
 
@@ -16,11 +17,9 @@ const Welcome = (props: Props) => {
   const router = useRouter();
   const currentTypeSelected = useAppSelector((state) => state.welcome.type);
   return (
-    <div className="flex flex-col min-h-[100vh] justify-between px-6 pt-6">
+    <div className="flex-wrapper-col">
       {/* Logo Header */}
-      <div className="w-[7.5rem] h-[2.87625rem] ">
-        <Image src={logo} height={200} width={200} alt="logo" priority />
-      </div>
+      <HeaderLogo />
       {/* Form */}
       <div className="card-welcome  flex flex-col mx-auto  px-14 max-sm:px-4 py-6 my-8 w-1/2 max-lg:w-2/3  max-md:w-full">
         <h1 className="title-welcome max-lg:text-[24px] max-lg:mb-[24px] mb-[55px]">
@@ -38,7 +37,10 @@ const Welcome = (props: Props) => {
             text="I’m a freelancer, looking for work"
           />
         </div>
-        <div onClick={() => router.push("/signup")} className="w-full flex justify-center">
+        <div
+          onClick={() => router.push("/signup")}
+          className="w-full flex justify-center"
+        >
           <FirstBtn
             text={
               currentTypeSelected == "client"

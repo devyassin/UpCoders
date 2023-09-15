@@ -102,11 +102,17 @@ body::-webkit-scrollbar-thumb {
 .css-12a83d4-MultiValueRemove {
   margin-left: 12px !important;
 }
-.css-9jq23d{
+.css-9jq23d {
   color: #fff !important;
 }
 .circle-image {
   border-radius: 50px;
   background: #0e0c0c;
   box-shadow: 0px 4px 28px -10px rgba(252, 247, 247, 0.25);
+}
+
+/* Global styles */
+
+.flex-wrapper-col {
+  @apply flex flex-col  min-h-[100vh] justify-between px-6 pt-6;
 }

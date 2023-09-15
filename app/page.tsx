@@ -23,7 +23,7 @@ export default function Home() {
   }, [statusLogout]);
 
   return (
-    <div className="text-3xl font-bold">
+    <div className="text-3xl font-bold bg-white min-h-screen">
       <div
         onClick={() => {
           dispatch(logOut());

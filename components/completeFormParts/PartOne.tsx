@@ -64,12 +64,6 @@ const PartOne = ({ active, type }: Props) => {
         </div>
 
         <UploadImageProfile />
-        {/* <input
-          name="profilePic"
-          id="profilePic"
-          type="file"
-          className="bg-transparent -translate-x-20 max-md:-translate-x-0 border-none p-0 outline-none text-white custom-file-input"
-        /> */}
       </div>
       <div className="flex flex-col py-4 items-start">
         <label className="label">Skills</label>

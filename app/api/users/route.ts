@@ -18,6 +18,16 @@ export async function GET(req: NextRequest) {
       .paginate();
 
     const users = await features.query;
+    // .aggregate([
+    //   {
+    //     $group: {
+    //       _id: "$type",
+    //       num: { $sum: 1 },
+    //       minHourlyRate: { $min: "$hourlyRate" },
+    //     },
+    //   },
+    // ]);
+  
     if (!users) {
       return NextResponse.json({ error: "Users Not Found" });
     }
