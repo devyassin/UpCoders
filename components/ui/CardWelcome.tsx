@@ -28,7 +28,7 @@ const CardWelcome = ({ logo, text, type }: Props) => {
       }`}
     >
       <div className="flex flex-row-reverse justify-between ">
-        <div className="">
+        <div>
           {currentTypeSelected == type ? (
             <Image src={Active} priority alt="active" width={21} height={21} />
           ) : (

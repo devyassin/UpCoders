@@ -54,3 +54,17 @@ export enum Category {
   HumanComputerInteraction = "Human-Computer Interaction (HCI)",
   EmbeddedSystems = "Embedded Systems",
 }
+
+export enum TypesTask {
+  ToDo = "To Do",
+  InProgress = "In progress",
+  Done = "Done",
+}
+
+// new / complited / Cancelled
+
+export enum StatusOrder {
+  NEW = "new",
+  COMPLITED = "complited",
+  CANCELLED = "cancelled",
+}

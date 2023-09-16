@@ -1,6 +1,7 @@
 // i can also use type UserType=z.infer<typeof UserSchema>
 
-import { Category, ExperienceLevel } from "./enumTypes";
+import { Category, ExperienceLevel, StatusOrder, TypesTask } from "./enumTypes";
+import { Types } from "mongoose";
 
 export type UserType = "client" | "freelancer";
 export interface User {
@@ -30,5 +31,25 @@ export interface GigType {
   price: number;
   features: string[];
   rating: number;
-  user_id: string;
+  user_id: Types.ObjectId;
+}
+
+export interface TaskType {
+  picture: { fileUrl: string; fileKey: string };
+  type: TypesTask;
+  title: string;
+  user_id: Types.ObjectId;
+}
+
+export interface OrderType {
+  description: string;
+  status: StatusOrder;
+  gig_id: Types.ObjectId;
+  user_id: Types.ObjectId;
+}
+
+export interface RatingType {
+  rate: number;
+  gig_id: Types.ObjectId;
+  user_id: Types.ObjectId;
 }
