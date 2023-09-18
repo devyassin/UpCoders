@@ -40,7 +40,7 @@ export default function LogoutBtn() {
       } h-[62px] pl-4 rounded-xl flex items-center space-x-6 font-tajwal hover:opacity-60 hover:duration-300`}
     >
       <Image src={logout} alt="logout btn" />
-      <h1 className="text-xl text-white ">Logout</h1>
+      <h1 className="text-xl text-white max-xl:hidden">Logout</h1>
     </button>
   );
 }

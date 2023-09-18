@@ -8,6 +8,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        "2sm": "740px",
+        // => @media (min-width: 740px) { ... }
+      },
       colors: {
         "dark-1": "#111111",
         "dark-2": "#222222",

@@ -23,9 +23,9 @@ const SideBarBtn = ({ route, name, icon }: Props) => {
       <Image
         src={icon}
         alt={name}
-        className={`${name === "My Business" ? "mr-2" : ""}`}
+        className={`${name === "My Business" ? "mr-2" : ""} `}
       />
-      <h1 className="text-xl text-white">{name}</h1>
+      <h1 className="text-xl text-white max-xl:hidden">{name}</h1>
     </Link>
   );
 };
