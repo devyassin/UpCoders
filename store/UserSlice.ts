@@ -86,7 +86,7 @@ const initialState = {
     email: "",
     password: "",
     country: "",
-    picture: undefined,
+    picture: { fileUrl: "", fileKey: "" },
     skills: [],
     domaineExpertise: undefined,
     experienceLvl: undefined,

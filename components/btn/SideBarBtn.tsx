@@ -15,7 +15,7 @@ const SideBarBtn = ({ route, name, icon }: Props) => {
     <Link
       className={`text-2xl ${
         pathname.includes(route)
-          ? "bg-dark-green"
+          ? "bg-dark-green "
           : "hover:opacity-60 hover:duration-300"
       } h-[62px] pl-4 rounded-xl flex items-center space-x-6 font-tajwal`}
       href={`/dashboard${route}`}
@@ -25,7 +25,7 @@ const SideBarBtn = ({ route, name, icon }: Props) => {
         alt={name}
         className={`${name === "My Business" ? "mr-2" : ""}`}
       />
-      <h1 className="text-xl text-white ">{name}</h1>
+      <h1 className="text-xl text-white">{name}</h1>
     </Link>
   );
 };

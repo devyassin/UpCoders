@@ -23,6 +23,9 @@ import newgigs from "./newgigs.png";
 import tasks from "./tasks.png";
 import business from "./business.png";
 import logoHeaderNav from "./logoHeaderNav.png";
+import ring from "./ring.png";
+import email from "./email.png";
+import heartborder from "./heartborder.png";
 
 export {
   logo,
@@ -50,4 +53,7 @@ export {
   newgigs,
   tasks,
   logoHeaderNav,
+  ring,
+  email,
+  heartborder,
 };

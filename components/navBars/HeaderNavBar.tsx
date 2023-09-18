@@ -1,11 +1,27 @@
-import React from "react";
+import InputSearchBar from "../form/InputSearchBar";
+import HeaderNavLogo from "../ui/HeaderNavLogo";
+import { email, ring, heartborder } from "@/public/assets";
 import Image from "next/image";
-import { logoHeaderNav } from "@/public/assets";
+import UserProfileIcon from "../ui/UserProfileIcon";
 
 const HeaderNavBar = () => {
   return (
-    <div className="bg-dark-2 py-8 h-[93px] flex items-center px-6 ">
-      <Image src={logoHeaderNav} alt="logo navHeader" />
+    <div className="bg-dark-2 py-8 h-[93px] flex items-center justify-between px-6 ">
+      <HeaderNavLogo />
+      <InputSearchBar />
+      <div className="flex items-center space-x-10">
+        <Image className="cursor-pointer" src={ring} alt="ring logo" />
+        <Image className="cursor-pointer" src={email} alt="email logo" />
+        <Image
+          className="cursor-pointer"
+          src={heartborder}
+          alt="heartborder logo"
+        />
+        <h1 className="text-white font-tajwal text-[22px] opacity-90">
+          Orders
+        </h1>
+        <UserProfileIcon />
+      </div>
     </div>
   );
 };
