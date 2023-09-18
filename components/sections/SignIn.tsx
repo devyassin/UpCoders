@@ -36,7 +36,7 @@ const SignIn = () => {
       Toastsuccess("Welcome !");
 
       setTimeout(() => {
-        router.push("/");
+        router.push("/dashboard/home");
         dispatch(clearUser());
         dispatch(clearStatus());
       }, 1500);

@@ -13,11 +13,14 @@ export async function middleware(request: NextRequest) {
   const secretKey = process.env.JWT_SECRET_KEY!;
 
   if (!path.startsWith("/api")) {
-    if (isPublicPath && token) {
+    if ((isPublicPath || path === "/") && token) {
       try {
         await verify(token, secretKey);
-        return NextResponse.redirect(new URL("/", request.nextUrl));
-      } catch (error) {}
+        const redirectTo = new URL("/dashboard/home", request.nextUrl);
+        return NextResponse.redirect(redirectTo);
+      } catch (error) {
+        console.error("Error during token verification:", error);
+      }
     }
 
     // that will run if the user is already complited his profile and trying to access the complete Profile page again
@@ -31,20 +34,21 @@ export async function middleware(request: NextRequest) {
         console.log(type);
 
         if (type == "freelancer" && isCompleted == true) {
-          return NextResponse.redirect(new URL("/", request.nextUrl));
+          return NextResponse.redirect(
+            new URL("/dashboard/home", request.nextUrl)
+          );
         }
       } catch (error) {}
     }
 
     // that condition will run if the user as type freelancer not complited his registration
-    if (path == "/") {
+    if (path == "/dashboard/home") {
       try {
         const {
           payload: { isCompleted, type },
         }: any = await verify(token, secretKey);
 
         if (type == "freelancer" && isCompleted == false) {
-          console.log("correct");
           return NextResponse.redirect(
             new URL("/completeProfile", request.nextUrl)
           );

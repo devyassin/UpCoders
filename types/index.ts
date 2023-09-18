@@ -53,3 +53,10 @@ export interface RatingType {
   gig_id: Types.ObjectId;
   user_id: Types.ObjectId;
 }
+
+export interface ReviewType {
+  comment: string;
+  likes: [Types.ObjectId];
+  gig_id: Types.ObjectId;
+  user_id: Types.ObjectId;
+}

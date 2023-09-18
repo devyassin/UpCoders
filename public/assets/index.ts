@@ -17,6 +17,12 @@ import rightArrow from "./rightArrow.png";
 import selectImageLogo from "./selectImageLogo.png";
 import showenEye from "./showenEye.png";
 import star from "./star.png";
+import home from "./home.png";
+import logout from "./logout.png";
+import newgigs from "./newgigs.png";
+import tasks from "./tasks.png";
+import business from "./business.png";
+import logoHeaderNav from "./logoHeaderNav.png";
 
 export {
   logo,
@@ -38,4 +44,10 @@ export {
   selectImageLogo,
   showenEye,
   star,
+  business,
+  home,
+  logout,
+  newgigs,
+  tasks,
+  logoHeaderNav,
 };
