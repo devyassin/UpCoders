@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const MobileShowBtn = () => {
   const [active, setActive] = useState(false);
@@ -9,9 +10,24 @@ const MobileShowBtn = () => {
       id="menu"
       className="z-40 flex-col hidden space-y-2 text-black cursor-pointer max-2sm:flex "
     >
-      <div id="first" className={`bg-white ${active ? "animate-1" : ""}`}></div>
-      <div id="second" className={`bg-white ${active ? "hidden" : ""}`}></div>
-      <div id="third" className={`bg-white ${active ? "animate-2" : ""}`}></div>
+      <motion.div
+        id="first"
+        animate={{ rotate: active ? 45 : 0, translateY: active ? 10 : 0 }}
+        transition={{ duration: 1, type: "spring" }}
+        className={`bg-white `}
+      ></motion.div>
+      <motion.div
+        id="second"
+        className={`bg-white`}
+        animate={{ display: active ? "none" : "" }}
+        transition={{ duration: 1, type: "spring" }}
+      ></motion.div>
+      <motion.div
+        animate={{ rotate: active ? -45 : 0 }}
+        transition={{ duration: 1, type: "spring" }}
+        id="third"
+        className={`bg-white `}
+      ></motion.div>
     </div>
   );
 };

@@ -21,6 +21,7 @@
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
     "cookie": "^0.5.0",
+    "framer-motion": "^10.16.4",
     "jose": "^4.14.6",
     "mongoose": "^7.4.2",
     "next": "13.4.12",

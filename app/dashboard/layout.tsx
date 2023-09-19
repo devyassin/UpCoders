@@ -1,3 +1,4 @@
+import FetchUser from "@/components/fetchDataComponents/FetchUser";
 import HeaderNavBar from "@/components/navBars/HeaderNavBar";
 import SideNavBar from "@/components/navBars/SideNavBar";
 import type { Metadata } from "next";
@@ -13,7 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col bg-black h-screen">
+    <div className="flex h-screen flex-col bg-[#111]">
+      <FetchUser />
       <HeaderNavBar />
       <div className="flex h-full">
         <SideNavBar />

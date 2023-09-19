@@ -114,7 +114,7 @@ body::-webkit-scrollbar-thumb {
 /* Global styles */
 
 .flex-wrapper-col {
-  @apply flex flex-col  min-h-[100vh] justify-between px-6 pt-6;
+  @apply flex min-h-[100vh]  flex-col justify-between px-6 pt-6;
 }
 
 /*MobileShowBtn */
@@ -123,13 +123,6 @@ body::-webkit-scrollbar-thumb {
 #third {
   width: 40px;
   height: 3px;
-  @apply transition ease-in-out duration-300;
 }
 
-.animate-1 {
-  @apply rotate-45 translate-y-[10px] bg-white;
-}
 
-.animate-2 {
-  @apply -rotate-45 bg-white;
-}

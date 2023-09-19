@@ -4,10 +4,12 @@ import { email, ring, heartborder } from "@/public/assets";
 import Image from "next/image";
 import UserProfileIcon from "../ui/UserProfileIcon";
 import MobileShowBtn from "../ui/MobileShowBtn";
+import Triangle from "../ui/Triangle";
+import ModalUserProfile from "../ui/ModalUserProfile";
 
 const HeaderNavBar = () => {
   return (
-    <div className="bg-dark-2 py-8 h-[93px] flex items-center justify-between px-6 ">
+    <div className="flex h-[93px] items-center justify-between bg-dark-2 px-6 py-8 ">
       <HeaderNavLogo />
       <InputSearchBar />
       <div className="flex items-center space-x-10 max-2sm:hidden">
@@ -18,10 +20,19 @@ const HeaderNavBar = () => {
           src={heartborder}
           alt="heartborder logo"
         />
-        <h1 className="text-white font-tajwal text-[22px] opacity-90">
+        <h1 className="font-tajwal text-[22px] text-white opacity-90">
           Orders
         </h1>
-        <UserProfileIcon />
+        <div>
+          <UserProfileIcon
+            custumStylesImage="h-[50px] w-[50px]"
+            custumStylesOnline="h-[15px] w-[15px] -translate-y-3 translate-x-8"
+          />
+          <div className="absolute right-5 top-[88px] flex flex-col items-end">
+            <Triangle />
+            <ModalUserProfile />
+          </div>
+        </div>
       </div>
       <MobileShowBtn />
     </div>
