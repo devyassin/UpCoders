@@ -1,12 +1,18 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { showMobileNavigationModal } from "@/store/modalSlice";
 
 const MobileShowBtn = () => {
   const [active, setActive] = useState(false);
+  const dispatch = useDispatch();
   return (
     <div
-      onClick={() => setActive((prev) => !prev)}
+      onClick={() => {
+        setActive((prev) => !prev);
+        dispatch(showMobileNavigationModal());
+      }}
       id="menu"
       className="z-40 flex-col hidden space-y-2 text-black cursor-pointer max-2sm:flex "
     >
