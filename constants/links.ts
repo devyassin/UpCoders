@@ -8,9 +8,9 @@ export const links = [
 ];
 
 export const userProfileModalLinks = [
-  "Profile",
-  "Dashboard",
-  "Setting",
-  "Messages",
-  "My Business",
+  { name: "Profile", route: "/profile" },
+  { name: "Dashboard", route: "/home" },
+  { name: "Setting",route:"/settings" },
+  { name: "Messages",route:"/messages" },
+  { name: "My Business",route:"/business" },
 ];

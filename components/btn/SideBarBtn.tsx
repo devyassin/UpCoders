@@ -14,7 +14,7 @@ const SideBarBtn = ({ route, name, icon }: Props) => {
   return (
     <Link
       className={`text-2xl ${
-        pathname.includes(route)
+       pathname.includes(route) 
           ? "bg-dark-green "
           : "hover:opacity-60 hover:duration-300"
       } h-[62px] pl-4 rounded-xl flex items-center space-x-6 font-tajwal`}

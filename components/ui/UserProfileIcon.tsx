@@ -1,19 +1,30 @@
 "use client";
 
 import { useAppSelector } from "@/store/store";
+import { useDispatch } from "react-redux";
+import { showProfileModal } from "@/store/modalSlice";
 
 import Image from "next/image";
 
 type Props = {
   custumStylesImage: string;
   custumStylesOnline: string;
+  showModal?: boolean;
 };
 
-const UserProfileIcon = ({ custumStylesImage, custumStylesOnline }: Props) => {
+const UserProfileIcon = ({
+  showModal,
+  custumStylesImage,
+  custumStylesOnline,
+}: Props) => {
+  const dispatch = useDispatch<any>();
   const user = useAppSelector((state) => state.user.user);
-  console.log(user);
+
   return (
-    <div className="relative hover:opacity-80 hover:duration-150">
+    <div
+      onClick={() => showModal && dispatch(showProfileModal())}
+      className="relative hover:opacity-80 hover:duration-150"
+    >
       <Image
         src={user?.picture?.fileUrl}
         alt="user profile image"
@@ -24,7 +35,9 @@ const UserProfileIcon = ({ custumStylesImage, custumStylesOnline }: Props) => {
         rounded-full object-cover object-center opacity-0 
          transition-opacity duration-[2s]`}
       />
-      <div className={`absolute ${custumStylesOnline} h-[15px] w-[15px] -translate-y-3 translate-x-8 rounded-full border-[1px] border-white bg-[#1DBF73]`}></div>
+      <div
+        className={`absolute ${custumStylesOnline} h-[15px] w-[15px] cursor-pointer -translate-y-3 translate-x-8 rounded-full border-[1px] border-white bg-[#1DBF73]`}
+      ></div>
     </div>
   );
 };

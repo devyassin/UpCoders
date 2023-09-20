@@ -6,12 +6,14 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import UserSlice from "./UserSlice";
 import CompleteProfileSlice from "./CompleteProfileSlice";
 import UploadProfilePictureSlice from "./UploadProfilePictureSlice";
+import modalSlice from "./modalSlice";
 const store = configureStore({
   reducer: {
     welcome: welcomeSlice,
     user: UserSlice,
     completeProfile: CompleteProfileSlice,
     uploadProfilePicture: UploadProfilePictureSlice,
+    modal: modalSlice,
   },
   middleware: [thunkMiddleware],
 });

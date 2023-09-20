@@ -1,43 +1,86 @@
-
+"use client";
+import { motion, AnimatePresence } from "framer-motion";
 import UserProfileIcon from "./UserProfileIcon";
 import { userProfileModalLinks } from "@/constants/links";
+import { showProfileModal } from "@/store/modalSlice";
+import { useDispatch } from "react-redux";
+import Link from "next/link";
+import { useAppSelector } from "@/store/store";
+import Triangle from "./Triangle";
 
+const ModalUserProfile = () => {
+  const dispatch = useDispatch<any>();
+  const ProfileModalVisibility = useAppSelector(
+    (state) => state.modal.ProfileModalVisibility,
+  );
 
-type Props = {};
-const ModalUserProfile = (props: Props) => {
   return (
-    <div className="bg-dark-7 rounded-[7px] py-4 drop-shadow-lg ">
-      {/* User Info */}
-      <div className="flex w-[300px] items-center justify-start  space-x-6 px-6">
-        <UserProfileIcon
-          custumStylesImage="h-[42px] w-[42px]"
-          custumStylesOnline="h-[12px] w-[12px] -translate-y-3 translate-x-8"
-        />
-        <div className="flex flex-col space-y-1 font-tajwal">
-          <h1 className="text-[16px] text-light-green ">yassine lamouadden</h1>
-          <h1 className="text-light-white text-[14px]">mouden529@gmail.com</h1>
-        </div>
-      </div>
-      <div className="px-6">
-        {" "}
-        <hr className="mt-2 min-w-full bg-[#C49494] opacity-40" />
-      </div>
-      <div className="text-light-white mt-6 flex flex-col space-y-2 font-tajwal text-[16px] opacity-80 ">
-        {userProfileModalLinks.map((link) => {
-          return (
-            <div className="hover:bg-darken flex h-[35px]  items-center px-6 hover:cursor-pointer hover:duration-150">
-              {link}
+    <>
+      <AnimatePresence>
+        {ProfileModalVisibility && (
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, scale: 0.6 },
+              show: { opacity: 1, scale: 1 },
+            }}
+            initial="hidden"
+            animate="show"
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: 1.5,
+              type: "spring",
+              bounce: 0.4,
+            }}
+            className="absolute right-5 top-[88px] flex flex-col items-end"
+          >
+            <Triangle />
+            <div className="rounded-[7px] bg-dark-7 py-4 drop-shadow-lg ">
+              {/* User Info */}
+              <div className="flex w-[300px] items-center justify-start  space-x-6 px-6">
+                <UserProfileIcon
+                  custumStylesImage="h-[42px] w-[42px]"
+                  custumStylesOnline="h-[12px] w-[12px] -translate-y-3 translate-x-8"
+                />
+                <div className="flex flex-col space-y-1 font-tajwal">
+                  <h1 className="text-[16px] text-light-green ">
+                    yassine lamouadden
+                  </h1>
+                  <h1 className="text-[14px] text-light-white">
+                    mouden529@gmail.com
+                  </h1>
+                </div>
+              </div>
+              <div className="px-6">
+                {" "}
+                <hr className="mt-2 min-w-full bg-[#C49494] opacity-40" />
+              </div>
+              <div className="mt-6 flex flex-col space-y-2 font-tajwal text-[16px] text-light-white opacity-80 ">
+                {userProfileModalLinks.map((link, i) => {
+                  return (
+                    <Link
+                      key={i}
+                      onClick={() => {
+                        dispatch(showProfileModal());
+                      }}
+                      href={`/dashboard${link.route}`}
+                      className="flex h-[35px] items-center  px-6 hover:cursor-pointer hover:bg-darken hover:duration-150"
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                })}
+              </div>
+              <div className="px-6">
+                <hr className="mt-6 min-w-full bg-[#C49494] opacity-40" />
+              </div>
+              <div className="mt-4 flex h-[35px] items-center px-6 font-tajwal text-[16px] text-light-white  opacity-80 hover:cursor-pointer hover:bg-darken hover:duration-150">
+                Logout
+              </div>
             </div>
-          );
-        })}
-      </div>
-      <div className="px-6">
-        <hr className="mt-6 min-w-full bg-[#C49494] opacity-40" />
-      </div>
-      <div className="hover:bg-darken font-tajwal text-[16px] opacity-80 text-light-white mt-4 flex h-[35px]  items-center px-6 hover:cursor-pointer hover:duration-150">
-        Logout
-      </div>
-    </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
