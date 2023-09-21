@@ -34,18 +34,20 @@ const ModalUserProfile = () => {
             className="absolute right-5 top-[88px] flex flex-col items-end"
           >
             <Triangle />
-            <div className="rounded-[7px] bg-dark-7 py-4 drop-shadow-lg ">
+            <div className="bg-dark-7 rounded-[7px] py-4 drop-shadow-lg ">
               {/* User Info */}
               <div className="flex w-[300px] items-center justify-start  space-x-6 px-6">
                 <UserProfileIcon
+                  height={40}
+                  width={40}
                   custumStylesImage="h-[42px] w-[42px]"
                   custumStylesOnline="h-[12px] w-[12px] -translate-y-3 translate-x-8"
                 />
                 <div className="flex flex-col space-y-1 font-tajwal">
-                  <h1 className="text-[16px] text-light-green ">
+                  <h1 className="text-light-green text-[16px] ">
                     yassine lamouadden
                   </h1>
-                  <h1 className="text-[14px] text-light-white">
+                  <h1 className="text-light-white text-[14px]">
                     mouden529@gmail.com
                   </h1>
                 </div>
@@ -54,7 +56,7 @@ const ModalUserProfile = () => {
                 {" "}
                 <hr className="mt-2 min-w-full bg-[#C49494] opacity-40" />
               </div>
-              <div className="mt-6 flex flex-col space-y-2 font-tajwal text-[16px] text-light-white opacity-80 ">
+              <div className="font-tajwal text-light-white mt-6 flex flex-col space-y-2 text-[16px] opacity-80 ">
                 {userProfileModalLinks.map((link, i) => {
                   return (
                     <Link
@@ -63,7 +65,7 @@ const ModalUserProfile = () => {
                         dispatch(showProfileModal());
                       }}
                       href={`/dashboard${link.route}`}
-                      className="flex h-[35px] items-center  px-6 hover:cursor-pointer hover:bg-darken hover:duration-150"
+                      className="hover:bg-darken flex h-[35px]  items-center px-6 hover:cursor-pointer hover:duration-150"
                     >
                       {link.name}
                     </Link>
@@ -73,7 +75,7 @@ const ModalUserProfile = () => {
               <div className="px-6">
                 <hr className="mt-6 min-w-full bg-[#C49494] opacity-40" />
               </div>
-              <div className="mt-4 flex h-[35px] items-center px-6 font-tajwal text-[16px] text-light-white  opacity-80 hover:cursor-pointer hover:bg-darken hover:duration-150">
+              <div className="font-tajwal text-light-white hover:bg-darken mt-4 flex h-[35px] items-center px-6  text-[16px] opacity-80 hover:cursor-pointer hover:duration-150">
                 Logout
               </div>
             </div>

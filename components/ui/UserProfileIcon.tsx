@@ -9,6 +9,8 @@ import { useEffect } from "react";
 import UserProfileIconSkeleton from "../skeleton/UserProfileIconSkeleton";
 
 type Props = {
+  width: number;
+  height: number;
   custumStylesImage: string;
   custumStylesOnline: string;
   showModal?: boolean;
@@ -16,6 +18,8 @@ type Props = {
 
 const UserProfileIcon = ({
   showModal,
+  width,
+  height,
   custumStylesImage,
   custumStylesOnline,
 }: Props) => {
@@ -26,20 +30,22 @@ const UserProfileIcon = ({
   );
 
   useEffect(() => {}, [userLoadingStatus]);
-  console.log(userLoadingStatus + "ffffff");
+
   if (userLoadingStatus === "loading" || userLoadingStatus === "") {
     return <UserProfileIconSkeleton />;
   }
   return (
     <div
       onClick={() => showModal && dispatch(showProfileModal())}
-      className="relative hover:opacity-80 hover:duration-150"
+      className={`relative ${
+        showModal && "hover:opacity-80 hover:duration-150"
+      }`}
     >
       <Image
         src={user?.picture?.fileUrl}
         alt="user profile image"
-        width={50}
-        height={50}
+        width={width}
+        height={height}
         className={`circle-image relative ${custumStylesImage}  duration-[2s]  
         cursor-pointer rounded-full object-cover object-center 
          `}

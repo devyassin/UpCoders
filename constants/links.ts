@@ -10,7 +10,15 @@ export const links = [
 export const userProfileModalLinks = [
   { name: "Profile", route: "/profile" },
   { name: "Dashboard", route: "/home" },
-  { name: "Setting",route:"/settings" },
-  { name: "Messages",route:"/messages" },
-  { name: "My Business",route:"/business" },
+  { name: "Setting", route: "/settings" },
+  { name: "Messages", route: "/messages" },
+  { name: "My Business", route: "/business" },
+];
+
+export const linksMobile = [
+  { name: "Profile", route: "/profile" },
+  { name: "Setting", route: "/settings" },
+  { name: "Messages", route: "/messages" },
+  { name: "Orders", route: "/orders" },
+  { name: "Favourites", route: "/favourites" },
 ];

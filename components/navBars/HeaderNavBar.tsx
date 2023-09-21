@@ -6,7 +6,6 @@ import UserProfileIcon from "../ui/UserProfileIcon";
 import Link from "next/link";
 import MobileShowBtn from "../ui/MobileShowBtn";
 
-
 import ModalUserProfile from "../ui/ModalUserProfile";
 
 const HeaderNavBar = () => {
@@ -31,13 +30,14 @@ const HeaderNavBar = () => {
           Orders
         </Link>
         <div>
-          
-            <UserProfileIcon
-              custumStylesImage="h-[50px] w-[50px]"
-              custumStylesOnline="h-[15px] w-[15px] -translate-y-3 translate-x-8"
-              showModal={true}
-            />
-        
+          <UserProfileIcon
+            width={50}
+            height={50}
+            custumStylesImage="h-[50px] w-[50px]"
+            custumStylesOnline="h-[15px] w-[15px] -translate-y-3 translate-x-8"
+            showModal={true}
+          />
+
           <ModalUserProfile />
         </div>
       </div>
