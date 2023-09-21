@@ -6,11 +6,12 @@ import UserProfileIcon from "../ui/UserProfileIcon";
 import Link from "next/link";
 import MobileShowBtn from "../ui/MobileShowBtn";
 
+
 import ModalUserProfile from "../ui/ModalUserProfile";
 
 const HeaderNavBar = () => {
   return (
-    <div className="flex h-[93px] items-center justify-between bg-dark-2 px-6 py-8 ">
+    <div className="bg-dark-2 flex h-[93px] items-center justify-between px-6 py-8 ">
       <HeaderNavLogo />
       <InputSearchBar />
       <div className="flex items-center space-x-10 max-2sm:hidden">
@@ -30,12 +31,13 @@ const HeaderNavBar = () => {
           Orders
         </Link>
         <div>
-          <UserProfileIcon
-            custumStylesImage="h-[50px] w-[50px]"
-            custumStylesOnline="h-[15px] w-[15px] -translate-y-3 translate-x-8"
-            showModal={true}
-          />
-
+          
+            <UserProfileIcon
+              custumStylesImage="h-[50px] w-[50px]"
+              custumStylesOnline="h-[15px] w-[15px] -translate-y-3 translate-x-8"
+              showModal={true}
+            />
+        
           <ModalUserProfile />
         </div>
       </div>

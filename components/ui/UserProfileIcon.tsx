@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { showProfileModal } from "@/store/modalSlice";
 
 import Image from "next/image";
+import { useEffect } from "react";
+import UserProfileIconSkeleton from "../skeleton/UserProfileIconSkeleton";
 
 type Props = {
   custumStylesImage: string;
@@ -19,7 +21,15 @@ const UserProfileIcon = ({
 }: Props) => {
   const dispatch = useDispatch<any>();
   const user = useAppSelector((state) => state.user.user);
+  const userLoadingStatus = useAppSelector(
+    (state) => state.user.statusCurrentUser,
+  );
 
+  useEffect(() => {}, [userLoadingStatus]);
+  console.log(userLoadingStatus + "ffffff");
+  if (userLoadingStatus === "loading" || userLoadingStatus === "") {
+    return <UserProfileIconSkeleton />;
+  }
   return (
     <div
       onClick={() => showModal && dispatch(showProfileModal())}
@@ -30,13 +40,12 @@ const UserProfileIcon = ({
         alt="user profile image"
         width={50}
         height={50}
-        onLoadingComplete={(image) => image.classList.remove("opacity-0")}
-        className={`circle-image relative ${custumStylesImage}  cursor-pointer  
-        rounded-full object-cover object-center opacity-0 
-         transition-opacity duration-[2s]`}
+        className={`circle-image relative ${custumStylesImage}  duration-[2s]  
+        cursor-pointer rounded-full object-cover object-center 
+         `}
       />
       <div
-        className={`absolute ${custumStylesOnline} h-[15px] w-[15px] cursor-pointer -translate-y-3 translate-x-8 rounded-full border-[1px] border-white bg-[#1DBF73]`}
+        className={`absolute ${custumStylesOnline} h-[15px] w-[15px] -translate-y-3 translate-x-8 cursor-pointer rounded-full border-[1px] border-white bg-[#1DBF73]`}
       ></div>
     </div>
   );

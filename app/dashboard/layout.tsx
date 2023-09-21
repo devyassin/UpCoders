@@ -2,6 +2,7 @@ import FetchUser from "@/components/fetchDataComponents/FetchUser";
 import HeaderNavBar from "@/components/navBars/HeaderNavBar";
 import MobileNavBar from "@/components/navBars/MobileNavBar";
 import SideNavBar from "@/components/navBars/SideNavBar";
+
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({
       <HeaderNavBar />
       <div className="flex h-full">
         <SideNavBar />
+
         {children}
       </div>
     </div>
