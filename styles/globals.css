@@ -15,6 +15,15 @@ body::-webkit-scrollbar-thumb {
   background-color: #beb4b4;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  width: 0rem;
+}
+
+.no-scrollbar::-webkit-scrollbar-thumb {
+   border-radius: 20px;
+  background-color: #beb4b4;
+}
+
 .bgGlobal {
   background-image: url("../public/assets/bgGlobal.png");
 }
@@ -124,5 +133,3 @@ body::-webkit-scrollbar-thumb {
   width: 40px;
   height: 3px;
 }
-
-
