@@ -16,7 +16,7 @@ import Link from "next/link";
 
 const MobileNavBar = () => {
   const showMobileNavBar = useAppSelector(
-    (state) => state.modal.MobileNavigationVisibility,
+    (state) => state.modal.MobileNavigationVisibility
   );
   const dispatch = useDispatch();
   const pathname = usePathname();
@@ -64,7 +64,7 @@ const MobileNavBar = () => {
                       <p
                         className={`${
                           pathname.includes(link.route) &&
-                          "border-golden w-fit border-b-[1px]"
+                          "border-golden  w-fit border-b-[1px]"
                         } text-center`}
                       >
                         {link.name}

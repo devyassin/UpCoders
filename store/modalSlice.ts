@@ -4,6 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState = {
   ProfileModalVisibility: false,
   MobileNavigationVisibility: false,
+  NotificationsModalVisibility: false,
 };
 
 const modalSlice = createSlice({
@@ -16,9 +17,15 @@ const modalSlice = createSlice({
     showMobileNavigationModal: (state) => {
       state.MobileNavigationVisibility = !state.MobileNavigationVisibility;
     },
+    showNotificationsModal: (state) => {
+      state.NotificationsModalVisibility = !state.NotificationsModalVisibility;
+    },
   },
 });
 
-export const { showProfileModal, showMobileNavigationModal } =
-  modalSlice.actions;
+export const {
+  showProfileModal,
+  showMobileNavigationModal,
+  showNotificationsModal,
+} = modalSlice.actions;
 export default modalSlice.reducer;

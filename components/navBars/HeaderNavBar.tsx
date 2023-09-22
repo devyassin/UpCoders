@@ -7,6 +7,8 @@ import Link from "next/link";
 import MobileShowBtn from "../ui/MobileShowBtn";
 
 import ModalUserProfile from "../ui/ModalUserProfile";
+import NotificationsShowBtn from "../ui/NotificationsShowBtn";
+import ModalNotifications from "../ui/ModalNotifications";
 
 const HeaderNavBar = () => {
   return (
@@ -14,7 +16,8 @@ const HeaderNavBar = () => {
       <HeaderNavLogo />
       <InputSearchBar />
       <div className="flex items-center space-x-10 max-2sm:hidden">
-        <Image className="cursor-pointer" src={ring} alt="ring logo" />
+        <NotificationsShowBtn />
+        <ModalNotifications />
         <Image className="cursor-pointer" src={email} alt="email logo" />
         <Link href={`/dashboard/favourites`}>
           <Image

@@ -28,6 +28,8 @@ import email from "./email.png";
 import heartborder from "./heartborder.png";
 import upcoderLogo from "./upcoderLogo.png";
 import upcoderLogoName from "./upcoderLogoName.png";
+import ringFill from "./ringFill.png";
+import ringWhite from "./ringWhite.png";
 
 export {
   logo,
@@ -60,4 +62,6 @@ export {
   heartborder,
   upcoderLogo,
   upcoderLogoName,
+  ringWhite,
+  ringFill,
 };
