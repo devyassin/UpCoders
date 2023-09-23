@@ -34,7 +34,7 @@ module.exports = {
         "dark-green": "#08BF31",
         "shadow-green": "#9B9B1F",
         golden: "rgba(254, 197, 118, 0.54)",
-        bluen:"rgba(199, 216, 235, 0.40)",
+        bluen: "rgba(199, 216, 235, 0.40)",
         darken: "rgba(63, 63, 70, 0.83)",
       },
       fontFamily: {
@@ -42,6 +42,7 @@ module.exports = {
         lato: ["Lato", "sans-serif"],
         tajwal: ["Tajawal", "sans-serif"],
         italiano: ["Italianno", "cursive"],
+        tapestry: ["Tapestry", "cursive"],
       },
       keyframes: {
         "accordion-down": {

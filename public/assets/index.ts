@@ -30,6 +30,8 @@ import upcoderLogo from "./upcoderLogo.png";
 import upcoderLogoName from "./upcoderLogoName.png";
 import ringFill from "./ringFill.png";
 import ringWhite from "./ringWhite.png";
+import arrowRight from "./arrow.png";
+import arrowLeft from "./arrow2.png";
 
 export {
   logo,
@@ -64,4 +66,6 @@ export {
   upcoderLogoName,
   ringWhite,
   ringFill,
+  arrowRight,
+  arrowLeft,
 };
