@@ -5,66 +5,52 @@ import { useState } from "react";
 import { Categorys } from "@/constants/domaineExpertisme";
 
 const ScrollBarCategories = () => {
-  const [scrollX, setScrollX] = useState(0); // Initialize the scroll position
-  const [visibilityLeftArrow, setVisibilityLeftArrow] = useState(false);
-  const [visibilityRightArrow, setVisibilityRightArrow] = useState(true);
-  const categoryWidth = 200; // Adjust this value to control the width of each category item
-
-  const scrollLeft = () => {
-    setScrollX(scrollX - categoryWidth);
-
-    if (scrollX < 0) {
-      setVisibilityLeftArrow(false);
+  const [visibilityLeft, setVisibilityLeft] = useState(false);
+  const [visibilityRight, setvisibilityRight] = useState(true);
+  const slideLeft = () => {
+    let slider = document.getElementById("slider") as HTMLElement;
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    slider.scrollLeft = slider.scrollLeft - 200;
+    if (slider.scrollLeft === 0) {
+      setVisibilityLeft(false);
     }
-    if (scrollX <= 200) {
-      setVisibilityLeftArrow(false);
-      setScrollX(0);
-    }
-    if (scrollX <= 8200) {
-      setVisibilityRightArrow(true);
+    if (slider.scrollLeft <= maxScroll) {
+      setvisibilityRight(true);
     }
   };
 
-  const scrollRight = () => {
-    if (scrollX > -100) {
-      setVisibilityLeftArrow(true);
+  const slideRight = () => {
+    let slider = document.getElementById("slider") as HTMLElement;
+    const maxScroll = slider.scrollWidth - slider.clientWidth;
+    slider.scrollLeft = slider.scrollLeft + 200;
+    if (slider.scrollLeft === 0) {
+      setVisibilityLeft(true);
     }
-    if (scrollX >= 8100) {
-      setVisibilityRightArrow(false);
+    if (slider.scrollLeft === maxScroll) {
+      setvisibilityRight(false);
     }
-    setScrollX(scrollX + categoryWidth);
   };
-
   return (
-    <div className="flex items-center justify-between overflow-hidden ">
-      <div className="z-10 bg-[#111] shadow-xl ">
-        <Image
-          src={arrowLeft}
-          className={`z-10 cursor-pointer ${
-            visibilityLeftArrow ? "flex" : "hidden"
-          }`}
-          alt="arrow left"
-          onClick={scrollLeft}
-        />
+    <div className="flex items-center ">
+      <div onClick={slideLeft} className={`${visibilityLeft ? "" : "hidden"}`}>
+        <Image src={arrowLeft} className={`cursor-pointer`} alt="arrow left" />
       </div>
 
       <div
-        style={{ transform: `translateX(-${scrollX}px)` }}
-        className="flex px-4 justify-between w-[70vw]  whitespace-nowrap space-x-14 max-sm:text-[12px]   pb-2 text-[16px] font-tapestry text-light-white"
+        id="slider"
+        className="w-[75vw] max-xl:w-[85vw] space-x-14 max-sm:text-[12px] text-[16px] max-sm:w-[100vw]  font-tapestry scrollbar-hide  h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth"
       >
         {Categorys.map((category, i) => {
-          return <h2 key={i}>{category}</h2>;
+          return (
+            <h2 className="inline-block px-4 pb-2 text-[#CAD7E9]" key={i}>
+              {category}
+            </h2>
+          );
         })}
       </div>
-      <div className="z-10 bg-[#111] shadow-xl ">
-        <Image
-          src={arrowRight}
-          className={`z-10 cursor-pointer ${
-            scrollX > 7200 ? "max-sm:hidden" : ""
-          } ${visibilityRightArrow ? "flex" : "hidden"}`}
-          alt="arrow right"
-          onClick={scrollRight}
-        />
+
+      <div onClick={slideRight} className={`${visibilityRight ? "" : "hidden"}`}>
+        <Image src={arrowRight} className="cursor-pointer" alt="arrow right" />
       </div>
     </div>
   );

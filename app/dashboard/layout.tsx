@@ -25,7 +25,7 @@ export default function RootLayout({
       <HeaderNavBar />
       <div className="flex h-full">
         <SideNavBar />
-        <div className="w-full">
+        <div className="">
           <ScrollBarCategories />
           {children}
         </div>
