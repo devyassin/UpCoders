@@ -7,11 +7,12 @@ import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { useAppSelector } from "@/store/store";
 import Triangle from "./Triangle";
+import { logOut } from "@/store/UserSlice";
 
 const ModalUserProfile = () => {
   const dispatch = useDispatch<any>();
   const ProfileModalVisibility = useAppSelector(
-    (state) => state.modal.ProfileModalVisibility,
+    (state) => state.modal.ProfileModalVisibility
   );
 
   return (
@@ -75,7 +76,12 @@ const ModalUserProfile = () => {
               <div className="px-6">
                 <hr className="mt-6 min-w-full bg-[#C49494] opacity-40" />
               </div>
-              <div className="font-tajwal text-light-white hover:bg-darken mt-4 flex h-[35px] items-center px-6  text-[16px] opacity-80 hover:cursor-pointer hover:duration-150">
+              <div
+                onClick={() => {
+                  dispatch(logOut());
+                }}
+                className="font-tajwal text-light-white hover:bg-darken mt-4 flex h-[35px] items-center px-6  text-[16px] opacity-80 hover:cursor-pointer hover:duration-150"
+              >
                 Logout
               </div>
             </div>

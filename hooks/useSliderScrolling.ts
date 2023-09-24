@@ -10,12 +10,10 @@ const useSliderScrolling = () => {
     if (slider) {
       const maxScroll = slider.scrollWidth - slider.clientWidth;
 
-      if (direction === "left") {
-        slider.scrollLeft -= distance;
-      } else if (direction === "right") {
-        slider.scrollLeft += distance;
-      }
-      console.log(slider.scrollLeft);
+      direction === "left"
+        ? (slider.scrollLeft -= distance)
+        : (slider.scrollLeft += distance);
+
       setVisibilityLeft(slider.scrollLeft > 0);
       setVisibilityRight(slider.scrollLeft < maxScroll);
     }
