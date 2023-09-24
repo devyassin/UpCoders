@@ -1,43 +1,23 @@
 "use client";
 import { arrowLeft, arrowRight } from "@/public/assets";
-import Image from "next/image";
-import { useState } from "react";
 import { Categorys } from "@/constants/domaineExpertisme";
+import ArrowScrolling from "./ArrowScrolling";
+import useSliderScrolling from "@/hooks/useSliderScrolling";
 
 const ScrollBarCategories = () => {
-  const [visibilityLeft, setVisibilityLeft] = useState(false);
-  const [visibilityRight, setvisibilityRight] = useState(true);
-  const slideLeft = () => {
-    let slider = document.getElementById("slider") as HTMLElement;
-    const maxScroll = slider.scrollWidth - slider.clientWidth;
-    slider.scrollLeft = slider.scrollLeft - 200;
-    if (slider.scrollLeft === 0) {
-      setVisibilityLeft(false);
-    }
-    if (slider.scrollLeft <= maxScroll) {
-      setvisibilityRight(true);
-    }
-  };
-
-  const slideRight = () => {
-    let slider = document.getElementById("slider") as HTMLElement;
-    const maxScroll = slider.scrollWidth - slider.clientWidth;
-    slider.scrollLeft = slider.scrollLeft + 200;
-    if (slider.scrollLeft === 0) {
-      setVisibilityLeft(true);
-    }
-    if (slider.scrollLeft === maxScroll) {
-      setvisibilityRight(false);
-    }
-  };
+  const { visibilityLeft, visibilityRight, sliderRef, handleSlide } =
+    useSliderScrolling();
   return (
     <div className="flex items-center ">
-      <div onClick={slideLeft} className={`${visibilityLeft ? "" : "hidden"}`}>
-        <Image src={arrowLeft} className={`cursor-pointer`} alt="arrow left" />
-      </div>
+      <ArrowScrolling
+        direction="left"
+        imageSrc={arrowLeft}
+        isVisible={visibilityLeft}
+        scrollFunction={() => handleSlide("left", 200)}
+      />
 
       <div
-        id="slider"
+        ref={sliderRef}
         className="w-[75vw] max-xl:w-[85vw] space-x-14 max-sm:text-[12px] text-[16px] max-sm:w-[100vw]  font-tapestry scrollbar-hide  h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth"
       >
         {Categorys.map((category, i) => {
@@ -49,9 +29,12 @@ const ScrollBarCategories = () => {
         })}
       </div>
 
-      <div onClick={slideRight} className={`${visibilityRight ? "" : "hidden"}`}>
-        <Image src={arrowRight} className="cursor-pointer" alt="arrow right" />
-      </div>
+      <ArrowScrolling
+        direction="right"
+        imageSrc={arrowRight}
+        isVisible={visibilityRight}
+        scrollFunction={() => handleSlide("right", 200)}
+      />
     </div>
   );
 };
