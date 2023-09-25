@@ -1,6 +1,6 @@
 import logo from "./logo.png";
 import Active from "./Active.png";
-import bgGlobal from "./bgGlobal.png";
+import bgGlobal from "./bgGlobal.webp";
 import choosePic from "./choosePic.png";
 import choosePicEmpty from "./choosePicEmpty.png";
 import clientLogo from "./clientLogo.png";
