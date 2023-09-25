@@ -2,75 +2,35 @@
 import FirstBtn from "@/components/btn/FirstBtn";
 import Input from "@/components/form/Input";
 import InputPassword from "@/components/form/InputPassword";
-import { useRouter } from "next/navigation";
 import InputSelectCountry from "@/components/form/InputSelectCountry";
 import AskedSignIn from "@/components/ui/AskedSignIn";
 import Copyright from "@/components/ui/Copyright";
-import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
-import { UserValidation } from "@/lib/validation/UserValidation";
-import { useAppSelector } from "@/store/store";
-import { useDispatch } from "react-redux";
+import useSignUp from "@/hooks/useSignUp";
 import { freelancerLogo, clientLogo } from "@/public/assets";
-
 import Image from "next/image";
-
-import React, { FormEvent, useEffect } from "react";
-import { addUser, clearStatus, clearUser, setType } from "@/store/UserSlice";
-import { User } from "@/types";
-import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
 import HeaderLogo from "../ui/HeaderLogo";
 
 const SignUp = () => {
-  const router = useRouter();
-  const dispatch = useDispatch<any>();
-  const currentTypeSelected = useAppSelector((state) => state.welcome.type);
-  const user: User = useAppSelector((state) => state.user.user);
-  const error = useAppSelector((state) => state.user.error);
-  const statusAddUser = useAppSelector((state) => state.user.statusAddUser);
-  const onSubmitHandler = (e: FormEvent) => {
-    e.preventDefault();
-
-    if (zodHandllingErrors(UserValidation, user)) {
-      dispatch(addUser(user));
-    }
-  };
-
-  useEffect(() => {
-    dispatch(setType({ currentTypeSelected }));
-    if (statusAddUser === "succeeded") {
-      Toastsuccess("User Added !");
-      dispatch(clearUser());
-      dispatch(clearStatus());
-      router.push("/signin");
-    }
-
-    if (statusAddUser === "failed") {
-      Toastfailed(error);
-    }
-
-    if (statusAddUser === "loading") {
-      ToastLoading("processing .....");
-    }
-  }, [statusAddUser]);
+  const { currentTypeSelected, signUp, user } = useSignUp();
 
   return (
     <div className="flex-wrapper-col">
       {/* Logo header */}
       <HeaderLogo />
       {/* Form */}
-      <div className="flex flex-col card-welcome mx-auto max-sm:w-full max-md:w-full max-sm:px-4 px-14 py-6 my-8   ">
+      <div className="flex flex-col py-6 mx-auto my-8 card-welcome max-sm:w-full max-md:w-full max-sm:px-4 px-14 ">
         <h1 className="title-welcome max-lg:text-[24px] max-lg:mb-[24px] mb-[55px]">
           {currentTypeSelected == "client"
             ? "Sign up to find freelancers"
             : "Sign up to find work"}
         </h1>
-        <div className="flex items-center  justify-between ">
+        <div className="flex items-center justify-between ">
           <hr className="h-[1px] mr-4 w-full  bg-gray-50 opacity-30" />
           {currentTypeSelected == "client" ? (
             <Image
               src={clientLogo}
               alt="client logo"
-              className="pt-2 max-md:pb-0 pb-8"
+              className="pt-2 pb-8 max-md:pb-0"
               priority
               width={50}
               height={50}
@@ -79,7 +39,7 @@ const SignUp = () => {
             <Image
               src={freelancerLogo}
               alt="freelancer Logo"
-              className="pt-2 max-md:pb-0 pb-8"
+              className="pt-2 pb-8 max-md:pb-0"
               priority
               width={50}
               height={50}
@@ -89,8 +49,8 @@ const SignUp = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={onSubmitHandler} className="flex flex-col max-md:pt-8 ">
-          <div className="flex justify-between max-md:flex-col max-md:space-x-0 max-md:space-y-8 space-x-24">
+        <form onSubmit={signUp} className="flex flex-col max-md:pt-8 ">
+          <div className="flex justify-between space-x-24 max-md:flex-col max-md:space-x-0 max-md:space-y-8">
             <Input
               customClasses="w-full"
               value={user.firstName}

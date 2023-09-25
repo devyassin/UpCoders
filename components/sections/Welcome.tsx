@@ -1,7 +1,6 @@
 "use client";
 
 import Copyright from "../ui/Copyright";
-import Image from "next/image";
 import React from "react";
 import CardWelcome from "@/components/ui/CardWelcome";
 import FirstBtn from "@/components/btn/FirstBtn";
@@ -11,9 +10,7 @@ import { useAppSelector } from "@/store/store";
 import { freelancerLogo, clientLogo } from "@/public/assets";
 import HeaderLogo from "../ui/HeaderLogo";
 
-type Props = {};
-
-const Welcome = (props: Props) => {
+const Welcome = () => {
   const router = useRouter();
   const currentTypeSelected = useAppSelector((state) => state.welcome.type);
   return (
@@ -21,7 +18,7 @@ const Welcome = (props: Props) => {
       {/* Logo Header */}
       <HeaderLogo />
       {/* Form */}
-      <div className="card-welcome  flex flex-col mx-auto  px-14 max-sm:px-4 py-6 my-8 w-1/2 max-lg:w-2/3  max-md:w-full">
+      <div className="flex flex-col w-1/2 py-6 mx-auto my-8 card-welcome px-14 max-sm:px-4 max-lg:w-2/3 max-md:w-full">
         <h1 className="title-welcome max-lg:text-[24px] max-lg:mb-[24px] mb-[55px]">
           Join as a client or freelancer
         </h1>
@@ -39,7 +36,7 @@ const Welcome = (props: Props) => {
         </div>
         <div
           onClick={() => router.push("/signup")}
-          className="w-full flex justify-center"
+          className="flex justify-center w-full"
         >
           <FirstBtn
             text={
