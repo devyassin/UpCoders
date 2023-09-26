@@ -134,3 +134,7 @@ body::-webkit-scrollbar-thumb {
   width: 40px;
   height: 3px;
 }
+
+.cover-container {
+  background-size: 100% auto; /* Scale the image to 100% width while maintaining aspect ratio */
+}

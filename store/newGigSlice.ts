@@ -52,7 +52,15 @@ const initialState = {
 const gigSlice = createSlice({
   name: "gigs",
   initialState,
-  reducers: {},
+  reducers: {
+    handleGigForm: (
+      state: any,
+      { payload }: PayloadAction<{ name: any; value: any }>
+    ) => {
+      const { name, value } = payload;
+      state.gig[name] = value;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addGig.pending, (state) => {
@@ -68,5 +76,5 @@ const gigSlice = createSlice({
   },
 });
 
-export const {} = gigSlice.actions;
+export const { handleGigForm } = gigSlice.actions;
 export default gigSlice.reducer;

@@ -28,7 +28,7 @@ const ModalNotifications = () => {
               type: "spring",
               bounce: 0.4,
             }}
-            className="absolute right-[330px] top-[88px] flex flex-col items-end"
+            className="absolute z-20 right-[330px] top-[88px] flex flex-col items-end"
           >
             <Triangle />
             <div className="bg-dark-7 font-tajwal rounded-[7px] py-4 drop-shadow-lg ">

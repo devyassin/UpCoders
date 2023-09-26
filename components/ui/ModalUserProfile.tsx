@@ -32,7 +32,7 @@ const ModalUserProfile = () => {
               type: "spring",
               bounce: 0.4,
             }}
-            className="absolute right-5 top-[88px] flex flex-col items-end"
+            className="absolute z-20 right-5 top-[88px] flex flex-col items-end"
           >
             <Triangle />
             <div className="bg-dark-7 rounded-[7px] py-4 drop-shadow-lg ">
