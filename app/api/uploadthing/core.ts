@@ -15,6 +15,14 @@ export const ourFileRouter = {
     .onUploadComplete(async ({ metadata, file }) => {
       console.log("file url", file.url);
     }),
+    gigImageUploader: f({ image: { maxFileSize: "4MB", maxFileCount: 1 } })
+    // Set permissions and file types for this FileRoute
+    .middleware(async (req) => {
+      return {};
+    })
+    .onUploadComplete(async ({ metadata, file }) => {
+      console.log("file url", file.url);
+    }),
 } satisfies FileRouter;
 
 export type OurFileRouter = typeof ourFileRouter;
