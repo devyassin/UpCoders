@@ -1,9 +1,9 @@
 import React from "react";
 
-type Props = {};
-
-const page = (props: Props) => {
-  return <div className="text-white text-5xl">New Gig</div>;
+const page = () => {
+  return (
+    <div className="mx-4 text-5xl text-white bg-blue-dark-2 rounded-[14px] border border-black drop-shadow-2xl">New Gig</div>
+  );
 };
 
 export default page;

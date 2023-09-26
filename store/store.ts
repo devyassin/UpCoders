@@ -7,10 +7,12 @@ import UserSlice from "./UserSlice";
 import CompleteProfileSlice from "./CompleteProfileSlice";
 import UploadProfilePictureSlice from "./UploadProfilePictureSlice";
 import modalSlice from "./modalSlice";
+import GigSlice from "./newGigSlice";
 const store = configureStore({
   reducer: {
     welcome: welcomeSlice,
     user: UserSlice,
+    gigs: GigSlice,
     completeProfile: CompleteProfileSlice,
     uploadProfilePicture: UploadProfilePictureSlice,
     modal: modalSlice,

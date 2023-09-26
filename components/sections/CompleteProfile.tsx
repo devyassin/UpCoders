@@ -23,7 +23,8 @@ const CompleteProfile = () => {
             : activePart == "two"
             ? "before:content-['2/3']"
             : "before:content-['3/3']"
-        } before:text-white before:opacity-60 before:w-fit before:rotate-[20deg] before:text-xl before:absolute before:right-3 before:font-tajwal before:leading-3 before:tracking-wider`}
+        } before:text-white before:opacity-60 before:w-fit before:rotate-[20deg] 
+            before:text-xl before:absolute before:right-3 before:font-tajwal before:leading-3 before:tracking-wider`}
       >
         <h1 className="title-welcome pt-6 max-lg:text-[24px]  mb-[14px]">
           Complete your profile
