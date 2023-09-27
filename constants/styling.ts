@@ -126,3 +126,46 @@ export const experienceLvlSelectStyling = {
     color: "white",
   }),
 };
+
+export const categorySelectStyling = {
+  menuList: (base: any) => ({
+    ...base,
+
+    "::-webkit-scrollbar": {
+      width: "0px",
+      height: "0px",
+    },
+    "::-webkit-scrollbar-track": {
+      background: "#f1f1f1",
+    },
+    "::-webkit-scrollbar-thumb": {
+      background: "#888",
+    },
+    "::-webkit-scrollbar-thumb:hover": {
+      background: "#555",
+    },
+  }),
+  menu: (provided: any) => ({
+    ...provided,
+    height: "300px",
+    overflow: "hidden",
+  }),
+
+  singleValue: (provided: any) => ({
+    ...provided,
+    color: "#fff",
+    opacity: "0.9",
+  }),
+  control: (baseStyles: any, state: any) => ({
+    ...baseStyles,
+    borderRadius: "7px",
+    backgroundColor: "#161622",
+    boxShadow: "0px 4px 28px -10px rgba(0, 0, 0, 0.25)",
+    outline: "none",
+    height: "56px",
+    paddingLeft: "14px",
+    paddingRight: "20px",
+    border: "none",
+    color: "white",
+  }),
+};
