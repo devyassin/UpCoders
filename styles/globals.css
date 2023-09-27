@@ -156,3 +156,24 @@ body::-webkit-scrollbar-thumb {
   top: 0;
   height: 100%; /* Adjust the height as needed */
 }
+
+/* quill styling */
+
+.quill {
+  border-radius: 7px;
+}
+.ql-toolbar.ql-snow {
+  border: 0px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+.ql-editor {
+  background: #161622;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.ql-container {
+  font-size: 18px;
+  border: 0px !important;
+}
