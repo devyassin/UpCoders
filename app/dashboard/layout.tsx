@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen flex-col bg-[#111]">
+    <div className="flex h-screen flex-col bg-[#111] ">
       <div className="hidden max-2sm:flex">
         <MobileNavBar />
       </div>
@@ -27,7 +27,9 @@ export default function RootLayout({
         <SideNavBar />
         <div className="">
           <ScrollBarCategories />
-          {children}
+          <div className="overflow-y-scroll scroll scroll-smooth scrollbar-hide h-[75vh] ">
+            {children}
+          </div>
         </div>
       </div>
     </div>

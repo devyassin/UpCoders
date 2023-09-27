@@ -25,6 +25,15 @@ body::-webkit-scrollbar-thumb {
   background-color: #beb4b4;
 }
 
+.little-scrollbar::-webkit-scrollbar {
+  width: 2px;
+}
+
+.little-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #beb4b4;
+}
+
 /* .bgGlobal {
   background-image: url("../public/assets/bgGlobal.webp");
 } */
@@ -135,6 +144,15 @@ body::-webkit-scrollbar-thumb {
   height: 3px;
 }
 
-.cover-container {
-  background-size: 100% auto; /* Scale the image to 100% width while maintaining aspect ratio */
+.input-creategig {
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: #161622;
+}
+
+.sticky-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%; /* Adjust the height as needed */
 }

@@ -8,7 +8,7 @@ const ScrollBarCategories = () => {
   const { visibilityLeft, visibilityRight, sliderRef, handleSlide } =
     useSliderScrolling();
   return (
-    <div className="flex items-center ">
+    <div className="flex items-center drop-shadow-xl shadow-white ">
       <ArrowScrolling
         direction="left"
         imageSrc={arrowLeft}
