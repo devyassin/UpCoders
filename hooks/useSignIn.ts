@@ -26,8 +26,8 @@ const useSignIn = () => {
     if (statusSignIn === "succeeded") {
       Toastsuccess("Welcome !");
 
+      router.push("/dashboard/home");
       setTimeout(() => {
-        router.push("/dashboard/home");
         dispatch(clearUser());
         dispatch(clearStatus());
       }, 1500);
