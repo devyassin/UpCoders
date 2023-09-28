@@ -1,5 +1,5 @@
 "use client";
-import { handleGigForm } from "@/store/newGigSlice";
+import { handleGigForm, addFeature } from "@/store/newGigSlice";
 import React, { ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 
@@ -30,6 +30,10 @@ const InputCreateGig = ({
     if (type == "number") {
       value = Number(value);
       dispatch(handleGigForm({ name, value }));
+      return;
+    }
+    if (name == "feature1" || name == "feature2" || name == "feature3") {
+      dispatch(addFeature({ name, value }));
       return;
     }
 
