@@ -7,7 +7,6 @@ const FetchUser = () => {
   const dispatch = useDispatch<any>();
   useEffect(() => {
     dispatch(currentUser());
-    console.log("one time");
   }, []);
   return <div className="hidden">fetchUser</div>;
 };

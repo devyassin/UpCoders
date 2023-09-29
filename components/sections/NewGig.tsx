@@ -1,3 +1,6 @@
+"use client";
+
+import useAddNewGig from "@/hooks/useAddNewGig";
 import InputCreateGig from "../form/InputCreateGig";
 import InputSelectCategory from "../form/InputSelectCategory";
 import Quill from "../form/Quill";
@@ -5,8 +8,9 @@ import Quill from "../form/Quill";
 import AddImageGig from "../newGig/AddImageGig";
 
 const NewGig = () => {
+  const { addNewGig } = useAddNewGig();
   return (
-    <form className="flex flex-col min-h-full ">
+    <form onSubmit={addNewGig} className="flex flex-col min-h-full ">
       {/* Add image */}
       <AddImageGig />
       {/* Add title */}

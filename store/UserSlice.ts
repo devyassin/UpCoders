@@ -80,6 +80,7 @@ const initialState = {
   statusCurrentUser: "",
   statusUpdateUser: "",
   user: {
+    _id: "",
     firstName: "",
     lastName: "",
     type: "client",

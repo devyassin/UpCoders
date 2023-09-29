@@ -41,8 +41,8 @@ const initialState = {
     deliveryTime: 0,
     description: "",
     note: "",
-    price: 50,
-    features: [""],
+    price: 0,
+    features: ["", "", ""],
     rating: 0,
     user_id: "",
   },
@@ -66,10 +66,15 @@ const gigSlice = createSlice({
         state.gig.features[0] = value;
       } else if (name === "feature2") {
         state.gig.features[1] = value;
-      }else{
+      } else {
         state.gig.features[2] = value;
       }
-
+    },
+    clearGig: (state) => {
+      state.gig = initialState.gig;
+    },
+    clearStatusGig: (state) => {
+      state.statusAddGig = "";
     },
   },
   extraReducers: (builder) => {
@@ -87,5 +92,6 @@ const gigSlice = createSlice({
   },
 });
 
-export const { handleGigForm, addFeature } = gigSlice.actions;
+export const { handleGigForm, addFeature, clearGig, clearStatusGig } =
+  gigSlice.actions;
 export default gigSlice.reducer;
