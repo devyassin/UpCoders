@@ -13,7 +13,7 @@ const Quill = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
   useEffect(() => {
-    name = "description";
+    let name = "description";
     dispatch(handleGigForm({ name, value }));
   }, [value]);
 
