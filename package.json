@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^39.0.2",
-    "@ckeditor/ckeditor5-react": "^6.1.0",
     "@next/bundle-analyzer": "^13.4.19",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-scroll-area": "^1.0.4",
@@ -36,6 +34,7 @@
     "postcss": "8.4.27",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-quill": "^2.0.0",
     "react-redux": "^8.1.2",
     "react-select": "^5.7.4",
     "react-toastify": "^9.1.3",

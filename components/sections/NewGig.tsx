@@ -1,7 +1,6 @@
-import FirstBtn from "../btn/FirstBtn";
-import Ckeditor from "../form/Ckeditor";
 import InputCreateGig from "../form/InputCreateGig";
 import InputSelectCategory from "../form/InputSelectCategory";
+import Quill from "../form/Quill";
 
 import AddImageGig from "../newGig/AddImageGig";
 
@@ -22,8 +21,8 @@ const NewGig = () => {
           customClasses="w-full"
         />
       </div>
-      <div className="w-full mt-14 font-tajwal ckeditor-border h-[60vh] ">
-        <Ckeditor />
+      <div className="w-full mt-14 input-creategig h-[50vh] ">
+        <Quill />
       </div>
       <div className="flex justify-between space-x-20 max-sm:space-x-0 max-sm:flex-col">
         <InputCreateGig

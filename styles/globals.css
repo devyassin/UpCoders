@@ -157,28 +157,29 @@ body::-webkit-scrollbar-thumb {
   height: 100%; /* Adjust the height as needed */
 }
 
-/* Ckeditor styling */
+/* quill styling */
 
-.ck {
-  background: #000 !important;
-  border-bottom-left-radius: 7px !important; /* Example value */
-  border-bottom-right-radius: 7px !important;
-  outline: none !important;
-  border: none !important;
+.quill-container {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+.quill {
+  border-radius: 7px;
+}
+.ql-toolbar.ql-snow {
+  border: 0px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 }
 
-.ck-content {
-  background: #161622 !important;
-  color: #fff !important;
-  height: 300px !important;
-  /* border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
-  border-left:1px solid rgba(255, 255, 255, 0.4) !important;
-  border-right:1px solid rgba(255, 255, 255, 0.4) !important; */
-}
-
-.ckeditor-border {
-  border-bottom-left-radius: 7px !important; /* Example value */
-  border-bottom-right-radius: 7px !important;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+.ql-editor {
   background: #161622;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.ql-container {
+  font-size: 18px;
+  border: 0px !important;
 }
