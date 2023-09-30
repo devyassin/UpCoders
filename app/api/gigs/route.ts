@@ -9,7 +9,7 @@ connect();
 export async function GET(request: NextRequest) {
   try {
     const userId = await getDataFromToken(request);
-    const gigs: GigType[] = await Gig.find({ user_id: userId });
+    const gigs: GigType[] = await Gig.find();
 
     return NextResponse.json({ size: gigs.length, gigs: gigs });
   } catch (error: any) {
