@@ -14,7 +14,10 @@ export async function GET(
 
     const favourite = await Favourite.findById({ _id: favouriteId });
     if (!favourite) {
-      return NextResponse.json({ message: "Favourite not found !" }, { status: 404 });
+      return NextResponse.json(
+        { message: "Favourite not found !" },
+        { status: 404 }
+      );
     }
 
     return NextResponse.json({ favourite });
@@ -23,18 +26,22 @@ export async function GET(
   }
 }
 
-
-
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const favouriteId = params.id;
-
-    const favourite = await Favourite.findByIdAndDelete({ _id: favouriteId });
+    const gigId = params.id;
+    const userId = await getDataFromToken(request);
+    const favourite = await Favourite.findOneAndDelete({
+      gig_id: gigId,
+      user_id: userId,
+    });
     if (!favourite) {
-      return NextResponse.json({ message: "Favourite not found !" }, { status: 404 });
+      return NextResponse.json(
+        { message: "Favourite not found !" },
+        { status: 404 }
+      );
     }
 
     return NextResponse.json({ favourite });
