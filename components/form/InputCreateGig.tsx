@@ -1,5 +1,5 @@
 "use client";
-import { handleGigForm, addFeature } from "@/store/newGigSlice";
+import { handleGigForm, addFeature } from "@/store/gigSlice";
 import React, { ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 

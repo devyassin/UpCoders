@@ -1,9 +1,11 @@
-import React from "react";
+import Home from "@/components/sections/Home";
 
-type Props = {};
-
-const page = (props: Props) => {
-  return <div className="text-white text-5xl">Home</div>;
+const page = () => {
+  return (
+    <div className="">
+      <Home />
+    </div>
+  );
 };
 
 export default page;

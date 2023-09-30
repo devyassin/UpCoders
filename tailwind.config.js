@@ -31,6 +31,7 @@ module.exports = {
         "blue-dark-1": "#1B1B27",
         "blue-dark-2": "#15192B",
         "blue-dark-3": "#161622",
+        "blue-dark-4": "#121417",
         "light-white": "#C7D8EB",
         "light-green": "#A3DE83",
         "dark-green": "#08BF31",
@@ -38,6 +39,7 @@ module.exports = {
         golden: "rgba(254, 197, 118, 0.54)",
         bluen: "rgba(199, 216, 235, 0.40)",
         darken: "rgba(63, 63, 70, 0.83)",
+        darkentwo: "rgba(183, 183, 151, 0.58)",
       },
       fontFamily: {
         sans: ["Mirza", "cursive"],

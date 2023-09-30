@@ -32,6 +32,7 @@ import ringFill from "./ringFill.png";
 import ringWhite from "./ringWhite.png";
 import arrowRight from "./arrow.png";
 import arrowLeft from "./arrow2.png";
+import etoile from "./etoile.png";
 
 export {
   logo,
@@ -68,4 +69,5 @@ export {
   ringFill,
   arrowRight,
   arrowLeft,
+  etoile,
 };

@@ -1,5 +1,5 @@
 "use client";
-import { handleGigForm } from "@/store/newGigSlice";
+import { handleGigForm } from "@/store/gigSlice";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Categorys } from "@/constants/domaineExpertisme";

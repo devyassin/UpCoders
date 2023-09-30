@@ -4,7 +4,7 @@ import {
   clearGig,
   clearStatusGig,
   handleGigForm,
-} from "@/store/newGigSlice";
+} from "@/store/gigSlice";
 
 import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
 import { useRouter } from "next/navigation";

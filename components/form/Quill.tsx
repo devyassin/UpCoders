@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
 import "react-quill/dist/quill.snow.css";
-import { handleGigForm } from "@/store/newGigSlice";
+import { handleGigForm } from "@/store/gigSlice";
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false,
 });

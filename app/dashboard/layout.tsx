@@ -1,4 +1,4 @@
-import FetchUser from "@/components/fetchDataComponents/FetchUser";
+import FetchData from "@/components/fetchDataComponents/FetchUser";
 import HeaderNavBar from "@/components/navBars/HeaderNavBar";
 import MobileNavBar from "@/components/navBars/MobileNavBar";
 import SideNavBar from "@/components/navBars/SideNavBar";
@@ -21,7 +21,7 @@ export default function RootLayout({
       <div className="hidden max-2sm:flex">
         <MobileNavBar />
       </div>
-      <FetchUser />
+      <FetchData />
       <HeaderNavBar />
       <div className="flex h-full">
         <SideNavBar />

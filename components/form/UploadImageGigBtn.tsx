@@ -2,7 +2,7 @@
 import { OurFileRouter } from "@/app/api/uploadthing/core";
 import { UploadButton } from "@uploadthing/react";
 import { useDispatch } from "react-redux";
-import { handleGigForm } from "@/store/newGigSlice";
+import { handleGigForm } from "@/store/gigSlice";
 import {
   setImageInfo,
   setImageStatusToFailed,

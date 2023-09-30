@@ -31,8 +31,8 @@ const PartOne = ({ active, type }: Props) => {
                 } `}
                 quality={100}
                 src={imageStored?.fileUrl}
-                height={90}
-                width={90}
+                height={300}
+                width={300}
                 alt="profile pic"
               />
             </div>
@@ -44,8 +44,8 @@ const PartOne = ({ active, type }: Props) => {
                 } `}
                 quality={100}
                 src={image?.url}
-                height={90}
-                width={90}
+                height={300}
+                width={300}
                 alt="profile pic"
               />
             </div>

@@ -12,7 +12,9 @@ export async function GET(request: NextRequest) {
     const userId = await getDataFromToken(request);
 
     // Fetch all gigs that note owned by the logged user
-    const allGigs = await Gig.find({ user_id: { $ne: userId } });
+    const allGigs = await Gig.find({ user_id: { $ne: userId } }).populate(
+      "user_id"
+    );
 
     // Fetch the list of favorites for the current user
     const userFavorites = await Favourite.find({ user_id: userId });
