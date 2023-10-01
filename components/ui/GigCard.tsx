@@ -1,8 +1,12 @@
-import { etoile, hearthEmpty } from "@/public/assets";
+import { etoile, hearthEmpty, deleteFavourite } from "@/public/assets";
 import Image from "next/image";
 import React from "react";
 
-const GigCard = ({ gig }: { gig: any }) => {
+type Props = {
+  gig: any;
+  isFavourite?: boolean;
+};
+const GigCard = ({ gig, isFavourite }: Props) => {
   const { title, category, rating, price, user_id, picture } = gig;
 
   return (
@@ -18,13 +22,23 @@ const GigCard = ({ gig }: { gig: any }) => {
           height={1000}
           quality={100}
         />
-        <Image
-          src={hearthEmpty}
-          alt="hearth empty"
-          className="absolute cursor-pointer top-4 right-4 "
-          width={20}
-          height={20}
-        />
+        {isFavourite ? (
+          <Image
+            src={deleteFavourite}
+            alt="delete favourite"
+            className="absolute cursor-pointer hover:scale-110 duration-150 ease-in-out top-2 right-3 "
+            width={25}
+            height={25}
+          />
+        ) : (
+          <Image
+            src={hearthEmpty}
+            alt="hearth empty"
+            className="absolute cursor-pointer hover:scale-110 duration-150 ease-in-out top-4 right-4 "
+            width={20}
+            height={20}
+          />
+        )}
       </div>
       {/* container 2 */}
       <div>
