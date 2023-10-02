@@ -33,7 +33,8 @@ import ringWhite from "./ringWhite.png";
 import arrowRight from "./arrow.png";
 import arrowLeft from "./arrow2.png";
 import etoile from "./etoile.png";
-import deleteFavourite from "./deleteFavourite.png";
+import deleteFavouriteImg from "./deleteFavourite.png";
+import hearthFill from "./hearthFill.png";
 
 export {
   logo,
@@ -71,5 +72,6 @@ export {
   arrowRight,
   arrowLeft,
   etoile,
-  deleteFavourite,
+  deleteFavouriteImg,
+  hearthFill,
 };

@@ -10,7 +10,7 @@ const Home = () => {
   const statusGetAllGigs: any = useAppSelector(
     (state) => state.gigs.statusGetAllGigs
   );
- 
+  console.log(gigs);
   return (
     <GridWrapper>
       {statusGetAllGigs === "loading" || statusGetAllGigs === ""

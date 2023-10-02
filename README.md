@@ -37,8 +37,18 @@ To get started with Upcoders, follow these simple steps:
    git clone https://github.com/devyassin/UpCoders.git
    
    ```
+2. Create a .env.local file in your project directory with the following content:
 
-Please make sure to update tests as appropriate.
+[<img src="https://firebasestorage.googleapis.com/v0/b/cloud-22c17.appspot.com/o/upCoders%2Finfo%2Fenvloval.png?alt=media&token=ff4c1d87-3e86-4597-911c-d6cd9f0a6891&_gl=1*1x6c858*_ga*MTAwNDk0MTAwMi4xNjY4NTA3ODMw*_ga_CW55HF8NVT*MTY5NjIzNTc4OC4yNC4xLjE2OTYyMzU4OTAuNjAuMC4w" width="100%">](https://firebasestorage.googleapis.com/v0/b/cloud-22c17.appspot.com/o/upCoders%2Finfo%2Fenvloval.png?alt=media&token=ff4c1d87-3e86-4597-911c-d6cd9f0a6891&_gl=1*1x6c858*_ga*MTAwNDk0MTAwMi4xNjY4NTA3ODMw*_ga_CW55HF8NVT*MTY5NjIzNTc4OC4yNC4xLjE2OTYyMzU4OTAuNjAuMC4w)
+
+
+* `MONGO_URL`: The connection string for your MongoDB database.
+* `JWT_SECRET_KEY`: A secret key used to sign and verify JWT tokens.
+* `UPLOADTHING_SECRET`: A secret key used to authenticate with the UploadThing service.
+* `UPLOADTHING_APP_ID`: Your UploadThing app ID.
+* `NEXT_PUBLIC_DOMAIN`: The domain of your Next.js application.
+* `ANALYZE`: Whether or not to enable analytics for your application.
+
 
 ## License
 

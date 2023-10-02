@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, current, createAsyncThunk } from "@reduxjs/toolkit";
 import { API_URL } from "@/constants/endpoints";
 import axios from "axios";
 
@@ -21,7 +21,7 @@ export const getAllFavourites = createAsyncThunk("favourites/all", async () => {
   }
 });
 
-// Add a new gig
+// Add a new favourite
 export const addFavourite = createAsyncThunk(
   "favourites/add",
   async (favourite, { rejectWithValue }) => {
@@ -34,17 +34,35 @@ export const addFavourite = createAsyncThunk(
   }
 );
 
+// Add a new favourite
+export const deleteFavourite = createAsyncThunk(
+  "favourites/delete",
+  async (gig_id, { rejectWithValue }) => {
+    try {
+      const response = await instance.delete(`/favourites/${gig_id}`);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 // Define the initial favourites state
 const initialState = {
-  data: [],
+  data: {
+    size: 0,
+    favourites: [],
+  },
   statusAddFavourite: "",
   statusGetAllFavourites: "",
+  statusDeleteFavourites: "",
   favourite: {
     gig_id: "",
     user_id: "",
   },
   errorAddFavourite: "",
   errorGetAllFavourites: "",
+  errorDeleteFavourites: "",
 };
 
 const favouriteSlice = createSlice({
@@ -74,6 +92,23 @@ const favouriteSlice = createSlice({
       .addCase(getAllFavourites.rejected, (state, { payload }: any) => {
         state.statusGetAllFavourites = "failed";
         state.errorGetAllFavourites = payload.response.data.message;
+      })
+      .addCase(deleteFavourite.pending, (state) => {
+        state.statusDeleteFavourites = "loading";
+      })
+      .addCase(deleteFavourite.fulfilled, (state, { payload }) => {
+        state.statusDeleteFavourites = "succeeded";
+        let gig_id = payload.favourite.gig_id;
+        state.data.favourites = state.data.favourites.filter(
+          (favourite: any) => {
+            return favourite.gig_id !== gig_id;
+          }
+        );
+        console.log(current(state.data));
+      })
+      .addCase(deleteFavourite.rejected, (state, { payload }: any) => {
+        state.statusDeleteFavourites = "failed";
+        state.errorDeleteFavourites = payload.response.data.message;
       });
   },
 });

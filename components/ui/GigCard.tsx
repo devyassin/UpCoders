@@ -1,13 +1,15 @@
-import { etoile, hearthEmpty, deleteFavourite } from "@/public/assets";
+import { etoile } from "@/public/assets";
 import Image from "next/image";
 import React from "react";
+import HearthComponent from "./HearthComponent";
 
 type Props = {
   gig: any;
-  isFavourite?: boolean;
+  isFavouriteCard?: boolean;
 };
-const GigCard = ({ gig, isFavourite }: Props) => {
-  const { title, category, rating, price, user_id, picture } = gig;
+const GigCard = ({ gig, isFavouriteCard }: Props) => {
+  const { title, category, rating, price, user_id, picture, isFavorite, _id } =
+    gig;
 
   return (
     <div className="bg-blue-dark-4 rounded-[20px] border border-white pb-4 hover:cursor-pointer hover:opacity-80 duration-150 ease-in-out">
@@ -22,23 +24,11 @@ const GigCard = ({ gig, isFavourite }: Props) => {
           height={1000}
           quality={100}
         />
-        {isFavourite ? (
-          <Image
-            src={deleteFavourite}
-            alt="delete favourite"
-            className="absolute cursor-pointer hover:scale-110 duration-150 ease-in-out top-2 right-3 "
-            width={25}
-            height={25}
-          />
-        ) : (
-          <Image
-            src={hearthEmpty}
-            alt="hearth empty"
-            className="absolute cursor-pointer hover:scale-110 duration-150 ease-in-out top-4 right-4 "
-            width={20}
-            height={20}
-          />
-        )}
+        <HearthComponent
+          isFavorite={isFavorite}
+          isFavouriteCard={isFavouriteCard}
+          gig_id={_id}
+        />
       </div>
       {/* container 2 */}
       <div>
