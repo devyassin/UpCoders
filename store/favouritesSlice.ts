@@ -24,7 +24,7 @@ export const getAllFavourites = createAsyncThunk("favourites/all", async () => {
 // Add a new favourite
 export const addFavourite = createAsyncThunk(
   "favourites/add",
-  async (favourite, { rejectWithValue }) => {
+  async (favourite: any, { rejectWithValue }) => {
     try {
       const response = await instance.post(`/favourites`, favourite);
       return response.data;
@@ -37,7 +37,7 @@ export const addFavourite = createAsyncThunk(
 // Add a new favourite
 export const deleteFavourite = createAsyncThunk(
   "favourites/delete",
-  async (gig_id, { rejectWithValue }) => {
+  async (gig_id: string, { rejectWithValue }) => {
     try {
       const response = await instance.delete(`/favourites/${gig_id}`);
       return response.data;
@@ -68,7 +68,18 @@ const initialState = {
 const favouriteSlice = createSlice({
   name: "favourites",
   initialState,
-  reducers: {},
+  reducers: {
+    deleteFavFnc: (state, { payload }) => {
+      let gig_id = payload;
+      console.log(current(state).data.favourites);
+
+      state.data.favourites = state.data.favourites.filter((favourite: any) => {
+        console.log(favourite);
+
+        return favourite.gig_id._id !== gig_id;
+      });
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addFavourite.pending, (state) => {
@@ -98,13 +109,7 @@ const favouriteSlice = createSlice({
       })
       .addCase(deleteFavourite.fulfilled, (state, { payload }) => {
         state.statusDeleteFavourites = "succeeded";
-        let gig_id = payload.favourite.gig_id;
-        state.data.favourites = state.data.favourites.filter(
-          (favourite: any) => {
-            return favourite.gig_id !== gig_id;
-          }
-        );
-        console.log(current(state.data));
+        // let gig_id = payload.favourite.gig_id;
       })
       .addCase(deleteFavourite.rejected, (state, { payload }: any) => {
         state.statusDeleteFavourites = "failed";
@@ -113,4 +118,5 @@ const favouriteSlice = createSlice({
   },
 });
 
+export const { deleteFavFnc } = favouriteSlice.actions;
 export default favouriteSlice.reducer;
