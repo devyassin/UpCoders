@@ -37,11 +37,25 @@ export const addGig = createAsyncThunk(
   }
 );
 
+// Get one gig
+export const getOneGig = createAsyncThunk(
+  "gigs/getOneGig",
+  async (id: any, { rejectWithValue }) => {
+    try {
+      const response = await instance.get(`/gigs/${id}`);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 // Define the initial gig state
 const initialState = {
   data: [],
   statusAddGig: "",
   statusGetAllGigs: "",
+  statusGetOneGig: "",
   gig: {
     picture: {
       fileUrl: "",
@@ -59,6 +73,7 @@ const initialState = {
   },
   errorAddGig: "",
   errorGetAllGigs: "",
+  errorGetOneGig: "",
 };
 
 const gigSlice = createSlice({
@@ -111,6 +126,17 @@ const gigSlice = createSlice({
       .addCase(getAllGigs.rejected, (state, { payload }: any) => {
         state.statusGetAllGigs = "failed";
         state.errorGetAllGigs = payload.response.data.message;
+      })
+      .addCase(getOneGig.pending, (state) => {
+        state.statusGetOneGig = "loading";
+      })
+      .addCase(getOneGig.fulfilled, (state, { payload }) => {
+        state.statusGetOneGig = "succeeded";
+        state.gig = payload;
+      })
+      .addCase(getOneGig.rejected, (state, { payload }: any) => {
+        state.statusGetOneGig = "failed";
+        state.errorGetOneGig = payload.response.data.message;
       });
   },
 });

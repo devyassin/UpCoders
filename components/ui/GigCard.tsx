@@ -1,6 +1,8 @@
 import { etoile } from "@/public/assets";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+import EtoileRating from "./EtoileRating";
 import HearthComponent from "./HearthComponent";
 
 type Props = {
@@ -12,7 +14,10 @@ const GigCard = ({ gig, isFavouriteCard }: Props) => {
     gig;
 
   return (
-    <div className="bg-blue-dark-4 rounded-[20px] border border-white pb-4 hover:cursor-pointer hover:opacity-80 duration-150 ease-in-out">
+    <Link
+      href={`home/${gig._id}`}
+      className="bg-blue-dark-4 rounded-[20px] border border-white pb-4 hover:cursor-pointer hover:opacity-80 duration-150 ease-in-out"
+    >
       {/* container 1 */}
       <div className="relative">
         {/* image */}
@@ -52,17 +57,7 @@ const GigCard = ({ gig, isFavouriteCard }: Props) => {
           {title}
         </div>
         {/* gig rating */}
-        <div className="flex px-3 font-tajwal pt-2 space-x-1 items-center">
-          <Image
-            className="h-[17px] w-[18px]"
-            src={etoile}
-            alt="etoile"
-            width={200}
-            height={200}
-          />
-          <p className="text-[16px] text-shadow-green">{rating}.0</p>
-          <p className="text-[16px] text-darkentwo">(0)</p>
-        </div>
+        <EtoileRating rating={rating} numberOfRaters={0} />
 
         {/* gig price */}
         <h1 className="text-[17px] text-light-green font-bold tracking-wide font-tajwal pt-4 px-3">
@@ -70,7 +65,7 @@ const GigCard = ({ gig, isFavouriteCard }: Props) => {
           {user_id.country}${price}
         </h1>
       </div>
-    </div>
+    </Link>
   );
 };
 

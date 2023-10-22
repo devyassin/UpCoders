@@ -35,6 +35,7 @@ import arrowLeft from "./arrow2.png";
 import etoile from "./etoile.png";
 import deleteFavouriteImg from "./deleteFavourite.png";
 import hearthFill from "./hearthFill.png";
+import contry from "./contry.png";
 
 export {
   logo,
@@ -74,4 +75,5 @@ export {
   etoile,
   deleteFavouriteImg,
   hearthFill,
+  contry,
 };

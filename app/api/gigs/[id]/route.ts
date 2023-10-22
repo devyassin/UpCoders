@@ -13,7 +13,7 @@ export async function GET(
   try {
     const gigId = params.id;
 
-    const gig = await Gig.findById({ _id: gigId });
+    const gig = await Gig.findById({ _id: gigId }).populate("user_id");
     if (!gig) {
       return NextResponse.json({ message: "Gig not found !" }, { status: 404 });
     }
