@@ -183,3 +183,9 @@ body::-webkit-scrollbar-thumb {
   font-size: 18px;
   border: 0px !important;
 }
+
+.container-card-price {
+  border-radius: 7px;
+  border: 1px solid #15192b;
+  background: #20263d;
+}

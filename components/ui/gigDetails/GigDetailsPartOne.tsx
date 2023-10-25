@@ -26,8 +26,8 @@ const GigDetailsPartOne = ({ gig }: Props) => {
             className="h-[70px] w-[70px] rounded-full mr-2"
           />
           {/* info 1 */}
-          <div className="flex flex-col space-y-1">
-            <h3 className="text-light-white font-tajwal text-[20px]">{`${gig?.user_id?.firstName} ${gig?.user_id?.lastName}`}</h3>
+          <div className="flex flex-col items-start  space-y-1">
+            <h3 className="text-light-white pl-3 font-tajwal text-[20px]">{`${gig?.user_id?.firstName} ${gig?.user_id?.lastName}`}</h3>
             <EtoileRating rating={rating} numberOfRaters={0} />
           </div>
         </div>

@@ -4,6 +4,8 @@ import { useAppSelector } from "@/store/store";
 import { useDispatch } from "react-redux";
 import { getOneGig } from "@/store/gigSlice";
 import GigDetailsPartOne from "@/components/ui/gigDetails/GigDetailsPartOne";
+import GigDetailsSkeleton from "@/components/skeleton/GigDetailsSkeleton";
+import GigDetailsPartTwo from "@/components/ui/gigDetails/GigDetailsPartTwo";
 
 type Props = {
   params: { id: string };
@@ -13,21 +15,25 @@ const page = ({ params: { id } }: Props) => {
   useEffect(() => {
     dispatch(getOneGig(id));
   }, []);
-  const gig = useAppSelector((state) => state.gigs.gig.gig);
+  const gig: any = useAppSelector((state) => state.gigs.gig);
   const statusGetOneGig: any = useAppSelector(
     (state) => state.gigs.statusGetOneGig
   );
   return (
     <div>
       {statusGetOneGig === "loading" || statusGetOneGig === "" ? (
-        <div>Loading ....</div>
+        <div>
+          <GigDetailsSkeleton />
+        </div>
       ) : statusGetOneGig === "succeeded" ? (
-        <div className="grid grid-cols-2 mx-6  pt-10">
+        <div className="grid grid-cols-2 mx-6 gap-x-20 pt-10">
           {" "}
           <div className="flex flex-col">
-            <GigDetailsPartOne gig={gig} />
+            <GigDetailsPartOne gig={gig.gig} />
           </div>
-          <div></div>
+          <div>
+            <GigDetailsPartTwo />
+          </div>
         </div>
       ) : null}
     </div>

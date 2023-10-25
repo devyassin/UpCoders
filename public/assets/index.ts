@@ -36,6 +36,9 @@ import etoile from "./etoile.png";
 import deleteFavouriteImg from "./deleteFavourite.png";
 import hearthFill from "./hearthFill.png";
 import contry from "./contry.png";
+import cloock from "./cloock.png";
+import orderArrow from "./orderArrow.png";
+import features from "./features.png";
 
 export {
   logo,
@@ -76,4 +79,7 @@ export {
   deleteFavouriteImg,
   hearthFill,
   contry,
+  cloock,
+  orderArrow,
+  features,
 };
