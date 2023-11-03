@@ -32,7 +32,7 @@ const page = ({ params: { id } }: Props) => {
             <GigDetailsPartOne gig={gig.gig} />
           </div>
           <div>
-            <GigDetailsPartTwo />
+            <GigDetailsPartTwo gig={gig.gig} />
           </div>
         </div>
       ) : null}
