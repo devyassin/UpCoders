@@ -189,3 +189,16 @@ body::-webkit-scrollbar-thumb {
   border: 1px solid #15192b;
   background: #20263d;
 }
+
+/* gig details */
+
+#gig_details_container h1,
+#gig_details_container h2,
+#gig_details_container h3,
+#gig_details_container h4,
+#gig_details_container h5,
+#gig_details_container h6 {
+  color: rgba(240, 46, 94, 0.83);
+  font-size: 24px;
+  font-family: Tajawal;
+}

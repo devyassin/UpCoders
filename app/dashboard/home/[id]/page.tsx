@@ -6,6 +6,7 @@ import { getOneGig } from "@/store/gigSlice";
 import GigDetailsPartOne from "@/components/ui/gigDetails/GigDetailsPartOne";
 import GigDetailsSkeleton from "@/components/skeleton/GigDetailsSkeleton";
 import GigDetailsPartTwo from "@/components/ui/gigDetails/GigDetailsPartTwo";
+import GigDetailsPartThree from "@/components/ui/gigDetails/GigDetailsPartThree";
 
 type Props = {
   params: { id: string };
@@ -33,6 +34,9 @@ const page = ({ params: { id } }: Props) => {
           </div>
           <div>
             <GigDetailsPartTwo gig={gig.gig} />
+          </div>
+          <div>
+            <GigDetailsPartThree gig={gig.gig} />
           </div>
         </div>
       ) : null}
