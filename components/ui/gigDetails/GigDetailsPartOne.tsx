@@ -12,7 +12,7 @@ const GigDetailsPartOne = ({ gig }: Props) => {
   const { title, rating } = gig;
   return (
     <div>
-      <h1 className="text-[36px] text-white font-semibold font-tajwal pb-6">
+      <h1 className="text-[36px] max-lg:text-[28px] text-white font-semibold font-tajwal pb-6">
         {title}
       </h1>
       <div className="flex justify-between items-start ">
@@ -23,24 +23,24 @@ const GigDetailsPartOne = ({ gig }: Props) => {
             alt={gig?.user_id?.picture?.fileKey}
             width={300}
             height={300}
-            className="h-[70px] w-[70px] rounded-full mr-2"
+            className="h-[70px] w-[70px] max-lg:h-[60px] max-lg:w-[60px] rounded-full mr-2"
           />
           {/* info 1 */}
           <div className="flex flex-col items-start  space-y-1">
-            <h3 className="text-light-white pl-3 font-tajwal text-[20px]">{`${gig?.user_id?.firstName} ${gig?.user_id?.lastName}`}</h3>
+            <h3 className="text-light-white pl-3 font-tajwal text-[20px] max-lg:text-[16px]">{`${gig?.user_id?.firstName} ${gig?.user_id?.lastName}`}</h3>
             <EtoileRating rating={rating} numberOfRaters={0} />
           </div>
         </div>
         {/* info 2 */}
         <div className="flex items-center space-x-1">
           <Image
-            className="h-[18px] w-[19px]"
+            className="h-[18px] w-[19px] max-lg:h-[15px] max-lg:w-[16px]"
             src={contry}
             alt="contry"
             width={200}
             height={200}
           />
-          <h3 className="text-darkentwo text-[16px] font-tajwal">
+          <h3 className="text-darkentwo text-[16px] max-lg:text-[14px] font-tajwal">
             {gig?.user_id?.country}
           </h3>
         </div>

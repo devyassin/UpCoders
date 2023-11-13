@@ -21,21 +21,21 @@ const page = ({ params: { id } }: Props) => {
     (state) => state.gigs.statusGetOneGig
   );
   return (
-    <div>
+    <div className="">
       {statusGetOneGig === "loading" || statusGetOneGig === "" ? (
         <div>
           <GigDetailsSkeleton />
         </div>
       ) : statusGetOneGig === "succeeded" ? (
-        <div className="grid grid-cols-2 mx-6 gap-x-20 pt-10">
+        <div className="grid grid-cols-2  mx-6 gap-x-20 pt-10 max-md:gap-y-8">
           {" "}
-          <div className="flex flex-col">
+          <div className="flex flex-col max-md:col-span-2 ">
             <GigDetailsPartOne gig={gig.gig} />
           </div>
-          <div>
+          <div className="sticky top-0 max-md:col-span-2 max-md:relative">
             <GigDetailsPartTwo gig={gig.gig} />
           </div>
-          <div>
+          <div className="max-md:col-span-2 ">
             <GigDetailsPartThree gig={gig.gig} />
           </div>
         </div>
