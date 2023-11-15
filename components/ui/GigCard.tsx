@@ -14,21 +14,21 @@ const GigCard = ({ gig, isFavouriteCard }: Props) => {
     gig;
 
   return (
-    <Link
-      href={`home/${gig._id}`}
-      className="bg-blue-dark-4 rounded-[20px] border border-white pb-4 hover:cursor-pointer hover:opacity-80 duration-150 ease-in-out"
-    >
+    <div className="bg-blue-dark-4 rounded-[20px] border border-white pb-4 hover:cursor-pointer hover:opacity-80 duration-150 ease-in-out">
       {/* container 1 */}
       <div className="relative">
         {/* image */}
-        <Image
-          src={picture.fileUrl}
-          alt={picture.fileKey}
-          className="h-[20vh] w-full rounded-t-[20px] border-b border-white"
-          width={1000}
-          height={1000}
-          quality={100}
-        />
+        <Link href={`home/${gig._id}`}>
+          <Image
+            src={picture.fileUrl}
+            alt={picture.fileKey}
+            className="h-[20vh] w-full rounded-t-[20px] border-b border-white"
+            width={1000}
+            height={1000}
+            quality={100}
+          />
+        </Link>
+
         <HearthComponent
           isFavorite={isFavorite}
           isFavouriteCard={isFavouriteCard}
@@ -36,7 +36,7 @@ const GigCard = ({ gig, isFavouriteCard }: Props) => {
         />
       </div>
       {/* container 2 */}
-      <div>
+      <Link href={`home/${gig._id}`}>
         <div className="flex justify-between pt-4 px-3 items-center">
           {/* gig owner icon profile */}
           <div className="flex items-center space-x-2">
@@ -64,8 +64,8 @@ const GigCard = ({ gig, isFavouriteCard }: Props) => {
           <span>From </span>
           {user_id.country}${price}
         </h1>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

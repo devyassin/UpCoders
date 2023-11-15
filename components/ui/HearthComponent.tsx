@@ -27,7 +27,7 @@ const HearthComponent = ({ isFavorite, isFavouriteCard, gig_id }: Props) => {
         <Image
           src={deleteFavouriteImg}
           alt="delete favourite"
-          className="absolute cursor-pointer hover:scale-110 duration-150 ease-in-out top-2 right-3"
+          className="absolute cursor-pointer hover:scale-110 duration-150 ease-in-out top-2 right-3 z-10"
           width={25}
           height={25}
           onClick={async () => {
@@ -39,7 +39,7 @@ const HearthComponent = ({ isFavorite, isFavouriteCard, gig_id }: Props) => {
         <Image
           src={hearthFill}
           alt="hearth fill"
-          className="absolute cursor-pointer hover:scale-110 duration-150 ease-in-out top-4 right-4"
+          className="absolute cursor-pointer hover:scale-110 duration-150 ease-in-out top-4 right-4 z-10"
           width={20}
           height={20}
           onClick={async () => {
@@ -51,7 +51,7 @@ const HearthComponent = ({ isFavorite, isFavouriteCard, gig_id }: Props) => {
         <Image
           src={hearthEmpty}
           alt="hearth empty"
-          className="absolute cursor-pointer hover:scale-110 duration-150 ease-in-out top-4 right-4"
+          className="absolute cursor-pointer hover:scale-110 duration-150 ease-in-out top-4 right-4 z-10"
           width={20}
           height={20}
           onClick={async () => {
