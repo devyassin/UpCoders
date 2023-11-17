@@ -4,7 +4,7 @@ import { cloock, features } from "@/public/assets";
 import Image from "next/image";
 import { GigType } from "@/types";
 import OrderBtn from "@/components/btn/OrderBtn";
-import ContactMeBtn from "@/components/btn/ContactMeBtn";
+import GreenBtn from "@/components/btn/GreenBtn";
 
 type Props = {
   gig: GigType;
@@ -15,14 +15,25 @@ const GigDetailsPartTwo = ({ gig }: Props) => {
     <div className="container-card-price flex flex-col pb-4 pt-4">
       {/* header card */}
       <div className="flex justify-between px-4">
-        <TitleSec title="Price" classStyles="text-light-white-2 max-lg:text-[28px]" />
-        <TitleSec title={`${gig.price}$`} classStyles="text-light-green max-lg:text-[28px]"  />
+        <TitleSec
+          title="Price"
+          classStyles="text-light-white-2 max-lg:text-[28px]"
+        />
+        <TitleSec
+          title={`${gig.price}$`}
+          classStyles="text-light-green max-lg:text-[28px]"
+        />
       </div>
       <hr className="opacity-60 mt-4" />
       {/* Note */}
       <div className=" font-tajwal px-4 mt-2">
-        <span className="text-light-white-2 text-[20px] max-lg:text-[16px]">Note :</span>
-        <span className="text-[16px] max-lg:text-[14px]  text-white mt-1"> {gig.note}</span>
+        <span className="text-light-white-2 text-[20px] max-lg:text-[16px]">
+          Note :
+        </span>
+        <span className="text-[16px] max-lg:text-[14px]  text-white mt-1">
+          {" "}
+          {gig.note}
+        </span>
       </div>
       {/* Time */}
       <div className="flex items-center px-4 mt-4 font-tajwal space-x-10">
@@ -41,7 +52,9 @@ const GigDetailsPartTwo = ({ gig }: Props) => {
                 height={20}
                 width={20}
               />
-              <span className="text-light-white-2 text-[16px] max-lg:text-[14px]">{feature}</span>
+              <span className="text-light-white-2 text-[16px] max-lg:text-[14px]">
+                {feature}
+              </span>
             </div>
           );
         })}
@@ -50,7 +63,10 @@ const GigDetailsPartTwo = ({ gig }: Props) => {
         {/* btn order */}
         <OrderBtn />
         {/* btn contact */}
-        <ContactMeBtn />
+        <GreenBtn
+          text="Contact me"
+          customClasses=" text-[20px] max-lg:text-[16px] h-[50px] w-full"
+        />
       </div>
     </div>
   );

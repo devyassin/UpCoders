@@ -27,7 +27,7 @@ export default function RootLayout({
         <SideNavBar />
         <div className="">
           <ScrollBarCategories />
-          <div className="overflow-y-scroll scroll scroll-smooth scrollbar-hide h-[75vh] ">
+          <div className="overflow-y-scroll scroll scroll-smooth little-scrollbar-global max-sm:scrollbar-hide h-[75vh] ">
             {children}
           </div>
         </div>

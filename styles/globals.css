@@ -34,6 +34,15 @@ body::-webkit-scrollbar-thumb {
   background-color: #beb4b4;
 }
 
+
+.little-scrollbar-global::-webkit-scrollbar {
+  width: 4px;
+}
+
+.little-scrollbar-global::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #beb4b4;
+}
 /* .bgGlobal {
   background-image: url("../public/assets/bgGlobal.webp");
 } */
