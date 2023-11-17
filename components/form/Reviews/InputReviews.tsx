@@ -1,5 +1,6 @@
-import React from "react";
-
+import { handleReviewForm } from "@/store/ReviewSlice";
+import React, { ChangeEvent } from "react";
+import { useDispatch } from "react-redux";
 type Props = {
   customClasses?: string;
   name: string;
@@ -15,9 +16,21 @@ const InputReviews = ({
   value,
   container,
 }: Props) => {
+  const dispatch = useDispatch();
+  const handleChange = (
+    event: ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    let { name, value }: any = event.target;
+
+    dispatch(handleReviewForm({ name, value }));
+  };
   return (
     <div className={`${container}`}>
       <textarea
+        onChange={handleChange}
+        value={value}
         rows={10}
         name={name}
         className={`input-form focus:bg-dark-6 outline-none  font-tajwal h-[61px] w-[273px] scrollbar-hide px-[28px] pt-[25px] pb-[19px] text-white ${customClasses}`}
