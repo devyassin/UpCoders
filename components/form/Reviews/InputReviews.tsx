@@ -1,4 +1,5 @@
-import { handleReviewForm } from "@/store/ReviewSlice";
+import { handleReviewForm, setUserIdAndGigId } from "@/store/ReviewSlice";
+import { useAppSelector } from "@/store/store";
 import React, { ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 type Props = {
@@ -17,13 +18,15 @@ const InputReviews = ({
   container,
 }: Props) => {
   const dispatch = useDispatch();
+  const gig: any = useAppSelector((state) => state.gigs.gig);
+  const user = useAppSelector((state) => state.user.user);
   const handleChange = (
     event: ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
     let { name, value }: any = event.target;
-
+    dispatch(setUserIdAndGigId({ gig_id: gig.gig._id, user_id: user._id }));
     dispatch(handleReviewForm({ name, value }));
   };
   return (

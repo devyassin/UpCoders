@@ -55,6 +55,14 @@ const reviewSlice = createSlice({
       const { name, value } = payload;
       state.review[name] = value;
     },
+    setUserIdAndGigId: (
+      state: any,
+      { payload }: PayloadAction<{ gig_id: string; user_id: string }>
+    ) => {
+      const { gig_id, user_id } = payload;
+      state.review.gig_id = gig_id;
+      state.review.user_id = user_id;
+    },
     clearReview: (state) => {
       state.review = initialState.review;
     },
@@ -77,6 +85,10 @@ const reviewSlice = createSlice({
   },
 });
 
-export const { clearReview, clearStatusReview, handleReviewForm } =
-  reviewSlice.actions;
+export const {
+  clearReview,
+  clearStatusReview,
+  handleReviewForm,
+  setUserIdAndGigId,
+} = reviewSlice.actions;
 export default reviewSlice.reducer;
