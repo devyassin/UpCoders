@@ -59,4 +59,5 @@ export interface ReviewType {
   likes: [Types.ObjectId];
   gig_id: Types.ObjectId;
   user_id: Types.ObjectId;
+  toObject(): any;
 }

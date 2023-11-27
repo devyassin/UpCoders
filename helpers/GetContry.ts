@@ -11,3 +11,14 @@ export const fetchCountryNames = async () => {
     throw error;
   }
 };
+
+
+export const fetchCountryFlagByName = async (name:string) => {
+  try {
+    const response = await axios.get(`https://restcountries.com/v3.1/name/${name}`);
+    const countryFlag= response.data[0]?.flags?.png;
+    return countryFlag;
+  } catch (error) {
+    throw error;
+  }
+};

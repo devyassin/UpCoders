@@ -1,4 +1,5 @@
 import connect from "@/database/database";
+import { fetchCountryFlagByName } from "@/helpers/GetContry";
 import { compareUserId, getDataFromToken } from "@/helpers/GetDataFromToken";
 import Review from "@/models/Review";
 import { ReviewType } from "@/types";
@@ -9,9 +10,20 @@ connect();
 export async function GET(request: NextRequest) {
   try {
     const userId = await getDataFromToken(request);
-    const reviews: ReviewType[] = await Review.find({ user_id: userId });
+    const reviews: ReviewType[] = await Review.find({
+      user_id: userId,
+    }).populate("user_id");
 
-    return NextResponse.json({ size: reviews.length, reviews: reviews });
+    // Determine which gigs are favorites
+    const reviewsWithNumberOfLikes = reviews.map((review) => ({
+      ...review.toObject(),
+      numberOfLikes: review.likes.length,
+    }));
+
+    return NextResponse.json({
+      size: reviews.length,
+      reviews: reviewsWithNumberOfLikes,
+    });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

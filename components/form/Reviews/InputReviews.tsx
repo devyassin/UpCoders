@@ -36,7 +36,7 @@ const InputReviews = ({
         value={value}
         rows={10}
         name={name}
-        className={`input-form focus:bg-dark-6 outline-none  font-tajwal h-[61px] w-[273px] scrollbar-hide px-[28px] pt-[25px] pb-[19px] text-white ${customClasses}`}
+        className={`input-form focus:bg-dark-6 outline-none  font-tajwal  h-[200px] w-[273px] scrollbar-hide px-[28px] pt-[25px] pb-[19px] text-white ${customClasses}`}
         placeholder={placeholder}
       ></textarea>
     </div>

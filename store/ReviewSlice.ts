@@ -14,6 +14,16 @@ const instance = axios.create({
   },
 });
 
+// get all reviews
+export const getAllReviews = createAsyncThunk("reviews/all", async () => {
+  try {
+    const response = await instance.get("/reviews");
+    return response.data;
+  } catch (error: any) {
+    return new Error(error.message);
+  }
+});
+
 // Add a new reviews
 export const addReview = createAsyncThunk(
   "reviews/add",
@@ -81,6 +91,17 @@ const reviewSlice = createSlice({
       .addCase(addReview.rejected, (state, { payload }: any) => {
         state.statusAddReview = "failed";
         state.errorAddReview = payload.response.data.message;
+      })
+      .addCase(getAllReviews.pending, (state) => {
+        state.statusGetAllReviews = "loading";
+      })
+      .addCase(getAllReviews.fulfilled, (state, { payload }) => {
+        state.statusGetAllReviews = "succeeded";
+        state.data = payload;
+      })
+      .addCase(getAllReviews.rejected, (state, { payload }: any) => {
+        state.statusGetAllReviews = "failed";
+        state.errorGetAllReview = payload.response.data.message;
       });
   },
 });

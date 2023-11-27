@@ -8,6 +8,7 @@ import GigDetailsSkeleton from "@/components/skeleton/GigDetailsSkeleton";
 import GigDetailsPartTwo from "@/components/ui/gigDetails/GigDetailsPartTwo";
 import GigDetailsPartThree from "@/components/ui/gigDetails/GigDetailsPartThree";
 import GigDetailsPartFour from "@/components/ui/gigDetails/GigDetailsPartFour";
+import GigDetailsPartFive from "@/components/ui/gigDetails/GigDetailsPartFive";
 
 type Props = {
   params: { id: string };
@@ -42,6 +43,10 @@ const page = ({ params: { id } }: Props) => {
           <div className=" "></div>
           <div className=" max-md:col-span-2">
             <GigDetailsPartFour />
+          </div>
+          <div className=" "></div>
+          <div className=" max-md:col-span-2">
+            <GigDetailsPartFive />
           </div>
         </div>
       ) : null}
