@@ -5,6 +5,7 @@ import { getAllReviews } from "@/store/ReviewSlice";
 import GigDetailsSkeleton from "@/components/skeleton/GigDetailsSkeleton";
 import Review from "../Review";
 
+
 type Props = {};
 
 const GigDetailsPartFive = (props: Props) => {
@@ -16,7 +17,7 @@ const GigDetailsPartFive = (props: Props) => {
   const statusGetAllReviews: any = useAppSelector(
     (state) => state.reviews.statusGetAllReviews
   );
-  console.log(reviews);
+
   return (
     <div>
       {statusGetAllReviews === "loading" || statusGetAllReviews === "" ? (

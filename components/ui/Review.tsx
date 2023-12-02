@@ -1,4 +1,5 @@
 import { fetchCountryFlagByName } from "@/helpers/GetContry";
+import { likes } from "@/public/assets";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import StartsRating from "./StartsRating";
@@ -27,7 +28,7 @@ const Review = ({ review }: Props) => {
   return (
     <div className="flex flex-col  py-2 ">
       {" "}
-      <div className="flex items-center space-x-2 pb-6">
+      <div className="flex items-center space-x-2 pb-3">
         <Image
           className="rounded-full object-cover object-center  h-[40px] w-[40px] "
           src={review.user_id.picture.fileUrl}
@@ -55,7 +56,31 @@ const Review = ({ review }: Props) => {
           </div>
         </div>
       </div>
-      <StartsRating />
+      <div className="flex items-center space-x-2">
+        <StartsRating />
+        <p className="font-tajwal text-[12px] text-shadow-green font-bold pr-4">
+          5.0
+        </p>
+        <div className="bg-darken h-4  w-[1px]" />
+        <p className="font-tajwal text-[10px]  font-bold pr-4 text-[#B7B797] opacity-70 pl-4">
+          1 month ago
+        </p>
+      </div>
+      <div className="font-tajwal text-light-white text-[14px] pt-4">
+        {review.comment}
+      </div>
+      <div className="flex pt-4 space-x-2 items-end">
+        <Image
+          className=" h-[18px] w-[26px] "
+          src={likes}
+          alt={`likes ${review._id}`}
+          width={40}
+          height={40}
+          quality={100}
+        />
+        <p className="text-[14px] text-darkentwo">({review.numberOfLikes})</p>
+      </div>
+      <hr className="mt-4 text-[#C49494] opacity-40 pb-10" />
     </div>
   );
 };

@@ -39,6 +39,7 @@ import contry from "./contry.png";
 import cloock from "./cloock.png";
 import orderArrow from "./orderArrow.png";
 import features from "./features.png";
+import likes from "./likes.png";
 
 export {
   logo,
@@ -82,4 +83,5 @@ export {
   cloock,
   orderArrow,
   features,
+  likes,
 };
