@@ -15,14 +15,20 @@ const instance = axios.create({
 });
 
 // get all reviews
-export const getAllReviews = createAsyncThunk("reviews/all", async () => {
-  try {
-    const response = await instance.get("/reviews");
-    return response.data;
-  } catch (error: any) {
-    return new Error(error.message);
+export const getAllReviews = createAsyncThunk(
+  "reviews/all",
+  async (page: number) => {
+    try {
+      const response = await instance.get(
+        `/reviews?page=${page ? page : 1}&limit=3&sort=-createdAt`
+      );
+      return response.data;
+    } catch (error: any) {
+      return new Error(error.message);
+    }
   }
-});
+);
+
 
 // Add a new reviews
 export const addReview = createAsyncThunk(
@@ -40,6 +46,7 @@ export const addReview = createAsyncThunk(
 // Define the initial review state
 const initialState = {
   data: [],
+  numPage: 0,
   statusAddReview: "",
   statusGetAllReviews: "",
   statusGetOneReview: "",

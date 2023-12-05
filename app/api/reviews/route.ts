@@ -1,5 +1,6 @@
 import connect from "@/database/database";
-import { fetchCountryFlagByName } from "@/helpers/GetContry";
+import { APIFeatures, FromUrlToObject } from "@/helpers/ApiHelpers";
+
 import { compareUserId, getDataFromToken } from "@/helpers/GetDataFromToken";
 import Review from "@/models/Review";
 import { ReviewType } from "@/types";
@@ -9,10 +10,15 @@ connect();
 
 export async function GET(request: NextRequest) {
   try {
-    const userId = await getDataFromToken(request);
-    const reviews: ReviewType[] = await Review.find({
+    const userId = await getDataFromToken(request)!;
+    const queryObj = FromUrlToObject(request);
+    const query = Review.find({
       user_id: userId,
     }).populate("user_id");
+
+    const features = new APIFeatures(query, queryObj).sort().paginate();
+
+    const reviews: ReviewType[] = await features.query;
 
     // Determine which gigs are favorites
     const reviewsWithNumberOfLikes = reviews.map((review) => ({

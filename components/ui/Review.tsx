@@ -17,6 +17,7 @@ const Review = ({ review }: Props) => {
         const countryName = review.user_id.country;
         const flag = await fetchCountryFlagByName(countryName);
         setCountryFlag(flag);
+        console.log(flag);
       } catch (error) {
         console.error("Error fetching country flag:", error);
       }

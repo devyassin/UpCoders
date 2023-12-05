@@ -5,9 +5,10 @@ type Props = {};
 const StartsRating = (props: Props) => {
   return (
     <div className="flex items-center">
-      {[...Array(4)].map((item) => {
+      {[...Array(4)].map((item, i) => {
         return (
           <svg
+            key={i}
             className="w-3 h-3 text-yellow-300 ms-1"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"

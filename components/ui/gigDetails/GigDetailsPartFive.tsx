@@ -4,14 +4,14 @@ import { useAppSelector } from "@/store/store";
 import { getAllReviews } from "@/store/ReviewSlice";
 import GigDetailsSkeleton from "@/components/skeleton/GigDetailsSkeleton";
 import Review from "../Review";
-
+import LoadMore from "../LoadMore";
 
 type Props = {};
-
+let page = 1;
 const GigDetailsPartFive = (props: Props) => {
   const dispatch = useDispatch<any>();
   useEffect(() => {
-    dispatch(getAllReviews());
+    dispatch(getAllReviews(page));
   }, []);
   let reviews: any = useAppSelector((state) => state.reviews.data);
   const statusGetAllReviews: any = useAppSelector(
@@ -28,11 +28,13 @@ const GigDetailsPartFive = (props: Props) => {
         <div>
           {reviews.reviews.map((review: any, i: number) => {
             return (
-              <div className="flex flex-col space-y-80">
+              <div className="flex flex-col space-y-80" key={i}>
                 <Review review={review} key={i} />
               </div>
             );
           })}
+
+          <LoadMore />
         </div>
       ) : null}
     </div>
