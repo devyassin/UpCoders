@@ -12,8 +12,9 @@ export async function GET(request: NextRequest) {
   try {
     const userId = await getDataFromToken(request)!;
     const queryObj = FromUrlToObject(request);
+ 
     const query = Review.find({
-      user_id: userId,
+      gig_id: queryObj.gig_id,
     }).populate("user_id");
 
     const features = new APIFeatures(query, queryObj).sort().paginate();

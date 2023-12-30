@@ -10,10 +10,10 @@ const instance = axios.create({
   },
 });
 
-export const fetchReviews = async (page: number) => {
+export const fetchReviews = async (page: number, gig_id: string) => {
   try {
     const response = await instance.get(
-      `/reviews?page=${page ? page : 1}&limit=3&sort=-createdAt`
+      `/reviews?page=${page ? page : 1}&limit=3&sort=-createdAt&gig_id=${gig_id}`
     );
     return response.data.reviews;
   } catch (error) {

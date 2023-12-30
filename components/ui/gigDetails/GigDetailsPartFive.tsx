@@ -10,8 +10,10 @@ type Props = {};
 let page = 1;
 const GigDetailsPartFive = (props: Props) => {
   const dispatch = useDispatch<any>();
+  let gig: any = useAppSelector((state) => state.gigs.gig);
   useEffect(() => {
-    dispatch(getAllReviews(page));
+    let gig_id = gig.gig._id;
+    dispatch(getAllReviews({ page, gig_id }));
   }, []);
   let reviews: any = useAppSelector((state) => state.reviews.data);
   const statusGetAllReviews: any = useAppSelector(
@@ -34,7 +36,7 @@ const GigDetailsPartFive = (props: Props) => {
             );
           })}
 
-          <LoadMore />
+          <LoadMore gig_id={gig.gig._id} />
         </div>
       ) : null}
     </div>

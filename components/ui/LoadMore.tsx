@@ -3,29 +3,33 @@ import { useAppSelector } from "@/store/store";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Review from "./Review";
+
+interface LoadMoreProps {
+  gig_id: string;
+}
+
 let page = 2;
-const LoadMore = () => {
+
+const LoadMore = ({ gig_id }: LoadMoreProps) => {
   const { ref, inView } = useInView();
-  let reviews: any = useAppSelector((state) => state.reviews.data);
-  const [data, setData] = useState(reviews.reviews);
+  // let reviews: any = useAppSelector((state) => state.reviews.data);
+  const [data, setData] = useState<any>([]);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     if (inView) {
       const fetchReviewsAsyncFunction = async (page: number) => {
         try {
-          const reviews = await fetchReviews(page);
-          if (reviews.length  == 0) {
+          const reviews = await fetchReviews(page, gig_id);
+          if (reviews.length == 0) {
             setVisible(false);
           }
-          setData([...data, ...reviews]);
+          setData((prevData: any) => [...prevData, ...reviews]);
         } catch (error) {
           console.error("Error fetching reviews:", error);
         }
       };
       fetchReviewsAsyncFunction(page);
-      console.log(page);
-      console.log(data);
       page++;
     }
   }, [inView]);
