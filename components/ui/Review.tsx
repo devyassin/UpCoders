@@ -3,6 +3,7 @@ import { likes } from "@/public/assets";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import StartsRating from "./StartsRating";
+import { formatDate } from "@/helpers/GetDateFormat";
 
 type Props = {
   review: any;
@@ -64,7 +65,7 @@ const Review = ({ review }: Props) => {
         </p>
         <div className="bg-darken h-4  w-[1px]" />
         <p className="font-tajwal text-[10px]  font-bold pr-4 text-[#B7B797] opacity-70 pl-4">
-          1 month ago
+          {formatDate(review.createdAt)}
         </p>
       </div>
       <div className="font-tajwal text-light-white text-[14px] pt-4">
