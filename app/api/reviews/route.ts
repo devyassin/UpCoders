@@ -5,6 +5,7 @@ import { compareUserId, getDataFromToken } from "@/helpers/GetDataFromToken";
 import Review from "@/models/Review";
 import { ReviewType } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
+import User from "@/models/User";
 
 connect();
 
@@ -12,7 +13,7 @@ export async function GET(request: NextRequest) {
   try {
     const userId = await getDataFromToken(request)!;
     const queryObj = FromUrlToObject(request);
- 
+
     const query = Review.find({
       gig_id: queryObj.gig_id,
     }).populate("user_id");
@@ -49,9 +50,12 @@ export async function POST(request: NextRequest) {
     const newReview = new Review(review);
     const savedReview = await newReview.save();
 
+    // Populate the user_id field
+    const populatedReview = await savedReview.populate("user_id");
+
     return NextResponse.json({
       message: "review created",
-      rating: savedReview,
+      review: populatedReview,
     });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });

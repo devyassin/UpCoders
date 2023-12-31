@@ -17,7 +17,7 @@ const instance = axios.create({
 // get all reviews
 export const getAllReviews = createAsyncThunk(
   "reviews/all",
-  async ({ page, gig_id }: { page: number; gig_id: any }) => {
+  async ({ page, gig_id }: { page: number; gig_id: string }) => {
     try {
       const response = await instance.get(
         `/reviews?page=${
@@ -45,7 +45,7 @@ export const addReview = createAsyncThunk(
 );
 
 // Define the initial review state
-const initialState = {
+const initialState: any = {
   data: [],
   numPage: 0,
   statusAddReview: "",
@@ -87,6 +87,12 @@ const reviewSlice = createSlice({
     clearStatusReview: (state) => {
       state.statusAddReview = "";
     },
+    addNewReviewOnUserInterface: (
+      state: any,
+      { payload }: PayloadAction<{ newReview: any }>
+    ) => {
+      console.log(payload);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -95,6 +101,7 @@ const reviewSlice = createSlice({
       })
       .addCase(addReview.fulfilled, (state, { payload }) => {
         state.statusAddReview = "succeeded";
+        state.data.reviews.unshift(payload.review); // Add the new review to the beginning of the array
       })
       .addCase(addReview.rejected, (state, { payload }: any) => {
         state.statusAddReview = "failed";
@@ -119,5 +126,6 @@ export const {
   clearStatusReview,
   handleReviewForm,
   setUserIdAndGigId,
+  addNewReviewOnUserInterface,
 } = reviewSlice.actions;
 export default reviewSlice.reducer;

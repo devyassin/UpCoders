@@ -79,7 +79,9 @@ const Review = ({ review }: Props) => {
           height={40}
           quality={100}
         />
-        <p className="text-[14px] text-darkentwo">({review.numberOfLikes})</p>
+        <p className="text-[14px] text-darkentwo">
+          ({review.numberOfLikes ? review.numberOfLikes : 0})
+        </p>
       </div>
       <hr className="mt-4 text-[#C49494] opacity-40 pb-10" />
     </div>

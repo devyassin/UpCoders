@@ -1,5 +1,10 @@
 import { zodHandllingErrors } from "@/helpers/ZodHandlingErrors";
-import { addReview, clearReview, clearStatusReview } from "@/store/ReviewSlice";
+import {
+  addNewReviewOnUserInterface,
+  addReview,
+  clearReview,
+  clearStatusReview,
+} from "@/store/ReviewSlice";
 import { ReviewValidation } from "@/lib/validation/ReviewValidation";
 import { Toastfailed, ToastLoading, Toastsuccess } from "@/helpers/Toast";
 import { useDispatch } from "react-redux";
@@ -19,7 +24,7 @@ const useAddNewReview = () => {
   useEffect(() => {
     if (statusAddReview === "succeeded") {
       Toastsuccess("review added successfully !");
-
+      dispatch(addNewReviewOnUserInterface(review));
       setTimeout(() => {
         dispatch(clearReview());
         dispatch(clearStatusReview());
