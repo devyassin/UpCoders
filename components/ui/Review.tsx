@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import StartsRating from "./StartsRating";
 import { formatDate } from "@/helpers/GetDateFormat";
+import { useAppSelector } from "@/store/store";
 
 type Props = {
   review: any;
@@ -11,21 +12,24 @@ type Props = {
 
 const Review = ({ review }: Props) => {
   const [countryFlag, setCountryFlag] = useState<string>("");
-
+  const [reviewOfLoggedUser, setReviewOfLoggedUser] = useState<boolean>(false);
+  const user_id: any = useAppSelector((state) => state.user.user._id);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const countryName = review.user_id.country;
         const flag = await fetchCountryFlagByName(countryName);
         setCountryFlag(flag);
-        console.log(flag);
+        if (user_id == review.user_id._id) {
+          setReviewOfLoggedUser(true);
+        }
       } catch (error) {
         console.error("Error fetching country flag:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [reviewOfLoggedUser]);
 
   return (
     <div className="flex flex-col  py-2 ">
@@ -41,7 +45,9 @@ const Review = ({ review }: Props) => {
         />
         <div className="flex flex-col">
           <p className="font-tajwal text-[14px] text-light-white-2">
-            {`${review.user_id.firstName}`}
+            {`${review.user_id.firstName}  ${
+              reviewOfLoggedUser ? "yes" : "no"
+            }`}
           </p>
           <div className="flex space-x-4">
             <Image

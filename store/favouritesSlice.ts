@@ -1,51 +1,17 @@
-import { createSlice, current, createAsyncThunk } from "@reduxjs/toolkit";
-import { API_URL } from "@/constants/endpoints";
-import axios from "axios";
+import { createSlice, current } from "@reduxjs/toolkit";
 
-const URL = `${API_URL}/api`;
+import { StateManagementHelper } from "@/helpers/StateManagementHelper";
 
-const instance = axios.create({
-  baseURL: URL,
-  headers: {
-    "content-type": "application/json",
-  },
-});
+const apiService = new StateManagementHelper("favourites");
 
 // get all favourites
-export const getAllFavourites = createAsyncThunk("favourites/all", async () => {
-  try {
-    const response = await instance.get("/favourites");
-    return response.data;
-  } catch (error: any) {
-    return new Error(error.message);
-  }
-});
+export const getAllFavourites = apiService.getAll();
 
 // Add a new favourite
-export const addFavourite = createAsyncThunk(
-  "favourites/add",
-  async (favourite: any, { rejectWithValue }) => {
-    try {
-      const response = await instance.post(`/favourites`, favourite);
-      return response.data;
-    } catch (error: any) {
-      return rejectWithValue(error);
-    }
-  }
-);
+export const addFavourite = apiService.add();
 
 // Add a new favourite
-export const deleteFavourite = createAsyncThunk(
-  "favourites/delete",
-  async (gig_id: string, { rejectWithValue }) => {
-    try {
-      const response = await instance.delete(`/favourites/${gig_id}`);
-      return response.data;
-    } catch (error: any) {
-      return rejectWithValue(error);
-    }
-  }
-);
+export const deleteFavourite = apiService.delete();
 
 // Define the initial favourites state
 const initialState = {
@@ -95,7 +61,7 @@ const favouriteSlice = createSlice({
       .addCase(getAllFavourites.pending, (state) => {
         state.statusGetAllFavourites = "loading";
       })
-      .addCase(getAllFavourites.fulfilled, (state, { payload }) => {
+      .addCase(getAllFavourites.fulfilled, (state: any, { payload }) => {
         state.statusGetAllFavourites = "succeeded";
         console.log(payload);
         state.data = payload;
@@ -120,3 +86,60 @@ const favouriteSlice = createSlice({
 
 export const { deleteFavFnc } = favouriteSlice.actions;
 export default favouriteSlice.reducer;
+
+/* 
+
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+class ApiService {
+  constructor(baseURL) {
+    this.instance = axios.create({
+      baseURL,
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+  }
+
+  getAll = (resource) =>
+    createAsyncThunk(`${resource}/all`, async () => {
+      try {
+        const response = await this.instance.get(`/${resource}`);
+        return response.data;
+      } catch (error) {
+        return new Error(error.message);
+      }
+    });
+
+  add = (resource) =>
+    createAsyncThunk(`${resource}/add`, async (data, { rejectWithValue }) => {
+      try {
+        const response = await this.instance.post(`/${resource}`, data);
+        return response.data;
+      } catch (error) {
+        return rejectWithValue(error);
+      }
+    });
+
+  delete = (resource) =>
+    createAsyncThunk(`${resource}/delete`, async (id, { rejectWithValue }) => {
+      try {
+        const response = await this.instance.delete(`/${resource}/${id}`);
+        return response.data;
+      } catch (error) {
+        return rejectWithValue(error);
+      }
+    });
+}
+
+// Usage
+const API_URL = `${API_URL}/api`;
+const apiService = new ApiService(API_URL);
+
+// Example usage for favourites
+const favouritesService = apiService.getAll("favourites");
+const addFavouriteService = apiService.add("favourites");
+const deleteFavouriteService = apiService.delete("favourites");
+
+*/
